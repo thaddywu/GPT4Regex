@@ -8,6 +8,7 @@ def test_chatgpt():
 def plain_prompt(nl):
     return f"""[Task] Please give me a regular expression with the language description I give to you.
 Please response with one line of a regular expression but nothing else.
+Don't use ^ and $. You can use ~ for complement, & for intersection.
 [Example]
 Description: lines using words that begin with 'z'.
 Answer: .*\\bz[A-Za-z]*\\b.*
@@ -22,7 +23,7 @@ def generate_regex_for_KB13():
     with open(f"datasets/KB13/targ.txt", "r") as fgt:
         gts = [l.strip() for l in fgt.readlines() if l.strip()]
 
-    for nl, gt in tqdm(zip(nls[:10], gts[:10])):
+    for nl, gt in tqdm(zip(nls, gts)):
         prompt = plain_prompt(nl)
         responses += [{
             "description": nl,
@@ -34,7 +35,7 @@ def generate_regex_for_KB13():
         print(prompt)
         print(responses[-1]["chatgpt_output"])
     
-    with open(f"outputs/KB13/test.txt", "w") as fout:
+    with open(f"outputs/KB13/chatgpt4-one-shot.txt", "w") as fout:
         json.dump(responses, fout)
         
 
