@@ -6,10 +6,12 @@ def test_chatgpt():
     print(chatgpt("what's the capital of japan?"))
 
 def plain_prompt(nl):
-    return f"""[Task]
-Please work as an expert regex translator. I'll give you a natural language description which corresponds to some regex.
-Please answer with a single line of regex consistent to the description and tries to keep it succinct and simple.
-[Input: natural language description]
+    return f"""[Task] Please give me a regular expression with the language description I give to you.
+Please response with one line of a regular expression but nothing else.
+[Example]
+Description: lines using words that begin with 'z'.
+Answer: .*\\bz[A-Za-z]*\\b.*
+[Description]
 {nl}
 """
 
@@ -20,7 +22,7 @@ def generate_regex_for_KB13():
     with open(f"datasets/KB13/targ.txt", "r") as fgt:
         gts = [l.strip() for l in fgt.readlines() if l.strip()]
 
-    for nl, gt in tqdm(zip(nls, gts)):
+    for nl, gt in tqdm(zip(nls[:10], gts[:10])):
         prompt = plain_prompt(nl)
         responses += [{
             "description": nl,
@@ -29,9 +31,10 @@ def generate_regex_for_KB13():
             "chatgpt_output": chatgpt(prompt).strip()
         }]
         print(nl)
+        print(prompt)
         print(responses[-1]["chatgpt_output"])
     
-    with open(f"outputs/KB13/plain.txt", "w") as fout:
+    with open(f"outputs/KB13/test.txt", "w") as fout:
         json.dump(responses, fout)
         
 
