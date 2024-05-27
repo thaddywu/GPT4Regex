@@ -49,7 +49,7 @@ def generate_regex_for_KB13(model_name, mode):
 
     for nl, gt in tqdm(zip(nls, gts)):
         if mode == "plain":
-            messages = plain_prompt(model_name, nl)
+            messages = plain_prompt(nl)
         elif mode == "in-context":
             messages = in_context_prompt(model_name, nl)
         
@@ -70,4 +70,4 @@ def generate_regex_for_KB13(model_name, mode):
         json.dump(responses, fout)
         
 
-generate_regex_for_KB13("chatgpt", "in-context")
+generate_regex_for_KB13("chatgpt", "plain")
