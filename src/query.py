@@ -47,7 +47,7 @@ def generate_regex_for_KB13(model_name, mode):
     with open(f"datasets/KB13/targ.txt", "r") as fgt:
         gts = [l.strip() for l in fgt.readlines() if l.strip()]
 
-    for nl, gt in tqdm(zip(nls, gts)):
+    for nl, gt in tqdm(list(zip(nls, gts))[:50]):
         if mode == "plain":
             messages = plain_prompt(nl)
         elif mode == "in-context":
@@ -70,4 +70,4 @@ def generate_regex_for_KB13(model_name, mode):
         json.dump(responses, fout)
         
 
-generate_regex_for_KB13("chatgpt", "plain")
+generate_regex_for_KB13("chatgpt", "in-context")
