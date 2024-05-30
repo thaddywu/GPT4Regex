@@ -3,7 +3,7 @@ from openai import OpenAI
 def chatgpt(prompt):
     client = OpenAI()
     stream = client.chat.completions.create(
-        model="gpt-4-turbo",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         stream=True,
     )
