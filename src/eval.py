@@ -31,6 +31,7 @@ def dfa_equiv_count(outputpath):
 
 #print(dfa_equiv_count(f"outputs/KB13/chatgpt4-zero-shot.txt")) #118
 #print(dfa_equiv_count("outputs/KB13/chatgpt4-one-shot.txt")) #360
-#print(dfa_equiv_count("outputs/KB13/chatgpt4-two-shot.txt")) #x412
+print(dfa_equiv_count("outputs/KB13/chatgpt4-two-shot.txt")) #421
 #print(dfa_equiv_count("outputs/KB13/chatgpt3.5-two-shot.txt")) #337
-print(dfa_equiv_count("outputs/KB13/chatgpt3.5-one-shot.txt")) #316
+#print(dfa_equiv_count("outputs/KB13/chatgpt3.5-one-shot.txt")) #316
+#print(dfa_equiv_count("outputs/KB13/chatgpt3.5-zero-shot.txt")) #79

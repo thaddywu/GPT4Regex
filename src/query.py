@@ -46,7 +46,7 @@ def generate_regex_for_KB13():
         gts = [l.strip() for l in fgt.readlines() if l.strip()]
 
     for nl, gt in tqdm(zip(nls, gts)):
-        prompt = zeroshot(nl)
+        prompt = twoshot(nl)
         responses += [{
             "description": nl,
             "prompt": prompt,
@@ -57,7 +57,7 @@ def generate_regex_for_KB13():
         print(prompt)
         print(responses[-1]["chatgpt_output"])
     
-    with open(f"outputs/KB13/chatgpt3.5-zero-shot.txt", "w") as fout:
+    with open(f"outputs/KB13/chatgpt4-two-shot.txt", "w") as fout:
         json.dump(responses, fout)
         
 
