@@ -14,7 +14,7 @@ def dfa_equiv(gold, predicted):
     except Exception as e:
         return False
     
-    return '\n1' in str(out)
+    return '\\n1' in str(out)
     # regex_dfa_equals.jar would return "[regex1]\n[regex2]\n[equivalent?1:0]"
 
 def generate_sample(gt, n=5):

@@ -29,4 +29,6 @@ def dfa_equiv_count(outputpath):
                 count += 1
     return count
 
-print(dfa_equiv_count("outputs/KB13/test.txt"))
+#print(dfa_equiv_count(f"outputs/KB13/chatgpt4-zero-shot.txt")) #118
+print(dfa_equiv_count("outputs/KB13/chatgpt4-one-shot.txt"))
+#print(dfa_equiv_count("outputs/KB13/chatgpt4-two-shot.txt"))

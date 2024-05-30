@@ -5,13 +5,34 @@ import json
 def test_chatgpt():
     print(chatgpt("what's the capital of japan?"))
 
-def plain_prompt(nl):
+def zeroshot(nl):
+    return f"""[Task] Please give me a regular expression with the language description I give to you.
+Please response with one line of a regular expression but nothing else.
+Don't use ^ and $. You can use ~ for complement, & for intersection.
+[Description]
+{nl}
+"""
+
+def oneshot(nl):
     return f"""[Task] Please give me a regular expression with the language description I give to you.
 Please response with one line of a regular expression but nothing else.
 Don't use ^ and $. You can use ~ for complement, & for intersection.
 [Example]
 Description: lines using words that begin with 'z'.
 Answer: .*\\bz[A-Za-z]*\\b.*
+[Description]
+{nl}
+"""
+
+def twoshot(nl):
+    return f"""[Task] Please give me a regular expression with the language description I give to you.
+Please response with one line of a regular expression but nothing else.
+Don't use ^ and $. You can use ~ for complement, & for intersection.
+[Example]
+Description: lines using words that begin with 'z'.
+Answer: .*\\bz[A-Za-z]*\\b.*
+Description: lines that contain the number '254' at least twice.
+Answer: (.*254.*){2}
 [Description]
 {nl}
 """
@@ -24,7 +45,7 @@ def generate_regex_for_KB13():
         gts = [l.strip() for l in fgt.readlines() if l.strip()]
 
     for nl, gt in tqdm(zip(nls, gts)):
-        prompt = plain_prompt(nl)
+        prompt = twoshot(nl)
         responses += [{
             "description": nl,
             "prompt": prompt,
@@ -35,7 +56,7 @@ def generate_regex_for_KB13():
         print(prompt)
         print(responses[-1]["chatgpt_output"])
     
-    with open(f"outputs/KB13/chatgpt4-one-shot.txt", "w") as fout:
+    with open(f"outputs/KB13/chatgpt4-two-shot.txt", "w") as fout:
         json.dump(responses, fout)
         
 
