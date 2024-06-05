@@ -1,5 +1,11 @@
 import subprocess, json
 from tqdm import tqdm
+from xeger import Xeger
+import re
+import random
+import string
+
+random.seed(42)
 
 def dfa_equiv(gold, predicted):
     # This function uses the regex_dfa_equals.jar to check the equivalence of two given regexes.
@@ -13,25 +19,81 @@ def dfa_equiv(gold, predicted):
     return '\\n1' in str(out)
     # regex_dfa_equals.jar would return "[regex1]\n[regex2]\n[equivalent?1:0]"
 
-def dfa_equiv_count(outputpath):
-    count = 0
-    with open(outputpath, "r") as f:
-        instances = json.load(f)
-        for instance in instances:
-            ground_truth = instance["ground_truth"]
-            chatgpt_output = instance["chatgpt_output"]
-            print(instance["description"])
-            print(ground_truth)
-            print(chatgpt_output)
-            print(dfa_equiv(ground_truth, chatgpt_output))
-            print()
-            if dfa_equiv(ground_truth, chatgpt_output):
-                count += 1
-    return count
+def generate_sample(gt, n=5):
+    generator = Xeger(limit=15, seed=6)
+    generated = []
+    for i in range(n):
+        ps = generator.xeger(gt)
+        generated.append((ps, 1))
+    for i in range(n):
+        res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        matched = re.match(gt, res)
+        if matched == None:
+            generated.append((ps, 0))
+        else:
+            span = matched.span()
+            if span[0] != 0 or span[1] != len(res):
+                generated.append((ps, 0))
+            else:
+                generated.append((ps, 1))
+    return generated
 
-#print(dfa_equiv_count(f"outputs/KB13/chatgpt4-zero-shot.txt")) #118
-#print(dfa_equiv_count("outputs/KB13/chatgpt4-one-shot.txt")) #360
-print(dfa_equiv_count("outputs/KB13/chatgpt4-two-shot.txt")) #421
-#print(dfa_equiv_count("outputs/KB13/chatgpt3.5-two-shot.txt")) #337
-#print(dfa_equiv_count("outputs/KB13/chatgpt3.5-one-shot.txt")) #316
-#print(dfa_equiv_count("outputs/KB13/chatgpt3.5-zero-shot.txt")) #79
+
+def evaluate(gt, pred):
+    samples = generate_sample(gt, 5)
+    try:
+        pattern = re.compile(pred)
+        valid = True
+    except:
+        valid = False
+
+    tp, fp, fn = 0, 0, 0
+    for sample, label in samples:
+        if not valid:
+            if label == 1: 
+                fp += 1
+            else:
+                fn += 1
+        else:
+            result = re.match(pred, sample)
+            matched = bool(result) and result.span() == (0, len(sample))
+            if matched:
+                if label == 1:
+                    tp += 1
+                else:
+                    fp += 1
+            else:
+                if label == 1:
+                    fn += 1
+    return tp, fp, fn, valid
+
+    
+
+
+f = open("outputs/KB13/chatgpt_2shot.json", "r")
+instances = json.load(f)
+count_dfa_equiv = 0
+
+tp, fp, fn = 0, 0, 0
+valid = 0
+length = []
+
+for idx, instance in tqdm(enumerate(instances)):
+    ground_truth = instance["ground_truth"]
+    chatgpt_output = instance["chatgpt_output"]
+
+    length.append(len(ground_truth))
+    
+    a, b, c, v = evaluate(ground_truth, chatgpt_output)
+    tp += a
+    fp += b
+    fn += c
+    valid = valid + 1 if v else valid
+
+p = tp/(tp + fp)
+r = tp/(tp + fn)
+f1 = 2*p*r/(p+r)
+
+print(p, r, f1)
+print(valid/824)
+print(sum(length)/len(length))
