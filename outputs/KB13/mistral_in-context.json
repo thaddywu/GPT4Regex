@@ -1,0 +1,4117 @@
+[
+    {
+        "description": "lines which do not contain the letter 'e'.",
+        "ground_truth": "~(.*e.*)",
+        "chatgpt_output": "^.(*,)[^e]*"
+    },
+    {
+        "description": "lines that contain only the letters 'agde'.",
+        "ground_truth": "agde",
+        "chatgpt_output": "^[a-gd-e]$ or ^([a-g]+\\1{1,2}[e]$"
+    },
+    {
+        "description": "lines using words  ending in 'er'.",
+        "ground_truth": ".*\\b[A-Za-z]*er\\b.*",
+        "chatgpt_output": "^([A-Za-z\\s]*[^.]*[^s]eler[^s]*[A-Za-z\\s]+).*$"
+    },
+    {
+        "description": "lines which contain only lowercase letters.",
+        "ground_truth": "[a-z]*",
+        "chatgpt_output": "^[a-z]+$"
+    },
+    {
+        "description": "lines that contain the word 'dance'",
+        "ground_truth": ".*\\bdance\\b.*",
+        "chatgpt_output": "^(.*\\b dance \\b.*)$"
+    },
+    {
+        "description": "lines with words that contain 3 vowels.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*[AEIOUaeiou].*){3}).*",
+        "chatgpt_output": "*((\\.|[aeiouAEIOU]{3,}[\\s])+[^\\.])*|\\.(?:[aeiouAEIOU]{3,}[^\\.]*\\.)(?=\\s*(?:[^\\.]\\s*)*\\.)*$"
+    },
+    {
+        "description": "lines which have 'bar'",
+        "ground_truth": ".*bar.*",
+        "chatgpt_output": "^.*\\s*(bar)\\s*.*$"
+    },
+    {
+        "description": "lines using a word that ends in 'spoon'",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*spoon)).*",
+        "chatgpt_output": ".~(.*\\bspoon\\b.*).*"
+    },
+    {
+        "description": "lines that include three capital letters",
+        "ground_truth": "(.*[A-Z].*){3}",
+        "chatgpt_output": "*(.{,2}[A-Z][A-Z][A-Z].{,2})|(^[A-Z][A-Z][A-Z.\\s]*).*|(.{,3}[A-Z]\\w{,2}[A-Z])*"
+    },
+    {
+        "description": "lines using words that begin with 'z'.",
+        "ground_truth": ".*\\bz[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bz\\w*.*).*$ # or ^(.*\\zb\\w*.*).*$ if you want to match only the 'z' character at the beginning of a word."
+    },
+    {
+        "description": "lines that have at least 5 numbers.",
+        "ground_truth": "(.*[0-9].*){5,}",
+        "chatgpt_output": "^(.*\\d{5,}.*\\d{5,}.*\\d{5,}.*\\d{5,}.*).*$"
+    },
+    {
+        "description": "lines that ends with letter 'f'",
+        "ground_truth": ".*f",
+        "chatgpt_output": "^.*([^\\n] Afghanistan|[^\\n] Angola|[^\\n] Argentina|[^\\n] Armenia|[^\\n] Australia|[^\\n] Austria|(?<![^\\.])\\.([A-Za-z]+)$"
+    },
+    {
+        "description": "lines using a word that contains the letters 'der'",
+        "ground_truth": ".*\\b[A-Za-z]*der[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(der\\w*).*$ # Matches lines containing words that contain the letters 'der'"
+    },
+    {
+        "description": "lines using only three words",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){3}",
+        "chatgpt_output": "^(\\S+\\s+\\S+\\s+\\S+\\s\\S+)\\$"
+    },
+    {
+        "description": "lines starting with 'uu' followed by words starting with 'z'.",
+        "ground_truth": "uu.*\\bz[A-Za-z]*\\b.*",
+        "chatgpt_output": "^uu\\b[a-z]\\w*"
+    },
+    {
+        "description": "lines that have 2 words using 4 letters",
+        "ground_truth": "(.*\\b[A-Za-z]{4}\\b.*){2}",
+        "chatgpt_output": "^(.*\\s[a-z][a-z][a-z][a-z]\\s[a-z][a-z][a-z][a-z].*).*$"
+    },
+    {
+        "description": "lines that have words ending in 'ing'",
+        "ground_truth": ".*\\b[A-Za-z]*ing\\b.*",
+        "chatgpt_output": "~*(.*[\\w'-]+ing)\\b.*~*"
+    },
+    {
+        "description": "lines which contain the word 'black' and the letter 'z'.",
+        "ground_truth": "(.*\\bblack\\b.*)&(.*z.*)",
+        "chatgpt_output": "^.*\\s*(black\\s+[zZ])\\s.*$"
+    },
+    {
+        "description": "lines that contain the number '254' at least twice.",
+        "ground_truth": "(.*254.*){2}",
+        "chatgpt_output": "^(.*(254).*(254).*).*$"
+    },
+    {
+        "description": "lines containing the word 'art'",
+        "ground_truth": ".*\\bart\\b.*",
+        "chatgpt_output": "^.*\\bart\\b.*$"
+    },
+    {
+        "description": "lines with a word ending in 'aought' that contain only one word",
+        "ground_truth": "([^A-Za-z])*\\b[A-Za-z]*aought\\b([^A-Za-z])*",
+        "chatgpt_output": "^(\\w+)$(([^ ]*\\bthough[t]\\b)[^ ]*)$ \\- This regex matches a line with exactly one word that ends with 'though' or 'thoughth'. The word must be the only thing on the line."
+    },
+    {
+        "description": "lines which contain only an uppercase letter",
+        "ground_truth": "[A-Z]",
+        "chatgpt_output": "^[A-Z]+$"
+    },
+    {
+        "description": "lines that contain at least one numeric in it.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.[0-9].*$ | ^[0-9].*$ | ^.*[0-9].*$ # Any of these three regexes will match lines containing at least one numeric character."
+    },
+    {
+        "description": "lines that end in an 'o'",
+        "ground_truth": ".*o",
+        "chatgpt_output": "^.(.*[oO])$"
+    },
+    {
+        "description": "lines that have all the letters 'a' , 'b' and 'c'",
+        "ground_truth": "(.*a.*)&(.*b.*)&(.*c.*)",
+        "chatgpt_output": "^.*([abc]{3}).*$"
+    },
+    {
+        "description": "lines having words ending with 'ne'.",
+        "ground_truth": ".*\\b[A-Za-z]*ne\\b.*",
+        "chatgpt_output": "^(.*[^.]*)(\\.[^.]*)(([^ ]*){0,1}ne)[^.]*$"
+    },
+    {
+        "description": "lines that contain 'World War II' and contain 'casualties'.",
+        "ground_truth": "(.*World War II.*)&(.*casualties.*)",
+        "chatgpt_output": ".*(World War II)(.*)(casualties)(*[^:]|$) This regex pattern will match lines that contain both 'World War II' and 'casualties'. It is case insensitive and allows for any characters to follow 'casualties' in the line. Note that the '(*[^:]|$)' part is to ensure matches only whole lines, not partial lines that contain these substrings as a part of longer strings."
+    },
+    {
+        "description": "lines that contain the numbers '9', and '10'",
+        "ground_truth": ".*(9.*10|10.*9).*",
+        "chatgpt_output": "^.*(9|10).*$"
+    },
+    {
+        "description": "lines with the word 'Triple' followed by words that start with 'X'",
+        "ground_truth": ".*\\bTriple\\b.*\\bX[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bTriple\\b\\s+\\w{1,}[Xx]\\w*.*).*$"
+    },
+    {
+        "description": "lines using 'su' after 'son' or 'soon'.",
+        "ground_truth": ".*(son|soon).*su.*",
+        "chatgpt_output": "(son|soon).*su"
+    },
+    {
+        "description": "lines that utilize words starting with 'do'.",
+        "ground_truth": ".*(([A-Za-z]+)&(\\bdo.*\\b)).*",
+        "chatgpt_output": "^(.*do[^\\s].*|[^\\s]do[^\\s]_[^\\s]*.)*\\s*(.*|$)"
+    },
+    {
+        "description": "lines using 'q' before 'r'",
+        "ground_truth": ".*q.*r.*",
+        "chatgpt_output": "*(.*q.[^r]*.r).*"
+    },
+    {
+        "description": "lines containing a word using the letters 'tt'.",
+        "ground_truth": ".*\\b[A-Za-z]*tt[A-Za-z]*\\b.*",
+        "chatgpt_output": "*(.+\\bttt\\b.+)*.*"
+    },
+    {
+        "description": "lines using more than 1 character",
+        "ground_truth": ".*.{2,}.*",
+        "chatgpt_output": "^.[.*][^.]$ (This regex matches lines that contain at least two characters, as the first character is \\. and the last character is not.)"
+    },
+    {
+        "description": "lines that contain words with 'ru'.",
+        "ground_truth": ".*\\b[A-Za-z]*ru[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(ru)\\w*\\b.*$"
+    },
+    {
+        "description": "lines containing a word using 'ause'",
+        "ground_truth": ".*\\b[A-Za-z]*ause[A-Za-z]*\\b.*",
+        "chatgpt_output": "\\b\\w+\\s*\\1+ause\\b"
+    },
+    {
+        "description": "lines containing instances of 'JFK' found after 'ABC'",
+        "ground_truth": ".*ABC.*JFK.*",
+        "chatgpt_output": "^ABC(.*?)JFK"
+    },
+    {
+        "description": "lines that contain at least three words and at least one number.",
+        "ground_truth": "(.*\\b[A-Za-z][A-Za-z]*\\b.*){3}&(.*[0-9].*)",
+        "chatgpt_output": "\\.+\\s+\\w+\\d+\\s+\\w+\\d+\\s+\\w+\\d+\\.+"
+    },
+    {
+        "description": "lines that contain numbers",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^(.*\\d.*).*$"
+    },
+    {
+        "description": "lines using the word 'going' followed by 'd'.",
+        "ground_truth": ".*\\bgoing\\b.*d.*",
+        "chatgpt_output": "^(.*going\\s+d.*)\\s*$"
+    },
+    {
+        "description": "lines that have 'sandwich' but not the word 'ham'",
+        "ground_truth": "(.*sandwich.*)&(~(.*\\bham\\b.*))",
+        "chatgpt_output": "^(?!.*\\bham\\b).*sandwich.*$"
+    },
+    {
+        "description": "lines containing words starting with 't'.",
+        "ground_truth": ".*((\\bt.*\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "^.*\\bt.[A-Za-z]+\\b.*$"
+    },
+    {
+        "description": "lines that contain words ending in 'g'",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*g)).*",
+        "chatgpt_output": "^([^.]*([.(]|)[^.]*){1,}[ag])$|^(?=.*[.]$)[^.]*((\\.[ag])|(ag))[^.]*$"
+    },
+    {
+        "description": "lines that contain words ending with vowels.",
+        "ground_truth": ".*\\b[A-Za-z]*[AEIOUaeiou]\\b.*",
+        "chatgpt_output": "^(.*[aeiouAEIOU][a-z]*)$"
+    },
+    {
+        "description": "lines that use words starting with 's'.",
+        "ground_truth": ".*\\bs[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*[s].*).*$"
+    },
+    {
+        "description": "lines using 2 words or more",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){2,}",
+        "chatgpt_output": "^.[a-zA-Z][a-zA-Z\\s]{1,}([a-zA-Z]\\.?)[a-zA-Z][a-zA-Z]+$"
+    },
+    {
+        "description": "lines using the word 'piggy' and 'his mother'.",
+        "ground_truth": ".*(.*\\bpiggy\\b.*)&(.*his mother.*)",
+        "chatgpt_output": "^(.*\\bpiggy.*\\s+\\banother\\s+word\\s+\\.*)(?=.*\\bhis\\smother.*)\\1$"
+    },
+    {
+        "description": "lines that have 5 characters and no vowels.",
+        "ground_truth": "(.{5})&(~(.*[AEIOUaeiou].*))",
+        "chatgpt_output": "^.[{4}[BDFMGPQSXZ]].{3}$"
+    },
+    {
+        "description": "lines that contain at least one vowel and at least two numbers.",
+        "ground_truth": "(.*[AEIOUaeiou].*)&(.*[0-9].*){2}",
+        "chatgpt_output": "^(.*[aeiouAEIOU].*).{0,1}[0-9][0-9].{0,1}[0-9].*$"
+    },
+    {
+        "description": "lines using at least 3 characters",
+        "ground_truth": ".*.{3}.*",
+        "chatgpt_output": "^.[3,].*$"
+    },
+    {
+        "description": "lines that contain the phrase 'city of'.",
+        "ground_truth": ".*(.*\\bcity of\\b.*).*",
+        "chatgpt_output": "^.*(?:city\\s+of\\s+)[^\\.!?]+\\b.*$"
+    },
+    {
+        "description": "lines that contain between two to seven words.",
+        "ground_truth": "([^A-Za-z]*\\b[A-Za-z][A-Za-z]*\\b[^A-Za-z]*){2,7}",
+        "chatgpt_output": "\\.{1,}[\\w\\s]{2,7}[\\w\\s]{0,}.*|\\.{1,}$|^[^\\.]\\s{1,}[\\w\\s]{2,7}[\\w\\s]{0,}$"
+    },
+    {
+        "description": "lines that use words starting with 'ga'.",
+        "ground_truth": ".*\\bga[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.[^.]+\\bgas[a-zA-Z0-9]*\\b.*$"
+    },
+    {
+        "description": "lines any words beginning with the letter 'k'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(k.*)).*",
+        "chatgpt_output": "^.*\\b[kK][\\w']*[\\s\\.]*(?![0-9]).*$"
+    },
+    {
+        "description": "lines containing any number with an '8' in it.",
+        "ground_truth": ".*8.*",
+        "chatgpt_output": "^.*[0-9]+\\b8\\b.*$"
+    },
+    {
+        "description": "lines which contain only the number '3'.",
+        "ground_truth": "3",
+        "chatgpt_output": "^([0-9]{1} Third?| Third:[0-9]{1})$ ^3( |$)| Third[^:\\s]?[[:blank:]]+ third:3| Third[^:\\s]?[[:blank:]]+ third: [0-9]{1}$"
+    },
+    {
+        "description": "lines that contain words starting with 'pa'.",
+        "ground_truth": ".*\\bpa[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(pa\\w*)\\b.*$"
+    },
+    {
+        "description": "lines that contain only three words.",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){3}",
+        "chatgpt_output": "^[^-][\\w\\s]+[\\w\\s]+\\s+[^-][\\w\\s]+[\\w\\s]+$"
+    },
+    {
+        "description": "lines that mention 'Dylan' in the same line as 'Lynda'.",
+        "ground_truth": "(.*Dylan.*Lynda.*)|(.*Lynda.*Dylan.*)",
+        "chatgpt_output": "~\\b(Dylan)\\s+(?:[^\\s]|[^\\s]\\bLynda[^\\s]|Lynda\\s\\1)[^\\s]*~"
+    },
+    {
+        "description": "lines containing 'foo' or 'nu' before 'dist' or 'dust'",
+        "ground_truth": ".*(foo|nu).*(dist|dust).*",
+        "chatgpt_output": "^.*((foo|nu)[- ]+dist|dust).*$"
+    },
+    {
+        "description": "lines where the number '0' appears",
+        "ground_truth": ".*0.*",
+        "chatgpt_output": "^.*[0].*$"
+    },
+    {
+        "description": "lines that feature 'email' followed by the word 'spam'.",
+        "ground_truth": ".*email.*\\bspam\\b.*",
+        "chatgpt_output": "^(.*email.*\\s+[a-z]+spam).*$"
+    },
+    {
+        "description": "lines that have within them words ending in 'ch'.",
+        "ground_truth": ".*\\b[A-Za-z]*ch\\b.*",
+        "chatgpt_output": "^(.*\\b[A-Za-z]*[ch]\\b.*).*$"
+    },
+    {
+        "description": "lines using the word 'clue'",
+        "ground_truth": ".*\\bclue\\b.*",
+        "chatgpt_output": ".*\\bclue\\b.*"
+    },
+    {
+        "description": "lines that contain 'news' before 'paper' or 'show'.",
+        "ground_truth": ".*news.*(paper|show).*",
+        "chatgpt_output": "^(.*\\snews\\s.*\\sapper|.*\\snews\\s.*\\ shoes).*$"
+    },
+    {
+        "description": "lines that do not contain the word 'foo'",
+        "ground_truth": "~(.*\\bfoo\\b.*)",
+        "chatgpt_output": "^((?!.*foo).)*$"
+    },
+    {
+        "description": "lines using 'min' before 'imal'",
+        "ground_truth": ".*min.*imal.*",
+        "chatgpt_output": "^.*min\\.*{1,}(imal).*$"
+    },
+    {
+        "description": "lines that include the string 'rst'",
+        "ground_truth": ".*rst.*",
+        "chatgpt_output": "^.*rst.*$"
+    },
+    {
+        "description": "lines that contain at least two words starting with 'h' in them.",
+        "ground_truth": "(.*\\bh[A-Za-z]*\\b.*){2}",
+        "chatgpt_output": "^(.*\\bh[a-z]*[\\s]*(?:\\bh[a-z]*[\\s]){1,}[a-z]+.*)$"
+    },
+    {
+        "description": "lines using the word 'An' at least once.",
+        "ground_truth": ".*\\bAn\\b.*",
+        "chatgpt_output": "^.*(An)[^.]*(An|$)\\.?.*$"
+    },
+    {
+        "description": "lines that begin with a number",
+        "ground_truth": "[0-9].*",
+        "chatgpt_output": "^[0-9]+\\s*[A-Za-z0-9]+\\s*(.*)$"
+    },
+    {
+        "description": "lines that have words ending with 'ti'.",
+        "ground_truth": ".*\\b[A-Za-z]*ti\\b.*",
+        "chatgpt_output": "^.*\\s+(.*[^s]ati$).*$"
+    },
+    {
+        "description": "lines that do not contain the character 'x'",
+        "ground_truth": "~(.*x.*)",
+        "chatgpt_output": "^.(*:not-x)*$"
+    },
+    {
+        "description": "lines using words containing 'ope'.",
+        "ground_truth": ".*\\b[A-Za-z]*ope[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\b(operation|operate|opponent|open|ope|opex|opera|operationally|operations|opacity|operate|operator|opportunity|opex|opep|opera|opus|opepa)\\b.*)$"
+    },
+    {
+        "description": "lines that use words starting with 'bi'.",
+        "ground_truth": ".*\\bbi[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(\\bbi.[a-z]+).*$"
+    },
+    {
+        "description": "lines using 'oon'",
+        "ground_truth": ".*oon.*",
+        "chatgpt_output": ".\\.(.*(oon).*).*"
+    },
+    {
+        "description": "lines using words beginning with the letter 'g'",
+        "ground_truth": ".*\\bg[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*[^:]):\\s*(g[\\w']+\\b).*$"
+    },
+    {
+        "description": "lines containing any mention of the word 'code'.",
+        "ground_truth": ".*\\bcode\\b.*",
+        "chatgpt_output": "/\\bcode\\w*\\b/g"
+    },
+    {
+        "description": "lines that contain 5 words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){5}",
+        "chatgpt_output": "^.\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(.*)$"
+    },
+    {
+        "description": "lines that have a word beginning with th and a number that begins in '7'",
+        "ground_truth": "(.*\\bth[A-Za-z]*\\b.*)&(.*7[0-9]*.*)",
+        "chatgpt_output": "\\bth\\w+\\d{1}[0-9]_[0-9][0-9]\\b|\\bthat\\s[0-9][0-9]\\b"
+    },
+    {
+        "description": "lines that have all of its letters capitalized.",
+        "ground_truth": "~(.*[a-z].*)",
+        "chatgpt_output": "^[A-Z]+$"
+    },
+    {
+        "description": "lines using 'mno' after 'pqr'",
+        "ground_truth": ".*pqr.*mno.*",
+        "chatgpt_output": "^(pqr.[^.]*.mno)$|^(pqr\\s+[A-Za-z.]+\\s+mno)$"
+    },
+    {
+        "description": "lines where there are two consecutive capital letters",
+        "ground_truth": ".*[A-Z][A-Z].*",
+        "chatgpt_output": "^(.*[A-Z]{2,}[A-Z][A-Za-z\\s]*).*\\1$"
+    },
+    {
+        "description": "lines containing a letter",
+        "ground_truth": ".*[A-Za-z].*",
+        "chatgpt_output": "^.\\w.*$"
+    },
+    {
+        "description": "lines that contain the word 'orange'.",
+        "ground_truth": ".*\\borange\\b.*",
+        "chatgpt_output": "^.*.orange.*.$"
+    },
+    {
+        "description": "lines using a word of 5 letters or less.",
+        "ground_truth": ".*\\b[A-Za-z]{1,5}\\b.*",
+        "chatgpt_output": "^.\\*([A-Za-z]{1,5})[\\s.]*.$"
+    },
+    {
+        "description": "lines that have words with 'la'.",
+        "ground_truth": ".*\\b[A-Za-z]*la[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bla\\w*).*$"
+    },
+    {
+        "description": "lines that using the symbol '+' or '-'.",
+        "ground_truth": ".*(\\+|-).*",
+        "chatgpt_output": "^[^]+|[^-][^-]+[^]$"
+    },
+    {
+        "description": "lines that contain the word 'Hindi'.",
+        "ground_truth": ".*\\bHindi\\b.*",
+        "chatgpt_output": "^.*\\bHindi\\b.*$"
+    },
+    {
+        "description": "lines using words containing 'e' before 'i'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*e.*i.*)).*",
+        "chatgpt_output": "^(.*\\bew(?:[ae]\\1)(?:[^i]*i)[^ae])*$"
+    },
+    {
+        "description": "lines that have at least one capital letter.",
+        "ground_truth": ".*[A-Z].*",
+        "chatgpt_output": "}^([A-Z]|[A-Z][a-z]+).*$||[^aeiou]\\.[_][A-Z] [This second solution assumes that a letter followed by a dot and a capital letter represents a word with a capital letter.]"
+    },
+    {
+        "description": "lines that have at least 3, but not more that 6 words.",
+        "ground_truth": "([^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*){3,6}",
+        "chatgpt_output": "^.\\s+((\\b[A-Z][a-z]*\\s)*[A-Z][a-z]*){3,6}.*$"
+    },
+    {
+        "description": "lines that contain 'mix' or 'shake'.",
+        "ground_truth": ".*mix.*|.*shake.*",
+        "chatgpt_output": "^(.*(mix|shake).*).*$"
+    },
+    {
+        "description": "lines that have 1 word in them",
+        "ground_truth": ".*\\b[A-Za-z][A-Za-z]*\\b.*",
+        "chatgpt_output": "^[\\w]+$"
+    },
+    {
+        "description": "lines where 'PQR' is between a number and 'LMNO'",
+        "ground_truth": ".*[0-9].*PQR.*LMNO.*|.*LMNO.*PQR.*[0-9].*",
+        "chatgpt_output": "\\b\\d+[^](*((PQR)|(LMNO))[^)]+\\b"
+    },
+    {
+        "description": "lines that have words with 7 letters.",
+        "ground_truth": ".*\\b[A-Za-z]{7}\\b.*",
+        "chatgpt_output": "^.{0,}([a-z]\\w{6}[a-z])\\b.*$"
+    },
+    {
+        "description": "lines that have one number",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^(.*(\\d).*[^0-9]*\\1.[^0-9]*)$"
+    },
+    {
+        "description": "lines containing 'a' before 'b'",
+        "ground_truth": ".*a.*b.*",
+        "chatgpt_output": "^(.*[a-z]*)[a-z]*([b-z]*).*$"
+    },
+    {
+        "description": "lines containing 'h', or 'i'",
+        "ground_truth": ".*(h|i).*",
+        "chatgpt_output": "^.*[hih].*$"
+    },
+    {
+        "description": "lines that contain words starting with 'de'.",
+        "ground_truth": ".*((\\bde.*\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "^\\.(de\\.\\w*).*$"
+    },
+    {
+        "description": "lines that include words starting with 'q'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(q.*)).*",
+        "chatgpt_output": "^.*\\b(q\\w+)\\b.*$"
+    },
+    {
+        "description": "lines that mention both 'butterflies' and 'fireflies'.",
+        "ground_truth": "(.*butterflies.*)&(.*fireflies.*)",
+        "chatgpt_output": "*(.*butterflies.*fireflies.*).*"
+    },
+    {
+        "description": "lines that contain 'ject' or 'pel'",
+        "ground_truth": ".*(ject|pel).*",
+        "chatgpt_output": "^.*(ject|pel).*$"
+    },
+    {
+        "description": "lines that carry the word 'Jim' located in between 'Stacks' and 'Slim'.",
+        "ground_truth": ".*Stacks.*\\bJim\\b.*Slim.*|.*Slim.*\\bJim\\b.*Stacks.*",
+        "chatgpt_output": "^(Stacks\\s+\\S+(\\s+\\w+){1,2}Jim(\\s+\\w+){1,2}Slim(?:\\.(?!Slim).)*)$"
+    },
+    {
+        "description": "lines using at least 5 'd'",
+        "ground_truth": "(.*d.*){5,}",
+        "chatgpt_output": "^(.{0,4}dddd.).*\\1|\\.{0,4}dddd(?=.)(?![^d][^.\\n]{4,})[.\\n]*$"
+    },
+    {
+        "description": "lines that contain at least 2 digits.",
+        "ground_truth": "(.*[0-9].*){2,}",
+        "chatgpt_output": ".*\\d{2,}.*"
+    },
+    {
+        "description": "lines using words with 'ca'.",
+        "ground_truth": ".*\\b[A-Za-z]*ca[A-Za-z]*\\b.*",
+        "chatgpt_output": ".~(.*\\b(ca)[a-z]*\\b.*).*~ **or** ~(.*\\b(ca)[a-z]*[a-z]).*~"
+    },
+    {
+        "description": "lines that have only 3 words",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){3}",
+        "chatgpt_output": "^(\\S+\\s+\\S+\\s+\\S+\\s.*)$ # Assumes words are separated by single whitespace character(s) and the line ends with a period or empty. Adjust as needed for different ending characters or word delimiters."
+    },
+    {
+        "description": "lines that have 2 or more numbers.",
+        "ground_truth": "(.*[0-9].*){2,}",
+        "chatgpt_output": "^(.*\\d+\\.\\d+.*\\d+\\.\\d+.*|.*\\d+\\.\\d+.*\\d+\\.\\d+.*|.*\\d+\\.\\d+.*\\d+\\d+.*|.*\\d+\\d+\\.\\d+.*|\\.*\\d+\\d+\\.\\d+\\.*).*$"
+    },
+    {
+        "description": "lines that have a 2 letter sequence",
+        "ground_truth": ".*[A-Za-z]{2}.*",
+        "chatgpt_output": "\\.(..).*\\1"
+    },
+    {
+        "description": "lines that include words starting with 'fe'.",
+        "ground_truth": "(.*((\\b[A-Za-z]+\\b)&(fe.*)).*).*",
+        "chatgpt_output": "^\\.(.*\\bfe\\w+\\b.).*$"
+    },
+    {
+        "description": "lines not containing 4 or more characters",
+        "ground_truth": "~(.*.{4,}.*)",
+        "chatgpt_output": "^.$|.{1,3}$"
+    },
+    {
+        "description": "lines that end containing the letter 'z'.",
+        "ground_truth": ".*z",
+        "chatgpt_output": "$ [\\S.*]z$"
+    },
+    {
+        "description": "lines which have three words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){3,}",
+        "chatgpt_output": "^.\\s+(\\S+\\s+\\S+\\s+\\S+).*\\r?$"
+    },
+    {
+        "description": "lines with 'sec' before 'mun'.",
+        "ground_truth": ".*sec.*mun.*",
+        "chatgpt_output": "^(.*\\bsec\\.\\s+)*(\\bbefore\\s+)*(\\bmun\\b).*$"
+    },
+    {
+        "description": "lines that have two or more words ending in 'a'.",
+        "ground_truth": ".*(.*\\b[A-Za-z]*a\\b.*){2}.*",
+        "chatgpt_output": "~\\b(\\w+\\.?)a\\.\\s+\\b(\\w+\\.?)a.*\\r?\\n"
+    },
+    {
+        "description": "lines that have 6 words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){6}",
+        "chatgpt_output": "^.\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+.*$"
+    },
+    {
+        "description": "lines that do not contain any number",
+        "ground_truth": "~(.*[0-9].*)",
+        "chatgpt_output": "^[^0-9].*$"
+    },
+    {
+        "description": "lines containing 'k', or 'l'",
+        "ground_truth": ".*(k|l).*",
+        "chatgpt_output": "^.*(k|l).*$"
+    },
+    {
+        "description": "lines that contain words ending with 'mae'.",
+        "ground_truth": ".*\\b[A-Za-z]*mae\\b.*",
+        "chatgpt_output": "^.*\\s+(.*\\bmae\\b).*$"
+    },
+    {
+        "description": "lines that contain words starting with 'h'.",
+        "ground_truth": ".*\\bh[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\bh[\\w']*\\b.*$"
+    },
+    {
+        "description": "lines where the  word 'Homer' precedes the word 'Odyssey'",
+        "ground_truth": ".*\\bHomer\\b.*\\bOdyssey\\b.*",
+        "chatgpt_output": "^(.+)Homer\\s+(.+)Odyssey(\\s|$)"
+    },
+    {
+        "description": "lines that do not contain the letter 'a'",
+        "ground_truth": "~(.*a.*)",
+        "chatgpt_output": "^(.*[^{}a]*.*).*$"
+    },
+    {
+        "description": "lines using the word 'hero'.",
+        "ground_truth": ".*\\bhero\\b.*",
+        "chatgpt_output": ".*\\bhero\\b.*"
+    },
+    {
+        "description": "lines that have words starting with 'pi'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(pi.*)).*",
+        "chatgpt_output": "^.*\\b(pi)[A-Za-z0-9]*.*$"
+    },
+    {
+        "description": "lines that have words starting with 'kai'.",
+        "ground_truth": ".*\\bkai[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*((\\b|[^a-z])(kai)[a-z]*).*$"
+    },
+    {
+        "description": "Find lines that mention dogs or cats but not any with mice",
+        "ground_truth": "(.*(dogs|cats).*)&(~(.*mice.*))",
+        "chatgpt_output": "^(?!.*(?:mouse|mice)).*{1}(?:dogs?|cats?).*{1}$"
+    },
+    {
+        "description": "lines that use 'a' or 'b' before words ending with 'er'.",
+        "ground_truth": ".*(a|b).*\\b[A-Za-z]*er\\b.*",
+        "chatgpt_output": "^.*[(a|b)][^ ]+(er)$"
+    },
+    {
+        "description": "lines starting with 'abc'",
+        "ground_truth": "abc.*",
+        "chatgpt_output": "^abc.*"
+    },
+    {
+        "description": "lines using three character words begining with the letters 'CE'.",
+        "ground_truth": ".*\\bCE[A-Za-z]\\b.*",
+        "chatgpt_output": "^.(CE[A-Z][A-Z]|CE[A-Z][a-z]{1,1}[A-Z][a-z]{1,1}).*$"
+    },
+    {
+        "description": "lines that contain 3 words and have at least 2 numbers.",
+        "ground_truth": ".*(.*\\b[A-Za-z]+\\b.*){3}&(.*[0-9].*){2}.*",
+        "chatgpt_output": "^(.*\\s)[0-9]+[^0-9]+\\s[0-9]+[^0-9]+\\s[^0-9]+[^\\s].*$"
+    },
+    {
+        "description": "lines using 'abc' after 'def'",
+        "ground_truth": ".*def.*abc.*",
+        "chatgpt_output": "*(def\\.\\s+)[a-z]+(?:(?= [a-z]+abc)[^\\n]*)*"
+    },
+    {
+        "description": "lines which feature the word 'hairy'.",
+        "ground_truth": ".*\\bhairy\\b.*",
+        "chatgpt_output": "^.(.*\\bhairy\\b).*$"
+    },
+    {
+        "description": "lines containing the word 'crack'.",
+        "ground_truth": ".*\\bcrack\\b.*",
+        "chatgpt_output": "^.*\\bcrack\\b.*$"
+    },
+    {
+        "description": "lines that have at least three 'j'.",
+        "ground_truth": "(.*j.*){3}",
+        "chatgpt_output": "^(.*\\uj.\\{2,}j[^\\w]*[j\\W]*).+\\1.*$ (This assumes that 'j' should not be followed by another 'j' within the same character class for this to match multiple separate 'j's)"
+    },
+    {
+        "description": "lines that have 'turn'",
+        "ground_truth": ".*turn.*",
+        "chatgpt_output": "^.*turn.*$"
+    },
+    {
+        "description": "lines using 'ghi' after 'jkl'",
+        "ground_truth": ".*jkl.*ghi.*",
+        "chatgpt_output": "\\b(?=.*jkl)\\b[\\s\\S]*\\b(ghi)\\b"
+    },
+    {
+        "description": "lines which contain a mix of uppercase letters and lowercase letters",
+        "ground_truth": "(.*[A-Z].*)&(.*[a-z].*)",
+        "chatgpt_output": "^.(.*[a-z][A-Z][a-z]*.*[A-Z][a-z][a-z].*).*$"
+    },
+    {
+        "description": "lines where no word is more than 5 characters",
+        "ground_truth": "~(.*\\b[A-Z-a-z]{6,}\\b.*)",
+        "chatgpt_output": "^((\\s*[^\\s] {1,5}[^\\s]+ \\1*)+)$ ^^ This regex pattern searches for lines where every word, delimited by whitespace, consists of five characters or less. Note that this assumes words are separated by whitespace only. Adjust according to your specific use-case if different word delimiters are present."
+    },
+    {
+        "description": "lines using 'd' in the middle of a word.",
+        "ground_truth": ".*\\b[A-Za-z]+d[A-Za-z]+\\b.*",
+        "chatgpt_output": "*(.+d.+).*"
+    },
+    {
+        "description": "lines using 5 'd'",
+        "ground_truth": "(.*d.*){5}",
+        "chatgpt_output": "^(.{0,4}ddd.).*$"
+    },
+    {
+        "description": "lines with capital letters",
+        "ground_truth": ".*[A-Z].*",
+        "chatgpt_output": ".~\\([A-Z]\\).*~"
+    },
+    {
+        "description": "lines containing 'e', or 'f'",
+        "ground_truth": ".*(e|f).*",
+        "chatgpt_output": "^.*[ef].*$"
+    },
+    {
+        "description": "lines using a 5 letter sequence",
+        "ground_truth": ".*[A-Za-z]{5}.*",
+        "chatgpt_output": "^.{4}[A-Za-z]{5}.*$ </s> This regular expression should match lines that contain exactly five letters in a row, preceded by any character and followed by any number of characters. Alternatively, if you meant lines that have any five-letter sequence (not necessarily in a row), use: ^(.*[A-Za-z]{5}.*|.*[A-Za-z]{5}.*)*.*$"
+    },
+    {
+        "description": "lines which contain a word starting with 'ch'",
+        "ground_truth": ".*\\bch[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bch\\w.*).*$"
+    },
+    {
+        "description": "lines that contain words starting with 'po'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(po.*)).*",
+        "chatgpt_output": "^(.*\\bpo\\w.*|po\\s[A-Za-z]+)(.*)$"
+    },
+    {
+        "description": "lines utilizing the word 'law'.",
+        "ground_truth": ".*.*\\blaw\\b.*",
+        "chatgpt_output": ".*\\b(law)\\b.*"
+    },
+    {
+        "description": "lines that have only one b.",
+        "ground_truth": "([^b])*b([^b])*",
+        "chatgpt_output": "^.[b].*(?:[^b].*b.*[^b])*[^b]$"
+    },
+    {
+        "description": "lines that have the number '44'.",
+        "ground_truth": ".*44.*",
+        "chatgpt_output": "^.*[0-9]*{4}4[0-9]*.*$"
+    },
+    {
+        "description": "lines that contain the letter 'A' followed by a vowel.",
+        "ground_truth": ".*A.*[AEIOUaeiou].*",
+        "chatgpt_output": "^.*([Aa]\\w*[aeiouAEIOU]).*$"
+    },
+    {
+        "description": "lines that contain words with 'oo'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*oo.*)).*",
+        "chatgpt_output": "\\b\\w*oo\\w*\\b|[^aeiou]\\.oo\\.[^aeiou]|oo[^aeiou]\\b"
+    },
+    {
+        "description": "lines which have at least 7 numbers.",
+        "ground_truth": ".*(.*[0-9].*){7}.*",
+        "chatgpt_output": "^(.*\\d{7,.*}){7,}$"
+    },
+    {
+        "description": "lines which end with 'you'",
+        "ground_truth": ".*you",
+        "chatgpt_output": "^.*(you)$\\n?"
+    },
+    {
+        "description": "lines that contain words ending with 'ol'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*ol)).*",
+        "chatgpt_output": "^.*(\\b[A-Za-z]+ol\\b).*$"
+    },
+    {
+        "description": "lines that contain a digit.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*\\d.*$"
+    },
+    {
+        "description": "lines using a word having the string 'der'",
+        "ground_truth": ".*\\b[A-Za-z]*der[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(der\\s[\\w'\\-]+).*$"
+    },
+    {
+        "description": "lines that are 20 characters or less",
+        "ground_truth": ".{0,20}",
+        "chatgpt_output": "^.\\{0,20\\}$"
+    },
+    {
+        "description": "lines containing a word",
+        "ground_truth": ".*\\b[A-Za-z]+\\b.*",
+        "chatgpt_output": "^.*\\b(WORD)\\b.*$"
+    },
+    {
+        "description": "lines that begin with the word 'once'.",
+        "ground_truth": "once\\b.*",
+        "chatgpt_output": "^once\\s*(.*)$"
+    },
+    {
+        "description": "lines that contain words starting with 'ac'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(ac.*)).*",
+        "chatgpt_output": "^.*(?:\\bac\\w*).*.$"
+    },
+    {
+        "description": "lines that have 4 words or less where at least 1 of those words contains the letter sequence 'uin'.",
+        "ground_truth": "([^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*){0,4}&(.*((\\b[A-Za-z]+\\b)&(.*uin.*)).*){1,}",
+        "chatgpt_output": "\\b((\\w+uin\\w+)|(\\w+\\s{0,3}\\1\\s{0,3}\\1\\s{0,3}\\1)){1,4}\\b.*\\r?\\n?"
+    },
+    {
+        "description": "lines that contain words ending in 'n'",
+        "ground_truth": ".*\\b[A-Za-z]*n\\b.*",
+        "chatgpt_output": "^.*\\b([a-z]*n)[[:space:]]*$"
+    },
+    {
+        "description": "lines that have 'eye'",
+        "ground_truth": ".*eye.*",
+        "chatgpt_output": "^.*(\\bthen|have|\\bew)|(\\bhe|i\\s)?(eye)\\1.*$"
+    },
+    {
+        "description": "lines that contain three letter words in them.",
+        "ground_truth": ".*\\b[A-Za-z]{3}\\b.*",
+        "chatgpt_output": "\\b\\w{3}\\b.*|.\\b\\w{3}\\b.*|.*\\b\\w{3}\\b.*"
+    },
+    {
+        "description": "lines that contain five letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{5}\\b.*",
+        "chatgpt_output": "\\b\\w{5}\\b(?=\\s|$) | \\b\\w{5}\\b(?=\\W)"
+    },
+    {
+        "description": "lines which do not have 'life'.",
+        "ground_truth": "~(.*life.*)",
+        "chatgpt_output": "^((?!life).)*$"
+    },
+    {
+        "description": "lines which start with a number.",
+        "ground_truth": "[0-9].*",
+        "chatgpt_output": "^[0-9]+.*$"
+    },
+    {
+        "description": "lines that start with a 'z' and end with an 'a'.",
+        "ground_truth": "z.*a",
+        "chatgpt_output": "^[z].*[a]$"
+    },
+    {
+        "description": "lines that have instances of a number and a vowel",
+        "ground_truth": "(.*[0-9].*)&(.*[AEIOUaeiou].*)",
+        "chatgpt_output": "^.(.*[0-9].[aeiouAEIOU].*).*$"
+    },
+    {
+        "description": "lines which have both uppercase letters and lowercase letters.",
+        "ground_truth": "(.*[A-Z].*)&(.*[a-z].*)",
+        "chatgpt_output": "^(.*[a-z]{1}[A-Z]{1}[a-z]*).*$ or ^(.*[A-Z]{1}[a-z]{1}[A-Z]*).*$"
+    },
+    {
+        "description": "lines containing 5 letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{5}\\b.*",
+        "chatgpt_output": "\\b\\w{5}\\b(?:\\s+\\w{5}[\\s\\r\\n]*)*$"
+    },
+    {
+        "description": "lines that match 'billy' or 'bob'.",
+        "ground_truth": ".*(billy|bob).*",
+        "chatgpt_output": "^(billy|bob).*$"
+    },
+    {
+        "description": "lines which contain five or more 'y'",
+        "ground_truth": "(.*y.*){5,}",
+        "chatgpt_output": "^(.{0,4}Y{5}.{0,})$ # Anchors the regex to the start and end of the line to ensure it matches the entire line. The .{0,4} at the start and .{0,} at the end allow for any characters to appear before and after the sequence of five 'Y' letters, respectively. The {5} specifies that exactly five 'Y' letters should be matched."
+    },
+    {
+        "description": "lines that include words starting with 'ne'.",
+        "ground_truth": ".*\\bne[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bane\\w.*|[A-Z][a-z]*\\bne\\b).*$"
+    },
+    {
+        "description": "lines containing words that start with 'x'",
+        "ground_truth": ".*\\bx[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(x[A-Za-z\\s]*).*$"
+    },
+    {
+        "description": "lines containing 'ge' or 'an' before 'ger' or 'tra'",
+        "ground_truth": ".*(ge|an).*(ger|tra).*",
+        "chatgpt_output": "^.*(ge|an)\\s*(ger|tra).*$"
+    },
+    {
+        "description": "lines that end with 'gh'",
+        "ground_truth": ".*gh",
+        "chatgpt_output": "^.*(gh)$"
+    },
+    {
+        "description": "lines which contain 'sorry'",
+        "ground_truth": ".*sorry.*",
+        "chatgpt_output": "^.*(sorry).*$"
+    },
+    {
+        "description": "lines with 'tch' but not 'wi'.",
+        "ground_truth": "(.*tch.*)&(~(.*wi.*))",
+        "chatgpt_output": "^(.*[^wi]*.*tch.[^wi]*).*$"
+    },
+    {
+        "description": "lines that start with 'far'",
+        "ground_truth": "far.*",
+        "chatgpt_output": "^far.*."
+    },
+    {
+        "description": "lines using words that end in 'y' or 'i'.",
+        "ground_truth": ".*\\b[A-Za-z]*(y|i)\\b.*",
+        "chatgpt_output": "^(.*[cy] .*).*$"
+    },
+    {
+        "description": "lines that contain the number '2005' and 'May' and begin with 'Mary'.",
+        "ground_truth": "(.*2005.*)&(.*May.*)&(Mary.*)",
+        "chatgpt_output": "^Mary.*(May\\s+[0-9]{4}[\\s] twentieth|[0-9]{4}[\\s]th [A-Z]+\\s+of\\s+[A-Z][a-z]{2}[\\s]|2005)[0-9]{4}$"
+    },
+    {
+        "description": "lines with an '8' that comes after a '5'.",
+        "ground_truth": ".*5.*8.*",
+        "chatgpt_output": "~(.*5.\\d{1}8.)*"
+    },
+    {
+        "description": "lines utilizing words starting with 'w'.",
+        "ground_truth": ".*((w.*)&(\\b[A-Za-z][A-Za-z]*\\b)).*",
+        "chatgpt_output": "^(.*\\bw\\w.[A-Za-z]*).*$"
+    },
+    {
+        "description": "lines containing words that start with 'th'",
+        "ground_truth": ".*\\bth[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(\\bth\\w+).*$"
+    },
+    {
+        "description": "lines that contain 'ig' or 'physics' before 'nobel'.",
+        "ground_truth": ".*(ig|physics).*nobel.*",
+        "chatgpt_output": "^(.*?(ig|physics)\\s+(?:nobel|Nobel).*).*$"
+    },
+    {
+        "description": "lines containing 'st' and containing 'gy' too",
+        "ground_truth": "(.*st.*)&(.*gy.*)",
+        "chatgpt_output": "^.*st.*gy.*$"
+    },
+    {
+        "description": "lines that contain the text 'NOW'",
+        "ground_truth": ".*NOW.*",
+        "chatgpt_output": "^.*NOW.*.$"
+    },
+    {
+        "description": "lines that contain the text 'hello'",
+        "ground_truth": ".*hello.*",
+        "chatgpt_output": "^.*.hello.*.$"
+    },
+    {
+        "description": "lines that contain five words that begin with 'P'.",
+        "ground_truth": ".*(.*\\bP[A-Za-z]*\\b.*){5}.*",
+        "chatgpt_output": "^((\\bP\\w+\\s)+{4}\\b[\\w\\s]*)$"
+    },
+    {
+        "description": "lines that have words ending with 'ge'.",
+        "ground_truth": ".*\\b[A-Za-z]*ge\\b.*",
+        "chatgpt_output": "^.*\\s*(\\w.*ge)$\\b\\s*$"
+    },
+    {
+        "description": "Look for any line with the '@' symbol.",
+        "ground_truth": ".*\\@.*",
+        "chatgpt_output": "^.[@]"
+    },
+    {
+        "description": "lines using an instance of 'itch'",
+        "ground_truth": ".*itch.*",
+        "chatgpt_output": ".*itch.*"
+    },
+    {
+        "description": "lines containing three vowels",
+        "ground_truth": "(.*[AEIOUaeiou].*){3}",
+        "chatgpt_output": "^.*(\\Auto|[aeiou]{3}).*$"
+    },
+    {
+        "description": "lines containing 'ers' and containing 'oxy' too",
+        "ground_truth": "(.*ers.*)&(.*oxy.*)",
+        "chatgpt_output": "*(.*ers.*).*(.*oxy.*)*"
+    },
+    {
+        "description": "lines that have more than 6 numbers.",
+        "ground_truth": "(.*[0-9].*){7,}",
+        "chatgpt_output": "^.+\\d{7,}.*$"
+    },
+    {
+        "description": "lines with the word 'Goal' in them.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(Goal)).*",
+        "chatgpt_output": "^.[^.]+\\s*(Goal|goal).*$"
+    },
+    {
+        "description": "lines beginning with 'Therefore'",
+        "ground_truth": "Therefore.*",
+        "chatgpt_output": "^Therefore.*$"
+    },
+    {
+        "description": "lines using 2 or more words containing the letters 'ing'.",
+        "ground_truth": "(.*(\\b[A-Za-z]+\\b&(.*ing.*)).*){2,}",
+        "chatgpt_output": "^(.*\\b[A-Za-z]+ing\\b[\\s.]+[A-Za-z]+ing\\b.*)$"
+    },
+    {
+        "description": "lines that have the word 'love' preceeding the word 'you'.",
+        "ground_truth": ".*\\blove\\b.*\\byou\\b.*",
+        "chatgpt_output": "^(.*\\s*(love)\\s*(you).*).*$"
+    },
+    {
+        "description": "lines which contain a 3 letter string starting with a",
+        "ground_truth": ".*(a[A-Za-z]{2}).*",
+        "chatgpt_output": "~(.*[\\[][a-z]{3}[\\]].*).*"
+    },
+    {
+        "description": "lines starting with a 'T'.",
+        "ground_truth": "T.*",
+        "chatgpt_output": "^T.*$"
+    },
+    {
+        "description": "lines that contain the letters 'ba'.",
+        "ground_truth": ".*ba.*",
+        "chatgpt_output": "^.*(b[afgcshtwvxyz]?a).*$"
+    },
+    {
+        "description": "lines that are composed of 4 or more words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){4,}",
+        "chatgpt_output": "^(?:\\w+\\s){4,}[^.\\n]$"
+    },
+    {
+        "description": "lines using the word 'George' and the number '62'.",
+        "ground_truth": ".*(.*\\bGeorge\\b.*)&(.*62.*).*",
+        "chatgpt_output": "*(George\\s+[0-9]+)([^.]*)(62)[.]?\\s*(.*)$"
+    },
+    {
+        "description": "lines utilizing words starting with 'b'.",
+        "ground_truth": ".*\\bb[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\Blab\\b.*$"
+    },
+    {
+        "description": "lines that use the word 'boom' followed by words starting with 'ka'",
+        "ground_truth": ".*\\bboom\\b.*\\bka[A-Za-z]*\\b.*",
+        "chatgpt_output": "(?=.*\\bboom\\b)[A-Za-z]+\\s*[A-Za-z]\\s*[A-Za-z]\\s*[A-Za-z]\\s*(ka[A-Za-z]*).*|(?<=boom\\s)[A-Za-z]+\\s*(ka[A-Za-z]*).*"
+    },
+    {
+        "description": "lines that end in a number",
+        "ground_truth": ".*[0-9]",
+        "chatgpt_output": "^(.*[^\\d]*)(\\d+)$"
+    },
+    {
+        "description": "lines that use words with 'ce'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*ce.*)).*",
+        "chatgpt_output": ".~\\b(ce).*\\b([A-Za-z]+\\w+).*\\."
+    },
+    {
+        "description": "lines which have at least 1 numeric character.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^[^0-9]*[0-9][^0-9]*$"
+    },
+    {
+        "description": "lines that contain at least one word starting with 'q'.",
+        "ground_truth": ".*\\bq[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bwq\\w*.*).*#mg"
+    },
+    {
+        "description": "lines that have 'twist'",
+        "ground_truth": ".*twist.*",
+        "chatgpt_output": "^.[^.]*}twist.[^.]*.$"
+    },
+    {
+        "description": "lines containing words that start with and end with 'xyz'",
+        "ground_truth": "xyz(.*xyz)?",
+        "chatgpt_output": "^(.*)xyz(.*)(\\1)$"
+    },
+    {
+        "description": "lines containing 'x' and containing 'y' too",
+        "ground_truth": "(.*x.*)&(.*y.*)",
+        "chatgpt_output": "^.*(x).*(\\s)(.*y.*).*$"
+    },
+    {
+        "description": "lines that contain words ending with 'la'.",
+        "ground_truth": ".*\\b[A-Za-z]*la\\b.*",
+        "chatgpt_output": "^.*\\b(.*la)\\b.*$"
+    },
+    {
+        "description": "lines that have 3 numbers and contain the word 'Columbia'.",
+        "ground_truth": "(.*[0-9].*){3}&(.*\\bColumbia\\b.*)",
+        "chatgpt_output": "^(?:.*(?:\\bColumbia\\b)\\s+)[0-9]{3}[0-9]{3}[0-9]{3}|[0-9]{3}(?:\\s+[0-9]{3}){2}(?=:\\s)|(?:^|[^\\w\\d_])\\K[0-9]{3}[^\\w](?=\\s+[0-9]{3}[^\\w]){2}(?=:\\s)|(?:^|[^\\w\\d_])\\K[0-9]{3}[^\\w](?=\\s+[0-9]{3}){2}[0-9]{3}(?=:\\s)#gm"
+    },
+    {
+        "description": "lines that contain at least one number.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^[^\\d]*((\\d)+[^\\d])*$"
+    },
+    {
+        "description": "lines that contain words starting with 'ke'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(ke.*)).*",
+        "chatgpt_output": "^.*\\b(ke\\w.*).*$"
+    },
+    {
+        "description": "lines that contain a word using at most 6 letters",
+        "ground_truth": ".*\\b[A-Za-z]{1,6}\\b.*",
+        "chatgpt_output": "^.{,6}\\w{5,}[^{\\s]*(?:\\w|\\b)[^.\\n]\\1{1,5}$^"
+    },
+    {
+        "description": "lines using 'ent' or 'ong'",
+        "ground_truth": ".*(ent|ong).*",
+        "chatgpt_output": "^(.*(\\bent|ong\\b).*).*$"
+    },
+    {
+        "description": "lines containing words using a vowel.",
+        "ground_truth": ".*\\b[A-Za-z]*[aeiouAEIOU][A-Za-z]*\\b.*",
+        "chatgpt_output": "^[A-Za-z]*[aeiou][A-Za-z]*$"
+    },
+    {
+        "description": "lines with words ending in 'y'.",
+        "ground_truth": ".*\\b[A-Za-z]*y\\b.*",
+        "chatgpt_output": "^.+(\\by\\b)[^.\\n]*$"
+    },
+    {
+        "description": "lines that contain 2 numbers that contain '19'.",
+        "ground_truth": "(.*19.*){2}",
+        "chatgpt_output": "^.*((\\d*)19(\\d*)(\\s)?\\d{1,3}([.]?\\d{2,3})?(\\s)?(\\d*)19(\\d*).*)$"
+    },
+    {
+        "description": "lines that contain at least 2 capital letters.",
+        "ground_truth": "(.*[A-Z].*){2,}",
+        "chatgpt_output": "^(.*[A-Z]{2,}[A-Z][A-Za-z]*[A-Z]{2,}.*)$ \\-\\- This regex targets lines that have at least 2 capital letters separated by any character(s) and other characters, and it ends with at least 2 capital letters as well."
+    },
+    {
+        "description": "lines containing a 6 letter sequence",
+        "ground_truth": ".*[A-Za-z]{6}.*",
+        "chatgpt_output": "^.{5}[A-Za-z0-9]{6}.*$"
+    },
+    {
+        "description": "lines where the letter c appears more than one time",
+        "ground_truth": "(.*c.*){2,}",
+        "chatgpt_output": ".*[c].*\\1.*[c].*|.*[cccc].*"
+    },
+    {
+        "description": "lines which contain only vowels.",
+        "ground_truth": "[AEIOUaeiou]*",
+        "chatgpt_output": "^.[aeiou]{2,}.{0,}[aeiou]{2,}.{0,}[aeiou]{2,}.{0,}$"
+    },
+    {
+        "description": "lines that contain words ending in 'i'.",
+        "ground_truth": ".*\\b[A-Za-z]*i\\b.*",
+        "chatgpt_output": "^.*(\\bw+i\\b).*$"
+    },
+    {
+        "description": "lines containing 'ast'",
+        "ground_truth": "(.*ast.*).*",
+        "chatgpt_output": "^.*ast.*.$"
+    },
+    {
+        "description": "lines using 'the'",
+        "ground_truth": ".*the.*",
+        "chatgpt_output": "^.*\\bthe\\b.*$"
+    },
+    {
+        "description": "lines containing 'on' and also containing 'off'",
+        "ground_truth": "(.*on.*)&(.*off.*)",
+        "chatgpt_output": "~(.*\\bon.*\\b.*\\boff\\b.*.)"
+    },
+    {
+        "description": "lines that mention 'trolls'.",
+        "ground_truth": ".*trolls.*",
+        "chatgpt_output": "^.*trolls.*$"
+    },
+    {
+        "description": "lines that contain at least one vowel and at least two numbers",
+        "ground_truth": "((.*[AEIOUaeiou].*)&(.*[0-9].*){2})",
+        "chatgpt_output": "^([AEIOUaeiou]\\w*)(\\d\\d) (\\d\\d)[A-Za-z]*$"
+    },
+    {
+        "description": "lines that begin with the word 'the'",
+        "ground_truth": "\\bthe\\b.*",
+        "chatgpt_output": "^the\\s.*"
+    },
+    {
+        "description": "lines that contain words with 'ri'.",
+        "ground_truth": ".*\\b[A-Za-z]*ri[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(\\w+ri\\w+).*$"
+    },
+    {
+        "description": "lines which contain 3 or more vowels.",
+        "ground_truth": "(.*[AEIOUaeiou].*){3,}",
+        "chatgpt_output": "^(.*[aeiou]{3,}[aeiou]*).*$"
+    },
+    {
+        "description": "lines using 3 instances of 'sw'",
+        "ground_truth": ".*(.*sw.*){3}.*",
+        "chatgpt_output": "^.{0,}(sw)[^sw]{0,}sw[^sw]{0,}sw[^sw]{0,}.*$"
+    },
+    {
+        "description": "lines that contain instances of 'ape', but only if its one of the first three words.",
+        "ground_truth": "([^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*){0,2}[^A-Za-z]*\\bape\\b.*",
+        "chatgpt_output": "^(\\s*(ape)\\s+){1,3}[^\\s]*"
+    },
+    {
+        "description": "lines which contain a word starting with the letter 'a' and a word starting with the letter 'z'.",
+        "ground_truth": "(.*\\ba[A-Za-z]*\\b.*)&(.*\\bz[A-Za-z]*\\b.*)",
+        "chatgpt_output": "^(.*\\b[A-Za-z]\\w*a\\w*.*\\s+.*\\b[A-Za-z]\\w*z\\w*.*)"
+    },
+    {
+        "description": "lines that show 'May' and 'June'.",
+        "ground_truth": ".*(.*May.*)&(.*June.*).*",
+        "chatgpt_output": "^(.*May.*|.*June.*).*\\n # Multiline mode should be enabled for this regex to properly match across lines."
+    },
+    {
+        "description": "lines that use words starting with 'no'.",
+        "ground_truth": ".*\\bno[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bno[\\- ]?([A-Za-z]+)[:- ]).*$"
+    },
+    {
+        "description": "lines that contain the text 'this is it'.",
+        "ground_truth": ".*this is it.*",
+        "chatgpt_output": "^.+(this is it).*$"
+    },
+    {
+        "description": "lines that start with 'the'.",
+        "ground_truth": "(the.*).*",
+        "chatgpt_output": "^the\\s.*"
+    },
+    {
+        "description": "lines that show the letter 'a' and number '5'.",
+        "ground_truth": "(.*a.*)&(.*5.*)",
+        "chatgpt_output": "*(.*\\A[a]\\D*(?=\\d)([5]))*"
+    },
+    {
+        "description": "lines using 'din' after 'e' or 'ky'.",
+        "ground_truth": ".*(e|ky).*din.*",
+        "chatgpt_output": "~(.*e.[A-Za-z]*din.*|.*ky.[A-Za-z]*din.)*$"
+    },
+    {
+        "description": "lines that contain both a 'B' and a 'b'.",
+        "ground_truth": "(.*B.*)&(.*b.*)",
+        "chatgpt_output": "^(.*[Bb].*[Bb].*).*$"
+    },
+    {
+        "description": "lines that have a '7' in them",
+        "ground_truth": ".*7.*",
+        "chatgpt_output": "^.*7.*$"
+    },
+    {
+        "description": "lines using at least 6 characters",
+        "ground_truth": ".*.{6}.*",
+        "chatgpt_output": "^.[{6}].*$"
+    },
+    {
+        "description": "lines that contain the word 'zoo'.",
+        "ground_truth": ".*\\bzoo\\b.*",
+        "chatgpt_output": "^.[^]*\\bzoo\\b.[^]*$"
+    },
+    {
+        "description": "lines using the vowel combination 'ei'.",
+        "ground_truth": ".*ei.*",
+        "chatgpt_output": "^.(.*[eiei].*).*$"
+    },
+    {
+        "description": "lines containing at least 2 words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){2,}",
+        "chatgpt_output": "^([\\w\\s]+\\s+[\\w\\s]+.*)$"
+    },
+    {
+        "description": "lines containing the word 'run' or the word 'hat'",
+        "ground_truth": ".*\\b(run|hat)\\b.*",
+        "chatgpt_output": "^.*(run|hat).*$"
+    },
+    {
+        "description": "lines containing at least 2 characters but not 4 characters or more",
+        "ground_truth": ".{2,3}",
+        "chatgpt_output": "^.[]{2,3}.$ # or ^.(.(!!{2,3}).*)$ for more complex cases allowing only two or three characters between the beginning of the line and the end."
+    },
+    {
+        "description": "lines with no vowels",
+        "ground_truth": "~(.*[AEIOUaeiou].*)",
+        "chatgpt_output": "^[^aeiouAEIOU].*$"
+    },
+    {
+        "description": "lines using words that contain the letter 'q'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*q.*)).*",
+        "chatgpt_output": "([A-Za-z\\s]*q[A-Za-z\\s]*)+.*[\\r\\n]"
+    },
+    {
+        "description": "lines containing the word 'shoe' and containing the word 'lace'",
+        "ground_truth": "(.*\\bshoe\\b.*)&(.*\\blace\\b.*)",
+        "chatgpt_output": "/(.*\\bshoe\\b.[^ ]+ \\blane\\b[^ ]+ .*).*[^\\n]+\\n?(.*\\bshoe\\b.[^ ]+ \\blane\\b[^ ]+ .*)*/gm"
+    },
+    {
+        "description": "lines using 2 or more words comprised of 5 letters",
+        "ground_truth": "(.*\\b[A-Za-z]{5}\\b.*){2,}",
+        "chatgpt_output": "^(.*(\\b[a-z]{5}\\b)[-\\s]+\\b[a-z]{5}\\b.*)$^"
+    },
+    {
+        "description": "lines starting with 're'",
+        "ground_truth": "re.*",
+        "chatgpt_output": "^re.*.$"
+    },
+    {
+        "description": "lines that contain 'in'",
+        "ground_truth": ".*in.*",
+        "chatgpt_output": "^.*in.*$"
+    },
+    {
+        "description": "lines using 'ick'",
+        "ground_truth": ".*ick.*",
+        "chatgpt_output": "\\b\\w*ick\\w*\\b (this will match words containing 'ick')"
+    },
+    {
+        "description": "lines that contain words starting with 'ki'.",
+        "ground_truth": ".*\\bki[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bki\\w*).*$"
+    },
+    {
+        "description": "lines that end in a digit",
+        "ground_truth": ".*[0-9]",
+        "chatgpt_output": "^.*,\\d$"
+    },
+    {
+        "description": "lines that have two vowels",
+        "ground_truth": "(.*[AEIOUaeiou].*){2}",
+        "chatgpt_output": "^.*[aeiou]{2}[aeiou].*$"
+    },
+    {
+        "description": "lines having words starting with 'di'.",
+        "ground_truth": ".*\\bdi[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bdi\\w.*|\\bdi\\s)[^\\n]+\\R.*$"
+    },
+    {
+        "description": "lines that contain five vowels",
+        "ground_truth": "(.*[AEIOUaeiou].*){5}",
+        "chatgpt_output": "^(.{5}[aeiou]{5}.{1,})$ ^| $ ([aeiou]{5}.{0,}[aeiou]{5})(?=\\\\.|$)"
+    },
+    {
+        "description": "lines containing 'tt' and containing 'bb' too",
+        "ground_truth": "(.*tt.*)&(.*bb.*)",
+        "chatgpt_output": "^(.*tt.*.*bb.*).*$"
+    },
+    {
+        "description": "lines that contain the word 'hello' within 5 characters of the word 'world'.",
+        "ground_truth": ".*(\\bhello\\b.{1,5}\\bworld\\b|\\bworld\\b.{1,5}\\bhello\\b).*",
+        "chatgpt_output": "*(.*hello\\s+.*world|.*world\\s+.*hello).*"
+    },
+    {
+        "description": "lines that end with the number '100'.",
+        "ground_truth": ".*100",
+        "chatgpt_output": "^(.*[\\s\\S](?=\\n)([0-9]{3}[0-9]{2})$)(?=100)$ ^|^([^]$]*\\n\\1100$|[^]$]*\\n(?<=\\s)100$"
+    },
+    {
+        "description": "lines which begin with the word 'how'",
+        "ground_truth": "((\\b[A-Za-z]+\\b)&(how)).*",
+        "chatgpt_output": "^how\\s*.* // This assumes there may be whitespace characters after the word 'how'. 's'.gmod(0) can be added to ignore whitespace for a more strict match. However, it is not necessary in this case."
+    },
+    {
+        "description": "lines using at least three numerical characters",
+        "ground_truth": "(.*[0-9].*){3,}",
+        "chatgpt_output": "^.{0,2}[0-9]{3,}.*$"
+    },
+    {
+        "description": "lines that do not have the letter 'a'",
+        "ground_truth": "~(.*a.*)",
+        "chatgpt_output": "^(.*[^a]).*$"
+    },
+    {
+        "description": "lines that contain words ending in 'ch'",
+        "ground_truth": ".*\\b[A-Za-z]*ch\\b.*",
+        "chatgpt_output": "*(.*[^ ]+ching|[^ ]+ch[^ ]+)*\\b.*|.*\\b(ching|ch[^ ]+)\\b"
+    },
+    {
+        "description": "lines that contain the word 'trust'.",
+        "ground_truth": ".*\\btrust\\b.*",
+        "chatgpt_output": "~(.*\\strust.*).*"
+    },
+    {
+        "description": "lines which contain the letter 'x' and the letter 'y'",
+        "ground_truth": "(.*x.*)&(.*y.*)",
+        "chatgpt_output": "^.[xy].*$"
+    },
+    {
+        "description": "lines that have a word of 3 letters",
+        "ground_truth": ".*\\b[A-Za-z]{3}\\b.*",
+        "chatgpt_output": "\\b\\w{3}\\b[ \\t]*[^\\n]++\\r?$"
+    },
+    {
+        "description": "lines that end with 'boby'",
+        "ground_truth": ".*boby",
+        "chatgpt_output": "^.*(boby)$"
+    },
+    {
+        "description": "lines that have the word 'couch' included",
+        "ground_truth": ".*\\bcouch\\b.*",
+        "chatgpt_output": "^.*:\\s*(couch)\\b:.*$"
+    },
+    {
+        "description": "lines that contain at least five words.",
+        "ground_truth": "(.*\\b[A-Za-z][A-Za-z]*\\b.*){5,}",
+        "chatgpt_output": "^(.*\\s[A-Za-z]+[.\\s]*).{0,4}([A-Za-z]+[.\\s])*[A-Za-z].$"
+    },
+    {
+        "description": "lines which have a th after a 'ch'.",
+        "ground_truth": ".*ch.*th.*",
+        "chatgpt_output": "*(.{1,}ch[dh][ae]?th.*)*"
+    },
+    {
+        "description": "lines which contain the letter 'z' twice.",
+        "ground_truth": "(.*z.*){2,}",
+        "chatgpt_output": "^(?:(.*z.).)*(.*z.*).*$"
+    },
+    {
+        "description": "lines that end with '2' and contain words that begin with 'Sel'",
+        "ground_truth": ".*\\bSel[A-Za-z]*\\b.*2",
+        "chatgpt_output": "^.*.([Sel][A-Za-z\\s]*)*(\\b2\\b)$"
+    },
+    {
+        "description": "lines containing either a 'w' or 's' character.",
+        "ground_truth": ".*(w|s).*",
+        "chatgpt_output": ".\\*(w|s).*"
+    },
+    {
+        "description": "lines which contain 2 or more 'q'.",
+        "ground_truth": "(.*q.*){2,}",
+        "chatgpt_output": "^(.*[q]{2,}.*[q]{2,}.*).*$"
+    },
+    {
+        "description": "lines that contain words starting with 'an'.",
+        "ground_truth": ".*\\ban[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\s*(an\\w.*|an\\s[A-Za-z]+[\\w']*).*$"
+    },
+    {
+        "description": "lines having words ending with 'fa'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*fa)).*",
+        "chatgpt_output": "^(.*\\b(fa\\w*|\\w*fa)\\b).*$"
+    },
+    {
+        "description": "lines ending with 'vem'",
+        "ground_truth": ".*vem",
+        "chatgpt_output": "$[\\*\\](.*[^'\\n']{0,}\\vm]$ [\\*\\] = Any character except newline, [^'\\n'] represents any character except newline as well. So this pattern matches lines that end with \"vem\" without a newline character following it."
+    },
+    {
+        "description": "lines containing words starting with the letter 'x'.",
+        "ground_truth": ".*\\bx[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b[xX]\\w.*\\b(?:[^.\\r\\n]*[\\.!?]|$)$"
+    },
+    {
+        "description": "lines with 7 or more words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){7,}",
+        "chatgpt_output": "^.*\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+.*$"
+    },
+    {
+        "description": "lines that contain 'jellyfish' and mention 'breeding'.",
+        "ground_truth": "(.*jellyfish.*)&(.*breeding.*)",
+        "chatgpt_output": "*(.*jellyfish.*breeding.*)*"
+    },
+    {
+        "description": "lines that contain 5 or more letters",
+        "ground_truth": ".*(.*[A-Za-z].*){5,}.*",
+        "chatgpt_output": "^.\\{5,.[^.\\n]*$"
+    },
+    {
+        "description": "lines that contain words ending with 'le'.",
+        "ground_truth": ".*((\\b.*le\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "^.*\\s(?:[A-Za-z']+[\\s-]*){0,}[A-Za-z']+le\\b.*$"
+    },
+    {
+        "description": "lines that contain words and 4 numbers.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*)&(.*[0-9].*){4}",
+        "chatgpt_output": "^(.*[\\w'\\s]+[0-9]{4}[\\w'\\s]+[0-9]{4}[\\w'*]+).*$"
+    },
+    {
+        "description": "lines that contain words ending with 'd'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*d)).*",
+        "chatgpt_output": "^.*\\b(\\w+d)\\b.*$"
+    },
+    {
+        "description": "lines using a word containing the letter 'l'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*l.*)).*",
+        "chatgpt_output": "^.*\\b(word\\ble\\w{0,2}l\\w{0,2})\\b.*$                 # Replace 'word' with specific word to search if needed."
+    },
+    {
+        "description": "lines containing the word 'inoperative'.",
+        "ground_truth": ".*\\binoperative\\b.*",
+        "chatgpt_output": "^.*\\binoperative\\b.*$"
+    },
+    {
+        "description": "lines with all words beginning with 'a'.",
+        "ground_truth": "~(.*((\\b[A-Za-z]+\\b)&(~(a.*))).*)",
+        "chatgpt_output": "^(.*\\ba[ pela-zA-Z]*\\b.*(?:\\s+\\ba[ pela-zA-Z]*\\b)*)"
+    },
+    {
+        "description": "lines that end with 'you'.",
+        "ground_truth": ".*you",
+        "chatgpt_output": "^.+\\ You$"
+    },
+    {
+        "description": "lines that contain 4 letter words ending in 's'",
+        "ground_truth": ".*\\b[A-Za-z]{3}s\\b.*",
+        "chatgpt_output": "^.*(\\b[a-z]{4}s\\b).*$"
+    },
+    {
+        "description": "lines which contain the letter 'h' preceded by a letter.",
+        "ground_truth": ".*[A-Za-z].*h.*",
+        "chatgpt_output": "^.[a-z]h.[a-zA-Z0-9]*$"
+    },
+    {
+        "description": "lines which have the word 'egg'",
+        "ground_truth": ".*\\begg\\b.*",
+        "chatgpt_output": "^.(.*\\bgeg\\b).*$"
+    },
+    {
+        "description": "lines that contain 'is' or 'it'",
+        "ground_truth": ".*(is|it).*",
+        "chatgpt_output": "^.*(is|it).*$"
+    },
+    {
+        "description": "lines using 'ss' between 'a' and 'le'",
+        "ground_truth": ".*a.*ss.*le.*",
+        "chatgpt_output": "*(.*a.*\\s{1}[s]{2}[s]{2}.*le.*)*"
+    },
+    {
+        "description": "lines that have at least two words that start with 's'.",
+        "ground_truth": "(.*\\bs[A-Za-z]*\\b.*){2}",
+        "chatgpt_output": "^((\\w+s\\w+|\\b\\ws+\\w+s\\w+\\b)[-\\s]+\\1)*$"
+    },
+    {
+        "description": "lines comprised of 5 or more words containing 5 or fewer letters",
+        "ground_truth": "(.*((\\b[A-Za-z]+\\b)&([A-Za-z]{0,5})).*){5,}",
+        "chatgpt_output": "^([a-z\\s]{5,}[\\s]+[a-z]{1,5}[\\s]+(?:[a-z]{1,5}[\\s]+){4,}[a-z]{1,5}[\\s]+[a-z\\.]{1,}$)^ .*\\r?$|^\\.?\\r?$ # This pattern is for UNIX-based systems. For Windows, replace '\\r?' with '\\r' at the end."
+    },
+    {
+        "description": "lines that contain a number ending with '0'",
+        "ground_truth": ".*[0-9]*0.*",
+        "chatgpt_output": "^(.*[\\d]*\\.?[0-9]{0,}$)* $"
+    },
+    {
+        "description": "lines that end with the word 'free'.",
+        "ground_truth": ".*\\bfree",
+        "chatgpt_output": "^.+\\s*(?:\\bbfree\\b)\\s*$"
+    },
+    {
+        "description": "lines which contain 'ead' or 'pro'",
+        "ground_truth": ".*(ead|pro).*",
+        "chatgpt_output": "^.*(ead|pro).*$"
+    },
+    {
+        "description": "lines that contain the word 'and'",
+        "ground_truth": ".*\\band\\b.*",
+        "chatgpt_output": "\\.(.*\\and.*).*"
+    },
+    {
+        "description": "lines using 4 letter words",
+        "ground_truth": ".*\\b[A-Za-z]{4}\\b.*",
+        "chatgpt_output": "\\b\\w{4}\\b"
+    },
+    {
+        "description": "lines that contain words starting with 'gi'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(gi.*)).*",
+        "chatgpt_output": "^.[^.]*\\.(gi[^\\.]*\\b)\\..*$"
+    },
+    {
+        "description": "lines that utilize words starting with 'pu'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(pu.*)).*",
+        "chatgpt_output": "^(.*\\bpu[A-Za-z]+(?:[ -\\.\\:\\,\\;\\-][A-Za-z]+)*).*$"
+    },
+    {
+        "description": "lines that end in 'e'",
+        "ground_truth": ".*e",
+        "chatgpt_output": "^.*(e)$ \\"
+    },
+    {
+        "description": "lines end in an 'a'",
+        "ground_truth": ".*a",
+        "chatgpt_output": "^.(.*[a]$)\\n?$"
+    },
+    {
+        "description": "lines that have at least three words beginning with a vowel.",
+        "ground_truth": "(.*\\b[AEIOUaeiou][A-Za-z]*\\b.*){3}",
+        "chatgpt_output": "^.*(\\s+[aeiou]\\S+[\\s]+\\1{2,}\\S*.)*(?:\\s|$)[aeiou]\\S.*$|^.*\\1{3,}[aeiou]\\S.*$|^.*[aeiou]\\S+[\\s]+\\1[aeiou]\\S+\\1.*$"
+    },
+    {
+        "description": "lines which contain a 3 letter string",
+        "ground_truth": ".*([A-Za-z]{3}).*",
+        "chatgpt_output": "^(.*)(\\w{3})(.*)$.*"
+    },
+    {
+        "description": "lines with 'car' between 'try' and 'say'.",
+        "ground_truth": ".*try.*car.*say.*|.*say.*car.*try.*",
+        "chatgpt_output": "(try\\.\\s*[^\"]*(car)[^\"]*\\.\\s*[^\"]*say)"
+    },
+    {
+        "description": "lines that contain the word 'the'",
+        "ground_truth": ".*\\bthe\\b.*",
+        "chatgpt_output": "^.*\\the.*$"
+    },
+    {
+        "description": "lines that contain the number '10'.",
+        "ground_truth": ".*10.*",
+        "chatgpt_output": "^.*(10).*$"
+    },
+    {
+        "description": "lines that contain 6 letter words beginning with the letter 'y'.",
+        "ground_truth": ".*\\by[A-Za-z]{5}\\b.*",
+        "chatgpt_output": "^(.+)\\s+(yar[a-z]{3}).*\\s+$"
+    },
+    {
+        "description": "lines that contain a word starting with a vowel.",
+        "ground_truth": ".*\\b[AEIOUaeiou][A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*[aeiouAEIOU]\\w.*$"
+    },
+    {
+        "description": "lines with 'helper' where the word 'little' comes before 'helper'.",
+        "ground_truth": "(.*helper.*)&(.*\\blittle\\b.*helper.*)",
+        "chatgpt_output": "^(.*\\blingle\\s+helper\\s+.*).*$"
+    },
+    {
+        "description": "lines containing an instance of the name 'Beaker'.",
+        "ground_truth": ".*Beaker.*",
+        "chatgpt_output": ".*\\s*(Beaker)\\s*.*"
+    },
+    {
+        "description": "lines which contain 'qu' at the start",
+        "ground_truth": "qu.*",
+        "chatgpt_output": "^.(qu.[A-Za-z0-9]*.)*$"
+    },
+    {
+        "description": "lines that show 'Mr' and 'Mrs' but not 'Ms' or 'Miss'.",
+        "ground_truth": "((.*Mr.*)&(.*Mrs.*)&(~(.*(Ms|Miss).*)))",
+        "chatgpt_output": "^(Mr|Mrs)[.\\s]([A-Z][a-z]*[.\\s])(?!Ms|[Mm](is|isses?|.\\s(?!Ms)[^*][\"'](|Ms\\s|Ms\\.|Ms\\.[\\w]|Ms\\.$))[^\\n]*\\r?$"
+    },
+    {
+        "description": "lines that include 'Canada' and 'Mexico' but not 'Cuba'.",
+        "ground_truth": "(.*Canada.*)&(.*Mexico.*)&(~(.*Cuba.*))",
+        "chatgpt_output": "^(.*Canada.*Mexico.*(?!Cuba).*).*$"
+    },
+    {
+        "description": "lines which contain a word ending in 'ing'.",
+        "ground_truth": ".*\\b[A-Za-z]*ing\\b.*",
+        "chatgpt_output": "^.* (\\w+ing) .*$"
+    },
+    {
+        "description": "lines that contain 'tumeric' and 'saffron'",
+        "ground_truth": "(.*tumeric.*)&(.*saffron.*)",
+        "chatgpt_output": "^.*(tumeric).*(saffron).*$"
+    },
+    {
+        "description": "lines that start with 'apartheid'.",
+        "ground_truth": "apartheid.*",
+        "chatgpt_output": "^apartheid.*."
+    },
+    {
+        "description": "lines containing words that start with 'h' and end with 'e'.",
+        "ground_truth": ".*\\bh[A-Za-z]*e\\b.*",
+        "chatgpt_output": "^.*\\bh[ae]\\b.*$"
+    },
+    {
+        "description": "lines containing both 'ac' and 'dc'",
+        "ground_truth": "(.*ac.*)&(.*dc.*)",
+        "chatgpt_output": "^(.*\\bac\\b.*\\bdc\\b.*)$"
+    },
+    {
+        "description": "lines composed with a word",
+        "ground_truth": ".*\\b[A-Za-z]+\\b.*",
+        "chatgpt_output": "\\b[A-Za-z]+\\b(?:\\s+\\1|$)(?!\\S)"
+    },
+    {
+        "description": "lines which do not contain a vowel.",
+        "ground_truth": "~(.*[AEIOUaeiou].*)",
+        "chatgpt_output": "^[^aeiouAEIOU]{1,}$"
+    },
+    {
+        "description": "lines using words beginning with the letter 'x'.",
+        "ground_truth": ".*\\bx[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(x.[A-Za-z\\s]*).*$"
+    },
+    {
+        "description": "lines containing words that end with 'L'",
+        "ground_truth": ".*\\b[A-Za-z]*L\\b.*",
+        "chatgpt_output": "^(.*[^.\\n\\]*)(\\bL\\b)(?!\\S).*$ or ^(.*[^.\\n\\]*)(\\bL\\b)(?<!\\w)(?<!\\d)(?<![.?!])(?<=\\s)[^\\S]$"
+    },
+    {
+        "description": "lines that contain words beginning in 'p'",
+        "ground_truth": ".*\\bp[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bp([A-Za-z]+\\w*).*).*$"
+    },
+    {
+        "description": "lines that contain the word 'sea' followed by at least one number.",
+        "ground_truth": ".*\\bsea\\b.*[0-9].*",
+        "chatgpt_output": ".*\\bsea\\w+\\d.*\\.?|.*\\bsea\\.\\.+\\d.*\\.?|.*\\bsea\\s\\d.*\\.?|.*\\bsea\\s+\\d+.*\\.?#python"
+    },
+    {
+        "description": "lines that contain a word containing 5 or more letters.",
+        "ground_truth": ".*\\b[A-Za-z]{5,}\\b.*",
+        "chatgpt_output": "^.\\*\\s+(\\w{5,}).*\\$"
+    },
+    {
+        "description": "lines that contain at least three five letter words",
+        "ground_truth": "(.*\\b[A-Za-z]{5}\\b.*){3}",
+        "chatgpt_output": "^(.*[A-Za-z]{5}[A-Za-z]*.*[A-Za-z]{5}[A-Za-z]*.*[A-Za-z]{5}[A-Za-z]*.*).*$"
+    },
+    {
+        "description": "lines that contain 'ugly' before 'betty' or 'thomas'.",
+        "ground_truth": ".*ugly.*(betty|thomas).*",
+        "chatgpt_output": "^(.*(ugly\\s+(betty|thomas)).*).*$"
+    },
+    {
+        "description": "lines that contain words starting with 'fa'.",
+        "ground_truth": ".*\\bfa[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\s*(fa\\w+).*$"
+    },
+    {
+        "description": "lines that contain 'fu' before 'ba' or 'bar'.",
+        "ground_truth": ".*fu.*(ba|bar).*",
+        "chatgpt_output": "^.*(fu[\\s\\S]*?(ba|bar)).*$"
+    },
+    {
+        "description": "lines using more than 4 characters",
+        "ground_truth": ".*.{5,}.*",
+        "chatgpt_output": "(.\\{5,}).*"
+    },
+    {
+        "description": "lines that contain any three vowels",
+        "ground_truth": "(.*[AEIOUaeiou].*){3}",
+        "chatgpt_output": "^(.*[aeiou]{3}[aeiou]*).*$"
+    },
+    {
+        "description": "lines having words ending with 'ta'.",
+        "ground_truth": ".*((\\b.*ta\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "^.*\\s+((\\b[A-Za-z]+)\\b)\\s*$[\\s.]+(*((\\b[A-Za-z]+)\\b):)?( ta)$"
+    },
+    {
+        "description": "lines which contain 'I am mad'.",
+        "ground_truth": ".*I am mad.*",
+        "chatgpt_output": "^.*I\\s+am\\s+mad.*$"
+    },
+    {
+        "description": "lines that use words that are only four letters long.",
+        "ground_truth": ".*\\b[A-Za-z]{4}\\b.*",
+        "chatgpt_output": "\\b\\w{4}\\b(?=(\\s|\\Z))"
+    },
+    {
+        "description": "lines that have five words that all end with the letter 'G'.",
+        "ground_truth": "(.*((\\b.*G\\b)&([A-Za-z]+)).*){5}",
+        "chatgpt_output": "^(.*\\s+[\\w']{5,}\\bG\\s+[\\w']{5,}\\bG\\s+[\\w']{5,}\\bG\\s+[\\w']{5,}\\bG\\s+.*)$"
+    },
+    {
+        "description": "lines containing words that start with 'i'.",
+        "ground_truth": ".*\\bi[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bi[A-Za-z]+).*$"
+    },
+    {
+        "description": "lines containing 'mean' or 'nic' before 'est' or 'test'",
+        "ground_truth": ".*(mean|nic).*(est|test).*",
+        "chatgpt_output": "^(.*?(mean|nic)(.*est|.*test).*).*$"
+    },
+    {
+        "description": "lines that use words with 'ca'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*ca.*)).*",
+        "chatgpt_output": "~(.*(\\bca\\w*).*).*"
+    },
+    {
+        "description": "lines that have ten words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){10}",
+        "chatgpt_output": "^((\\w[^ ]* \\w[^ ]*){10}[^\\s]*).*$"
+    },
+    {
+        "description": "lines containing 'tain' after 're' or 'per'.",
+        "ground_truth": ".*(re|per).*tain.*",
+        "chatgpt_output": "*(re\\.?|per\\.?)[A-Za-z]+ain.*\\b"
+    },
+    {
+        "description": "lines that end in 'o'",
+        "ground_truth": ".*o",
+        "chatgpt_output": "^(.*)[wo]$"
+    },
+    {
+        "description": "lines that contain 'x' and 'y' but not 'z'.",
+        "ground_truth": "(.*x.*)&(.*y.*)&(~(.*z.*))",
+        "chatgpt_output": "^(.*[xX][ya-z]*.*[xy][a-z]*.*[^z][^z]).*$"
+    },
+    {
+        "description": "lines that end in 'e'",
+        "ground_truth": ".*e",
+        "chatgpt_output": "^(.*)[.!?]\\s*e$"
+    },
+    {
+        "description": "lines having the letters 'ea'.",
+        "ground_truth": ".*((ea)&([A-Za-z]*)).*",
+        "chatgpt_output": ".*\\bae\\w*.*"
+    },
+    {
+        "description": "lines that begin with 'The' or 'For'.",
+        "ground_truth": "(The|For).*",
+        "chatgpt_output": "^(The|For).*"
+    },
+    {
+        "description": "lines that contain the letter 'V' and the number '33'.",
+        "ground_truth": "(.*V.*)&(.*33.*)",
+        "chatgpt_output": "^(.*[Vv].*\\d{2}=\\d{2}[33].*)$|^(.*[Vv].*\\d{3}=\\d{3}[33].*)$"
+    },
+    {
+        "description": "lines starting with 'X' followed by a word with 'oa'.",
+        "ground_truth": "X.*((\\b[A-Za-z]+\\b)&(.*oa.*)).*",
+        "chatgpt_output": "^X\\.\\w+\\.oa\\b.*\\\\s|\\\\S*$ [Note: This regex might require slight variations depending on the specific context. The \".*\\\\s|\\\\S*\" captures the rest of the line.]"
+    },
+    {
+        "description": "lines that end with the letter 'o'",
+        "ground_truth": ".*o",
+        "chatgpt_output": "^.+(\\.(?![aeiou])\\.)*o$"
+    },
+    {
+        "description": "lines using any instance of 'd' or 'e' followed by 's' or 'r'",
+        "ground_truth": ".*(d|e).*(s|r).*",
+        "chatgpt_output": "*(.*[ded][rs].*)*"
+    },
+    {
+        "description": "lines that contain a word and five numbers.",
+        "ground_truth": "(.*\\b[A-Za-z][A-Za-z]*\\b.*)&(.*[0-9].*){5}",
+        "chatgpt_output": "\\b\\w+\\s+\\d+\\d+\\d+\\d+\\s+\\d+\\d+\\d+\\d+\\d+\\b(?=(\\s|$))"
+    },
+    {
+        "description": "lines where 'TRY' is separated from 'LOL' with a comma",
+        "ground_truth": ".*TRY.*\\,.*LOL.*|.*LOL.*\\,.*TRY.*",
+        "chatgpt_output": "^.*(TRY\\s*,\\s+LOL).*$"
+    },
+    {
+        "description": "lines that contin words ending in 'e'.",
+        "ground_truth": ".*\\b[A-Za-z]*e\\b.*",
+        "chatgpt_output": "^(.*\\bw+e\\b).*$"
+    },
+    {
+        "description": "lines containing the word 'blog'",
+        "ground_truth": ".*\\bblog\\b.*",
+        "chatgpt_output": "^(.*\\s*(blog)\\b).*$"
+    },
+    {
+        "description": "lines using a word",
+        "ground_truth": ".*\\b[A-Za-z]+\\b.*",
+        "chatgpt_output": "~(\\b[A-Za-z]+\\s*[W words]\\s*[A-Za-z]+\\b)"
+    },
+    {
+        "description": "lines which have 'oo', but no instances of 'o' between the letters 'd' and 'a'",
+        "ground_truth": "(.*oo.*)&(~(.*d.*o.*a.*|.*a.*o.*d.*))",
+        "chatgpt_output": "^(.*[d][^o]*[a][^o]*oo[^o]*).*$"
+    },
+    {
+        "description": "lines having words ending with 'en'.",
+        "ground_truth": ".*\\b[A-Za-z]*en\\b.*",
+        "chatgpt_output": "^(.*[\\w']+den)$|^(.*[\\w']+\\s+[-\\.][\\w']+den)$"
+    },
+    {
+        "description": "lines that contain three letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{3}\\b.*",
+        "chatgpt_output": "^.\\h*([a-z]\\w{2}[a-z]|[a-z]\\w{2})$"
+    },
+    {
+        "description": "lines using a 3 letter sequence",
+        "ground_truth": ".*[A-Za-z]{3}.*",
+        "chatgpt_output": "\\.(.*\\w{3}).*|.*\\b[\\w]{3}\\b"
+    },
+    {
+        "description": "lines which contain 'upper' or 'lower'",
+        "ground_truth": ".*(upper|lower).*",
+        "chatgpt_output": "^(.*(upper|lower).*).*$"
+    },
+    {
+        "description": "lines that have the word 'sandwich'",
+        "ground_truth": ".*sandwich.*",
+        "chatgpt_output": "^.*\\bsandwich\\b.*$"
+    },
+    {
+        "description": "lines ending in 'ia'",
+        "ground_truth": ".*ia",
+        "chatgpt_output": "^.(.*[ia]).$"
+    },
+    {
+        "description": "lines that begin with the phrase 'once upon a time'",
+        "ground_truth": "once upon a time.*",
+        "chatgpt_output": "^once upon a time.*."
+    },
+    {
+        "description": "lines that utilize the letters 'as'.",
+        "ground_truth": ".*as.*",
+        "chatgpt_output": "^.*[a-s][a-s].*$"
+    },
+    {
+        "description": "lines that contain the word 'unifax' but not the word 'colorado'.",
+        "ground_truth": "(.*\\bunifax\\b.*)&(~(.*\\bcolorado\\b.*))",
+        "chatgpt_output": "^(?!.*(colorado)).*(unifax).*$"
+    },
+    {
+        "description": "lines using the word 'Westbury' next to a number.",
+        "ground_truth": "(.*\\bWestbury\\b.*)&(.*[0-9].*)",
+        "chatgpt_output": "*(.*)Westbury([0-9])(.*).*"
+    },
+    {
+        "description": "lines with 'helper' and 'little'",
+        "ground_truth": "(.*little.*)&(.*helper.*)",
+        "chatgpt_output": "^.*(helper)(.*(little)|( little)|( little\\s))\\.*$"
+    },
+    {
+        "description": "lines that contain digits.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "\\d+"
+    },
+    {
+        "description": "lines that contain three 'she'.",
+        "ground_truth": "(.*she.*){3}",
+        "chatgpt_output": "^(.*she.*she.*she.*).*$"
+    },
+    {
+        "description": "lines that contain exactly two words.",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){2}",
+        "chatgpt_output": "^([\\w\\s]+)[\\s]+([\\w\\s]+)$"
+    },
+    {
+        "description": "lines using words that begin with 'q' but do not have a 'u'.",
+        "ground_truth": ".*\\b(([A-Za-z]+)&(q.*)&(~(.*u.*)))\\b.*",
+        "chatgpt_output": "^(?!.*q[uuintu]\").+$"
+    },
+    {
+        "description": "lines that contain words starting with 'du'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(du.*)).*",
+        "chatgpt_output": "^(.*du\\S+).*\\n?$"
+    },
+    {
+        "description": "lines beginning with words that have a vowel as the first letter.",
+        "ground_truth": "\\b[AEIOUaeiou][A-Za-z]*\\b.*",
+        "chatgpt_output": "^[aeiouAEIOU].*"
+    },
+    {
+        "description": "lines that begin with a numeral",
+        "ground_truth": "[0-9].*",
+        "chatgpt_output": "^[0-9]+[^\\d]"
+    },
+    {
+        "description": "lines which contain the word 'mobile' but do not contain the word 'phone'",
+        "ground_truth": "(.*\\bmobile\\b.*)&~(.*\\bphone\\b.*)",
+        "chatgpt_output": "~^(?!.*(\\bphone\\b)).*mobile.*$"
+    },
+    {
+        "description": "lines containing words that begin with 'G' and end with 'y'",
+        "ground_truth": ".*\\bG[A-Za-z]*y\\b.*",
+        "chatgpt_output": "^([Gg]\\w\\*\\w*)(?=.*[yY]$)(?=\\s|$) .*$"
+    },
+    {
+        "description": "lines containing at least 3 words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){3,}",
+        "chatgpt_output": "^.+\\s+\\S+[\\s\\S]+[\\s\\S]+\\S+.*$"
+    },
+    {
+        "description": "lines that have 'JFK' but not 'WAS'",
+        "ground_truth": "(.*JFK.*)&(~(.*WAS.*))",
+        "chatgpt_output": "^(.*JFK.[^W].*WAS.*|.*JFK[^WAS].*)$ \\*Note: This assumes the 'JFK' and 'WAS' are not part of other words*"
+    },
+    {
+        "description": "lines that contain the phrase 'Booyah'.",
+        "ground_truth": ".*Booyah.*",
+        "chatgpt_output": "^.*Booyah.*$"
+    },
+    {
+        "description": "lines that contain both the word 'bar' and the word 'stress'",
+        "ground_truth": ".*(.*\\bbar\\b.*)&(.*\\bstress\\b.*).*",
+        "chatgpt_output": "^.*\\s*(bar\\s+stress\\s+|stress\\s+bar)\\s*.*$"
+    },
+    {
+        "description": "lines that contain words that have the letter 'e' occuring after the letter 'c'.",
+        "ground_truth": ".*\\b[A-Za-z]*c[A-Za-z]*e[A-Za-z]*\\b.*",
+        "chatgpt_output": "*(.*[c].*[e]).*"
+    },
+    {
+        "description": "lines that contain 3 numbers and one number contains 1.",
+        "ground_truth": "(.*[0-9].*)&(.*1.*)",
+        "chatgpt_output": "^(.*[0-9]\\.[0-9][0-9][0-9][0-9][0-9]\\..* [0-9][0-9][0-9].*|.*[0-9]\\.[0-9][0-9]\\.[0-9][0-9].* [0-9][0-9]*.*).*$ |This assumes at least one number is decimal. If all numbers are integers, replace the '.+' with '\\d+' instead."
+    },
+    {
+        "description": "lines which begin with 'omega'",
+        "ground_truth": "omega.*",
+        "chatgpt_output": "^omega.*                # Simple solution"
+    },
+    {
+        "description": "lines using words ending with 'mo'.",
+        "ground_truth": ".*((\\b.*mo\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "^(.*[^\\n](mo[blem]?|tom[ato]?)[^\\n]*[^\\n]\\s*).*$"
+    },
+    {
+        "description": "lines that contain the word 'Boby'.",
+        "ground_truth": ".*\\bBoby\\b.*",
+        "chatgpt_output": "^.(.*\\s+Boby\\s+.*).*$"
+    },
+    {
+        "description": "lines containing usage of the word 'fried'.",
+        "ground_truth": ".*\\bfried\\b.*",
+        "chatgpt_output": "*(.*\\bfried\\b.*)*"
+    },
+    {
+        "description": "lines with words that contain 3 letters",
+        "ground_truth": ".*\\b[A-Za-z]{3}\\b.*",
+        "chatgpt_output": "~(.*\\W([A-Za-z]{3})\\W.*).*~"
+    },
+    {
+        "description": "lines that use words ending with 'ot'.",
+        "ground_truth": ".*\\b[A-Za-z]*ot\\b.*",
+        "chatgpt_output": "^.*(\\b[A-Za-z]*ot\\b).*$"
+    },
+    {
+        "description": "lines using more than 3 characters",
+        "ground_truth": ".*.{4,}.*",
+        "chatgpt_output": "^.[.\\w]{3,}$"
+    },
+    {
+        "description": "lines that contain the word 'null'",
+        "ground_truth": ".*\\bnull\\b.*",
+        "chatgpt_output": "^.*null.*$"
+    },
+    {
+        "description": "lines using a word which contains at least 5 letters.",
+        "ground_truth": ".*\\b[A-Za-z]{5,}\\b.*",
+        "chatgpt_output": "^.*[a-z]{5,}.*$"
+    },
+    {
+        "description": "lines that use words of at least 9 letters.",
+        "ground_truth": ".*\\b[A-Za-z]{9,}\\b.*",
+        "chatgpt_output": "^(.\\{8\\}.[a-z]{1,}\\b[a-z]{8,}).*$"
+    },
+    {
+        "description": "lines that match the words 'and in this life'.",
+        "ground_truth": ".*\\band in this life\\b.*",
+        "chatgpt_output": "^.*\\ and\\ in\\ this\\ life.*$"
+    },
+    {
+        "description": "lines that contain at least 4 words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){4,}",
+        "chatgpt_output": "^((\\w+\\s)*\\w{4,})\\s*$"
+    },
+    {
+        "description": "lines using at least 3 'b'",
+        "ground_truth": "(.*b.*){3,}",
+        "chatgpt_output": "\\.(.*\\BB{3,}.*).*\\1 .*|.*\\BB{3,}\\..*|.*B{3,}B{3,}.*"
+    },
+    {
+        "description": "lines that contain an 'x'",
+        "ground_truth": ".*x.*",
+        "chatgpt_output": "^.[x].*$"
+    },
+    {
+        "description": "lines that contain the symbol '-'.",
+        "ground_truth": ".*-.*",
+        "chatgpt_output": "^.*-.*.$"
+    },
+    {
+        "description": "3 letter lines starting with 'x'",
+        "ground_truth": "x[A-Za-z]{2}",
+        "chatgpt_output": "^[xxD{3}$"
+    },
+    {
+        "description": "lines containing 'pol' or 'mi' before 'ist' or 'lk'",
+        "ground_truth": ".*(pol|mi).*(ist|lk).*",
+        "chatgpt_output": "^(.*(pol|mi)\\s*(ist|lk).*).*$"
+    },
+    {
+        "description": "lines that have at least 2 words of 3 or more letters",
+        "ground_truth": "(.*\\b[A-Za-z]{3,}\\b.*){2,}",
+        "chatgpt_output": "^(.*[\\w\\s]+\\w{3,}[\\w\\s]+\\w{3,}[\\w\\s]*.*).*$"
+    },
+    {
+        "description": "lines that contain '-' between words 'a' and 'lot'.",
+        "ground_truth": ".*(\\ba\\b.*\\-.*\\blot\\b|\\blot\\b.*\\-.*\\ba\\b).*",
+        "chatgpt_output": ".*a\\s+(-|\\s)[a-z\\s]+(lot|LOT).*"
+    },
+    {
+        "description": "lines with words that end in 'n'.",
+        "ground_truth": ".*\\b[A-Za-z]*n\\b.*",
+        "chatgpt_output": "\\b[A-Za-z]*n\\b.*|[^.\\n]$n.*(?<!\\S)<|[^.\\n]$"
+    },
+    {
+        "description": "lines using 'lay' or 'lie'",
+        "ground_truth": ".*l(ay|ie).*",
+        "chatgpt_output": "~(.*(lay|lie).*)"
+    },
+    {
+        "description": "lines that show 's' in the beginning of the word  and 't' at the end of the word.",
+        "ground_truth": ".*((\\bs[A-Za-z]*\\b)&(\\b[A-Za-z]*t\\b)).*",
+        "chatgpt_output": "^[sS]\\w*[tT]$"
+    },
+    {
+        "description": "lines that have 'de' before 'st' and 're' after 'col'.",
+        "ground_truth": "(.*de.*st.*)&(.*col.*re.*)",
+        "chatgpt_output": "^(.*de.*st.*(.*col.*re)).*$"
+    },
+    {
+        "description": "lines which contain 5 words starting with 'f'",
+        "ground_truth": "(.*\\bf[A-Za-z]*\\b.*){5,}",
+        "chatgpt_output": "^(.*\\bf[a-z][a-z]*[\\s]*(?:\\b[f][a-z][a-z]*(?=\\s)|$)(?:\\1){4}[\\s]\\1.*$"
+    },
+    {
+        "description": "lines which mention 'puppy'.",
+        "ground_truth": ".*puppy.*",
+        "chatgpt_output": "/\\bpuppy\\b/.+/gm"
+    },
+    {
+        "description": "lines that contain DEF' with a period immediately after it.'",
+        "ground_truth": ".*DEF\\..*",
+        "chatgpt_output": "^.*.DEF\\.$                # Note that this matches DEF followed by a single period, not any string containing DEF and a period. For a more specific regex, use:"
+    },
+    {
+        "description": "lines using the word 'intellectual'",
+        "ground_truth": ".*\\bintellectual\\b.*",
+        "chatgpt_output": "^.*(\\bintellectual\\b).*$"
+    },
+    {
+        "description": "lines containing 'ant'",
+        "ground_truth": ".*ant.*",
+        "chatgpt_output": "^.*ant.*$"
+    },
+    {
+        "description": "lines which have the word 'number' and a number",
+        "ground_truth": "(.*\\bnumber\\b.*)&(.*[0-9].*)",
+        "chatgpt_output": "/(.*)number\\d+(.*)/gm"
+    },
+    {
+        "description": "lines using words ending with 'on'.",
+        "ground_truth": ".*\\b[A-Za-z]*on\\b.*",
+        "chatgpt_output": "^.*(\\b[A-Za-z]*on\\b).*$"
+    },
+    {
+        "description": "lines that end with 'bar' and include the phrase 'San Jose'.",
+        "ground_truth": "(.*bar)&(.*San Jose.*)",
+        "chatgpt_output": "^.*San\\ Jose.*(\\.|(?=\\s+bar$))"
+    },
+    {
+        "description": "lines that use words starting with 'fu'.",
+        "ground_truth": ".*\\bfu[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(\\b[Ff]u.[A-Za-z]+\\b).*$"
+    },
+    {
+        "description": "lines beginning with 'begin'",
+        "ground_truth": "begin.*",
+        "chatgpt_output": "^begin.*"
+    },
+    {
+        "description": "lines that contain words ending in 'e'.",
+        "ground_truth": ".*(.*\\b[A-Za-z]*e\\b.*).*",
+        "chatgpt_output": "^.*.(\\bw+e\\b)\\b.*$"
+    },
+    {
+        "description": "lines that start with a vowel and ends in an 'e'.",
+        "ground_truth": "[AEIOUaeiou].*e",
+        "chatgpt_output": "^[aeiouAEIOU].*e$"
+    },
+    {
+        "description": "lines starting with the word 'the'.",
+        "ground_truth": "\\bthe\\b.*",
+        "chatgpt_output": "^the\\s..*$"
+    },
+    {
+        "description": "lines that contain 1 to 5 numbers and 1 letter.",
+        "ground_truth": "([^0-9]*[0-9][^0-9]*){1,5}&(.*[A-Za-z].*)",
+        "chatgpt_output": "^.*[A-Z][0-9]{1,5}[A-Z0-9]*$"
+    },
+    {
+        "description": "lines that end with 'and'",
+        "ground_truth": ".*and",
+        "chatgpt_output": "^.+\\s*(and)$ <!-- for a more permissive match, include additional whitespace: ^.+\\s*(and)\\s* -->"
+    },
+    {
+        "description": "lines that utilize 'pan' following words starting with 'pe'.",
+        "ground_truth": ".*\\bpe[A-Za-z]*\\b.*pan.*",
+        "chatgpt_output": "^\\bstart:pe\\.\\s*(pan\\.\\s+|pan[^\\s]* pan)[^\\s.]*$"
+    },
+    {
+        "description": "lines that have the word 'Facebook'",
+        "ground_truth": ".*\\bFacebook\\b.*",
+        "chatgpt_output": "^.*\\bFacebook\\b.*$"
+    },
+    {
+        "description": "lines that have words with 're'.",
+        "ground_truth": ".*\\b[A-Za-z]*re[A-Za-z]*\\b.*",
+        "chatgpt_output": "\\.(?:[A-Za-z]+\\b(?:re|RE)[A-Za-z]+\\b.\\)"
+    },
+    {
+        "description": "lines that have 3 or more words containing the letters 'ly'.",
+        "ground_truth": "(.*((\\b[A-Za-z]+\\b)&(.*ly.*)).*){3,}",
+        "chatgpt_output": "^(.*\\s+(?=\\w+ly\\b)[A-Za-z]+[^\\s]*(\\s+(?=\\w+ly\\b)[A-Za-z]+[^\\s]*){2,}[^\\s]*).*$"
+    },
+    {
+        "description": "lines with instances of 'ABC' between 'XYX' and a comma",
+        "ground_truth": ".*XYX.*ABC.*\\,.*|.*\\,.*ABC.*XYX.*",
+        "chatgpt_output": "*(XYX[^,]*ABC[^,]*[,])*"
+    },
+    {
+        "description": "lines that have a word containing 'a' or 'b'",
+        "ground_truth": ".*\\b([A-Za-z]+&.*(a|b).*)\\b.*",
+        "chatgpt_output": "^\\.(.*[\\sa-z]+\\b(a|b)\\b.*).*$"
+    },
+    {
+        "description": "lines using the word 'of' or the word 'in'",
+        "ground_truth": "(.*\\bof\\b.*)|(.*\\bin\\b.*)",
+        "chatgpt_output": "^(.*(of|in).*).*$"
+    },
+    {
+        "description": "lines containing two or more words containing 'y'.",
+        "ground_truth": "(.*\\b[A-Za-z]*y[A-Za-z]*\\b.*){2,}",
+        "chatgpt_output": "^(.*\\b[wy]\\w.*\\b[wy]\\w.*|.*[wy]{2,}.*).*$"
+    },
+    {
+        "description": "lines that contain at least one 'z'",
+        "ground_truth": ".*z.*",
+        "chatgpt_output": "^.[^z]*[z].*$"
+    },
+    {
+        "description": "lines that contain a word using the letters 'ire'",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*ire.*)).*",
+        "chatgpt_output": "\\b\\w*ire\\w*\\b .*| \"#ire\" in single-quote context|\\w*ire\\w*:.*#?|'\\w*ire\\w'* in double-quote context"
+    },
+    {
+        "description": "lines that have 'ser' after 'lin' or 'ku'.",
+        "ground_truth": ".*(lin|ku).*ser.*",
+        "chatgpt_output": "~(.*(lin|ku).*ser)*.*|.*(ku|lin).*(ser).*|.*(lin.*ku.*ser).*|.*(ku.*lin*ser).*"
+    },
+    {
+        "description": "lines that have three words comprised of 4 characters each.",
+        "ground_truth": ".*(.*\\b[A-Za-z]{4}\\b.*){3}.*",
+        "chatgpt_output": "^(\\w{4}\\s\\w{4}\\s\\w{4})$"
+    },
+    {
+        "description": "lines ending in 'az'",
+        "ground_truth": ".*az",
+        "chatgpt_output": "^.*(\\.|$)([a-z]\\{2\\})(?<!\\w)$"
+    },
+    {
+        "description": "lines which begin with the letter 'z'.",
+        "ground_truth": "z.*",
+        "chatgpt_output": "^[z]"
+    },
+    {
+        "description": "lines containing 'ku' after 'mar' or 'is'.",
+        "ground_truth": ".*(mar|is).*ku.*",
+        "chatgpt_output": "^.*(mar|is)\\s*(\\w*)+(?:\\s|$)(ku).* $^{1}([A-Za-z]+|$) matches both lines ending with 'ku' and those with a word 'ku' before a space. If you want to exactly match the phrase 'mar is ku' add a \\s* between mar and is: ^.*(mar)\\s+(is)\\s+(\\w*)+(?:\\s|$)(ku).*"
+    },
+    {
+        "description": "lines that contain 2 numbers and 3 words and contain the letter 't'.",
+        "ground_truth": ".*(.*[0-9].*){2}&(.*\\b[A-Za-z]+\\b.*){3}&(.*t.*).*",
+        "chatgpt_output": "^(\\w+\\d+\\s+\\w+\\d+\\s+\\w+\\s+[wt]\\w+\\s+\\w+\\d+\\s+\\w+\\d+)*.*$"
+    },
+    {
+        "description": "lines that include one word using at least 2 letters",
+        "ground_truth": ".*\\b[A-Za-z]{2,}\\b.*",
+        "chatgpt_output": "^[A-Za-z]\\w[A-Za-z]+\\s.*$"
+    },
+    {
+        "description": "lines that have a capital 'A', but not a lowercase 'a'.",
+        "ground_truth": "(.*A.*)&(~(.*a.*))",
+        "chatgpt_output": "^(.*[AACAK]\\1[^a]*[^aeiou].*)$"
+    },
+    {
+        "description": "lines that start with the letter 'e' followed by the word 'jr'.",
+        "ground_truth": "e.*\\bjr\\b.*",
+        "chatgpt_output": "^e\\.*jr(?:\\s[A-Za-z]+.*|$)"
+    },
+    {
+        "description": "lines containing 'b', or 'c'",
+        "ground_truth": ".*(b|c).*",
+        "chatgpt_output": "~(.*[bc].*).*"
+    },
+    {
+        "description": "lines that contain 'Beaker' but do not contain 'Bunsen'.",
+        "ground_truth": "(.*Beaker.*)&(~(.*Bunsen.*))",
+        "chatgpt_output": "^(?!\\s*Bunsen).*\\s*Beaker$"
+    },
+    {
+        "description": "lines where '4' is between '3' and '5'",
+        "ground_truth": ".*3.*4.*5.*|.*5.*4.*3.*",
+        "chatgpt_output": "~(3.[0-9]{1}|[^0-9]|[1-9][0-9]{1}|[^0-9]|5.[0-9]{1}){2}.*[0-9]{1}=4"
+    },
+    {
+        "description": "lines that contain a word in all uppercase.",
+        "ground_truth": ".*\\b[A-Z]+\\b.*",
+        "chatgpt_output": "^.[^.]*([A-Z]+).*$"
+    },
+    {
+        "description": "lines which start with the word 'The'",
+        "ground_truth": "\\bThe\\b.*",
+        "chatgpt_output": "^The\\s[A-Za-z]*\\s"
+    },
+    {
+        "description": "lines containing 3 or more vowels and 5 or more words",
+        "ground_truth": "(.*[AEIOUaeiou].*){3,}&(.*\\b[A-Za-z]+\\b.*){5,}",
+        "chatgpt_output": "^[^ ]*(?: [aeiou][aeiou]{2,}[aeiou][^ ]*){3,} \\S+ [^\\s]+\\S+ \\S+ \\S+ \\S+ [^\\s]*$"
+    },
+    {
+        "description": "lines that contain words starting with 'bo'.",
+        "ground_truth": ".*\\bbo[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(?=.*\\b[bo].+\\b.).*$"
+    },
+    {
+        "description": "6 letter lines",
+        "ground_truth": "[A-Za-z]{6}",
+        "chatgpt_output": ".{6}# Lines must be exactly 6 characters long"
+    },
+    {
+        "description": "lines with 'ock'",
+        "ground_truth": ".*ock.*",
+        "chatgpt_output": "/.*(ock).*/"
+    },
+    {
+        "description": "lines using a capital letter followed by a number",
+        "ground_truth": ".*[A-Z].*[0-9].*",
+        "chatgpt_output": "^([A-Z][0-9]).*$"
+    },
+    {
+        "description": "lines that start with 'ABC' and end with 'TRY'",
+        "ground_truth": "ABC.*TRY",
+        "chatgpt_output": "^ABC.*TRY$"
+    },
+    {
+        "description": "lines ending with 'cem'",
+        "ground_truth": ".*cem",
+        "chatgpt_output": "^.*(cem)$ \\-\\- This regex will only match lines that end exactly with the string 'cem' with no whitespace or other characters before it. If you want to allow whitespace before 'cem', use the following regex instead: ^.+ *(cem)$"
+    },
+    {
+        "description": "lines that contain a number.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*[0-9]+.*$"
+    },
+    {
+        "description": "lines that have words ending with a 'g'",
+        "ground_truth": ".*((\\b.*g\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "~(.*[\\w']+g) # Assuming words are separated by whitespace or apostrophes ('), this regex pattern will find lines containing a word that ends with the letter 'g' and is followed by a word boundary, a word character or an apostrophe."
+    },
+    {
+        "description": "lines that contain 2 repetitions of the word 'a'",
+        "ground_truth": "(.*\\ba\\b.*){2}",
+        "chatgpt_output": "^.*(a.\\*).*\\1.*$"
+    },
+    {
+        "description": "lines that utilize words starting with 'ko'.",
+        "ground_truth": ".*\\bko[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bko\\w*.*).*$"
+    },
+    {
+        "description": "lines that show the text '1:15' and the word 'midnight'.",
+        "ground_truth": "(.*1:15.*)&(.*\\bmidnight\\b.*)",
+        "chatgpt_output": "^(.*\\ 1:\\d{2}\\ \\w{6}\\midnight).*$"
+    },
+    {
+        "description": "lines that contain three or more digits",
+        "ground_truth": "(.*[0-9].*){3}",
+        "chatgpt_output": "^.*(\\d{3,}).*$"
+    },
+    {
+        "description": "lines using 'ness' or 'ed'",
+        "ground_truth": ".*(ness|ed).*",
+        "chatgpt_output": "^(.*[\\w']+(?:[.\\s][h][e]|[.\\s][w]h[o][v][e]\\s)[m]any|\\1happiness|1excitement|1sadness|1necessity|1readyness|1kindness|1fitness|1darkness|1brightness|1awesomeness|1alerted|1startled|1frightened|1excited|1surprised|1bored|1pleased|1stunned|1troubled|1perplexed|1shocked|1relieved|1amused|1confused|1worried|1cheered|1heartened|1emboldened|1fascinated|1thrilled&)$"
+    },
+    {
+        "description": "lines that are only comprised of uppercase letters.",
+        "ground_truth": "[A-Z]*",
+        "chatgpt_output": "^[A-Z\\+]+$"
+    },
+    {
+        "description": "lines using 'lugg' before 'age'",
+        "ground_truth": ".*lugg.*age.*",
+        "chatgpt_output": "^.*lugg.[^.]*.age.*$"
+    },
+    {
+        "description": "lines with the word 'and' between 'zyx' and 'cba'",
+        "ground_truth": ".*zyx.*\\band\\b.*cba.*|.*cba.*\\band\\b.*zyx.*",
+        "chatgpt_output": "^(?=.*zyx).*(and).*(cba).*$"
+    },
+    {
+        "description": "lines containing the number 11 and the word 'eleven'.",
+        "ground_truth": "(.*11.*)&(.*eleven.*)",
+        "chatgpt_output": "^.*(11|eleven).*$"
+    },
+    {
+        "description": "lines that are composed of the letters 'a', 'b', and 'd'.",
+        "ground_truth": "(a|b|d)*",
+        "chatgpt_output": "^[abd]+$"
+    },
+    {
+        "description": "lines that mention 'Randy' and also contain 'fox'",
+        "ground_truth": "(.*Randy.*)&(.*fox.*)",
+        "chatgpt_output": "*(Randy|randy).*\\sfox.*|.*fox\\s*(Randy|randy).*"
+    },
+    {
+        "description": "lines utilizing '!'",
+        "ground_truth": ".*\\!.*",
+        "chatgpt_output": "^[^!]*!.*$"
+    },
+    {
+        "description": "lines that end with vowels.",
+        "ground_truth": ".*[AEIOUaeiou]",
+        "chatgpt_output": "~$[^.]*[aeiou]$"
+    },
+    {
+        "description": "lines that have 'ace' after 'pl' or 'tr'.",
+        "ground_truth": ".*(pl|tr).*ace.*",
+        "chatgpt_output": "^.*(pl|tr)\\s+(\\S+ace).*$"
+    },
+    {
+        "description": "lines starting with 'tra'",
+        "ground_truth": "tra.*",
+        "chatgpt_output": "^tra.*."
+    },
+    {
+        "description": "lines containing one instance of 'ca' followed by an 'r' or a 't'",
+        "ground_truth": ".*(.*ca.*(r|t).*).*",
+        "chatgpt_output": "*(.*)ca[rort].*(.*)*"
+    },
+    {
+        "description": "lines where there are exactly two words and 7 characters.",
+        "ground_truth": "((([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){2}&.{7})",
+        "chatgpt_output": "^(.\\w{2}\\.\\s+\\w{2}\\.\\s+\\w{7})$"
+    },
+    {
+        "description": "lines that have 3 words and two numbers.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){3}&(.*[0-9].*){2}",
+        "chatgpt_output": "^.[a-z]+ [a-z]+ [a-z]+ \\d+ \\d+ $"
+    },
+    {
+        "description": "lines using words starting with 'fi'.",
+        "ground_truth": ".*\\bfi[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*(\\bfi\\w+).*).*$"
+    },
+    {
+        "description": "lines with 'buck'",
+        "ground_truth": ".*buck.*",
+        "chatgpt_output": "^.*buck.*$"
+    },
+    {
+        "description": "lines containing words which begin with 'c' and end with 'd'",
+        "ground_truth": ".*\\bc[A-Za-z]*d\\b.*",
+        "chatgpt_output": "^.(c[A-Za-z\\*\\*\\*\\*]+d).*$"
+    },
+    {
+        "description": "lines containg the number '9'.",
+        "ground_truth": ".*9.*",
+        "chatgpt_output": "^.[^]]*[0-9]={1}9.[^]]*$"
+    },
+    {
+        "description": "lines that utilize words starting with 'ni' followed by the word 'knight'",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(ni.*)).*\\bknight\\b.*",
+        "chatgpt_output": "^(.*\\bnit(?:[_-]?|[.]|[ ]){1}knight.*)$"
+    },
+    {
+        "description": "lines which begin with 'y', has a 'z' in the middle and end in a number.",
+        "ground_truth": "y.*z.*[0-9]",
+        "chatgpt_output": "^(y.*)z.(?=\\d)$"
+    },
+    {
+        "description": "lines containing 'tal' and containing 'tel' too",
+        "ground_truth": "(.*tal.*)&(.*tel.*)",
+        "chatgpt_output": "^.*(tal).*\\1.*(tel).*$"
+    },
+    {
+        "description": "lines that contain the 'staphyloccus aureus.'",
+        "ground_truth": ".*staphyloccus aureus.*",
+        "chatgpt_output": "~(.*staphyloccus\\s+aureus.).*"
+    },
+    {
+        "description": "lines that use 'Jane' but not 'Janet' or '2'.",
+        "ground_truth": "(.*Jane.*)&(~(.*(Janet|2).*))",
+        "chatgpt_output": "^(.*[J]anne[^2][^j]anet[^2].*).*$ or ^(?!.*[2]).*(Jane).*$ (This second option may be more efficient, as it does not need to look for 'Janet', but it will also match lines containing the name 'Jan')"
+    },
+    {
+        "description": "lines that contain words starting with 'go'.",
+        "ground_truth": ".*\\bgo[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bgo\\w.*).*$"
+    },
+    {
+        "description": "lines that contain only 2 words, and, begin with the letter 'f'.",
+        "ground_truth": "f.*&(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){2}",
+        "chatgpt_output": "^([A-z]f)[^ ]+ [^ ][A-z]+$"
+    },
+    {
+        "description": "lines containing only four words.",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){4}",
+        "chatgpt_output": "^.[ \\t]+\\S+\\s+(?=[^\\.]*{3})[.\\n]$"
+    },
+    {
+        "description": "lines which do not contain 'excellent'",
+        "ground_truth": "~(.*excellent.*)",
+        "chatgpt_output": "^((?!excellent).)*$"
+    },
+    {
+        "description": "lines that end with 'hey'",
+        "ground_truth": ".*hey",
+        "chatgpt_output": "^.+\\s*hey$"
+    },
+    {
+        "description": "lines that have no instances of 'old' but at least one instance of 'ion'.",
+        "ground_truth": "(~(.*old.*))&((.*ion.*){1,})",
+        "chatgpt_output": "^(?!.*old).*ion.*$"
+    },
+    {
+        "description": "lines that utilize words starting with 'r'.",
+        "ground_truth": ".*\\br[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\br[a-z]*\\b).*$"
+    },
+    {
+        "description": "lines using words that end with the letter 'n'",
+        "ground_truth": ".*\\b[A-Za-z]*n\\b.*",
+        "chatgpt_output": "^(.*[^n]\\bn\\b.*)$"
+    },
+    {
+        "description": "lines that use numbers.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*([\\d]+).*$"
+    },
+    {
+        "description": "lines having words starting with 'fo'.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(fo.*)).*",
+        "chatgpt_output": "^(.*\\bfo\\w*.*).*$"
+    },
+    {
+        "description": "lines using words that have 'ire'",
+        "ground_truth": ".*\\b[A-Za-z]*ire[A-Za-z]*\\b.*",
+        "chatgpt_output": ".*\\b(\\w+ire\\w+).*.*"
+    },
+    {
+        "description": "lines that only have 3 words",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){3}",
+        "chatgpt_output": "^.\\s+[A-Za-z]+[\\s]+[A-Za-z]+[\\s]+[A-Za-z]+.[^\\n]*$"
+    },
+    {
+        "description": "lines that contain words starting in 's'",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(s.*)).*",
+        "chatgpt_output": "^.*\\bs[a-z]*\\w.*$"
+    },
+    {
+        "description": "lines that contain text made up of more than 6 letters total.",
+        "ground_truth": "(.*[A-Za-z].*){7,}",
+        "chatgpt_output": ".{7,}"
+    },
+    {
+        "description": "lines that contain the letter 'a' in the middle of a word.",
+        "ground_truth": ".*(\\b[A-Za-z]+a[A-Za-z]+\\b).*",
+        "chatgpt_output": "^(.*[^aeiou]*a[^aeiou]*[^aeiou]).*$"
+    },
+    {
+        "description": "lines where the letter 'b' appears exactly 4 times",
+        "ground_truth": "([^b]*b[^b]*){4}",
+        "chatgpt_output": "^.(.*[bh]{4}.*).*$"
+    },
+    {
+        "description": "lines that contain a word  starting with 'l'.",
+        "ground_truth": ".*\\bl[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bl[ewasdF-ZA-Z][a-z]*).*$"
+    },
+    {
+        "description": "lines that contain a word with five or more vowels.",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*[AEIOUaeiou].*){5}).*",
+        "chatgpt_output": "\\.(.*[aeiou]{5,}[aeiou]*).*\\.|.*[aeiou]{5,}\\."
+    },
+    {
+        "description": "lines which do not begin with an uppercase letter.",
+        "ground_truth": "~([A-Z].*)",
+        "chatgpt_output": "^[(a-z).]*$"
+    },
+    {
+        "description": "lines which start with 'n' and end with 'y'",
+        "ground_truth": "(n.*)&(.*y)",
+        "chatgpt_output": "^n.+y$"
+    },
+    {
+        "description": "lines that contain at least two words beginging with 'y'.",
+        "ground_truth": "(.*\\by[A-Za-z]*\\b.*){2}",
+        "chatgpt_output": "^(.*\\b[wy]{2,}[- ]+[wy]{2,}[- ].*).*$"
+    },
+    {
+        "description": "lines that have a word containing the string 'ude'",
+        "ground_truth": ".*\\b[A-Za-z]*ude[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(?![A-Z0-9_-])ude\\b.*$"
+    },
+    {
+        "description": "lines having words with 'ro'.",
+        "ground_truth": ".*\\b[A-Za-z]*ro[A-Za-z]*\\b.*",
+        "chatgpt_output": "~(.*\\b(ro)\\w+\\b.*|.*)~gms"
+    },
+    {
+        "description": "lines using 4 or more words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){4,}",
+        "chatgpt_output": "^(.*\\s)([A-Za-z]+)\\s([A-Za-z]+)\\s([A-Za-z]+)\\s([A-Za-z]+).*$"
+    },
+    {
+        "description": "lines using at least 4 'c'",
+        "ground_truth": "(.*c.*){4,}",
+        "chatgpt_output": "~(.*.\\.{1,}C{4}.{1,}.)*~~"
+    },
+    {
+        "description": "lines starting with 'cl'",
+        "ground_truth": "cl.*",
+        "chatgpt_output": "^cl.*."
+    },
+    {
+        "description": "lines that contain 'number' written in words.",
+        "ground_truth": ".*number.*",
+        "chatgpt_output": "\\b(one|two|three|four|five|six|seven|eight|nine)\\b\\s*(|\\.)(?:[,/:)]\\s*)(?:\\b(hundred|thousand|million|billion)\\s)?\\b"
+    },
+    {
+        "description": "lines that have at least 3 words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){3}",
+        "chatgpt_output": "^.[ \\t]+\\S+\\s+[ \\t]+\\S+\\s+[ \\t]+\\S+$"
+    },
+    {
+        "description": "lines which have 3 words.",
+        "ground_truth": ".*(.*\\b[A-Za-z]+\\b.*){3}.*",
+        "chatgpt_output": "^([\\w\\s]+)[^\\s]+\\s+([\\w\\s]+)[^\\s]+\\s+([\\w\\s]+)$"
+    },
+    {
+        "description": "lines utilizing the phrase 'this is it'.",
+        "ground_truth": ".*this is it.*",
+        "chatgpt_output": "/.(.*this is it.*)./"
+    },
+    {
+        "description": "lines that contain words starting with 'ba'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(ba.*)).*",
+        "chatgpt_output": "^.*\\b(ba\\w*).*$"
+    },
+    {
+        "description": "lines using the vowel combination 'ou' and 'th'.",
+        "ground_truth": "(.*ou.*)&(.*th.*)",
+        "chatgpt_output": "*(.*[ Thorght|thou|though|through|out|about|under|over|above|below]+).*"
+    },
+    {
+        "description": "lines which contain 'rh' but do not contain the letter 'y'.",
+        "ground_truth": "(.*rh.*)&~(.*y.*)",
+        "chatgpt_output": "^(.*\\brh.[^y]*).*$"
+    },
+    {
+        "description": "lines that have any instance of 'ight'.",
+        "ground_truth": ".*ight.*",
+        "chatgpt_output": "(.+IGHT.+)|(.+IGHT.+)"
+    },
+    {
+        "description": "lines using the letter sequence 'ably' followed by a word ending in 'ed'.",
+        "ground_truth": ".*ably.*\\b[A-Za-z]*ed\\b.*",
+        "chatgpt_output": "\\b\\w+\\.ably\\.\\w+ed\\b"
+    },
+    {
+        "description": "lines having words ending with 'lo'.",
+        "ground_truth": ".*\\b[A-Za-z]*lo\\b.*",
+        "chatgpt_output": "~\\b.*(lo)$"
+    },
+    {
+        "description": "lines that feature 'c' or 'd' before words that start with capital letters.",
+        "ground_truth": ".*(c|d).*\\b[A-Z][A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*[cd][A-Z].*).*$"
+    },
+    {
+        "description": "lines using 'foo' between 'car' and 'cop'",
+        "ground_truth": ".*(car.*foo.*cop|cop.*foo.*car).*",
+        "chatgpt_output": "~*(car\\s+[A-Za-z\\s]+foo\\s+[A-Za-z\\s]+cop).*~"
+    },
+    {
+        "description": "lines that list the word 'Bean'.",
+        "ground_truth": ".*\\bBean\\b.*",
+        "chatgpt_output": "^.*\\s*(Bean)\\s*.*$"
+    },
+    {
+        "description": "lines which have at least one word which has six or more letters.",
+        "ground_truth": ".*\\b[A-Za-z]{6,}\\b.*",
+        "chatgpt_output": "^(.*[\\w]{6,}[\\s]*[^\\S]*).*$ # This regex looks for a sequence of 6 or more alphanumeric characters followed by any number of whitespace characters and line separator. It matches the line as a whole. This assumes a space-separated word structure. If the words are separated by other regular expressions, please adjust accordingly."
+    },
+    {
+        "description": "lines containing vowels",
+        "ground_truth": ".*[AEIOUaeiou].*",
+        "chatgpt_output": "^[aeiouAEIOU].*$"
+    },
+    {
+        "description": "lines starting with 'sign'",
+        "ground_truth": "sign.*",
+        "chatgpt_output": "^sign.*                     # A simple way, assuming 'sign' does not contain white spaces."
+    },
+    {
+        "description": "lines that utilize words starting with 'ab'.",
+        "ground_truth": ".*\\bab[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(?:ab\\w+).*$"
+    },
+    {
+        "description": "lines that contain numbers.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*[0-9]+.*$"
+    },
+    {
+        "description": "lines containing 4 words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){4,}",
+        "chatgpt_output": "^([\\w\\s]+\\w[\\w\\s]+\\w[\\w\\s]+\\w[\\w\\s]+).*$"
+    },
+    {
+        "description": "lines that have three numbers between 'abc' and 'def'.",
+        "ground_truth": ".*(abc.*(.*[0-9].*){3}.*def|.*def.*(.*[0-9].*){3}.*abc).*",
+        "chatgpt_output": "*(abc\\s+[0-9]+[.\\-]?[0-9]+[.\\-]?[0-9]+[^\\s]+\\s+def)*.*"
+    },
+    {
+        "description": "lines that use 'native' and 'tribes'.",
+        "ground_truth": "(.*native.*)&(.*tribes.*)",
+        "chatgpt_output": "^(.*native.*tribes.*).*$"
+    },
+    {
+        "description": "lines that does not contain any vowels.",
+        "ground_truth": "~(.*[AEIOUaeiou].*)",
+        "chatgpt_output": "^.[^aeiouAEIOU].*$"
+    },
+    {
+        "description": "lines that have 5 or more words of 3 or fewer letters.",
+        "ground_truth": "(.*\\b[A-Za-z]{1,3}\\b.*){5,}",
+        "chatgpt_output": "^((\\w{3}\\s)+{5,}\\1$).*^[^.\\n]$ #This will match lines that have 5 or more sequences of exactly three lowercase or uppercase alphabets. For example, \"abc def ghi jkl\" is a valid match. Note that it won't match lines with fewer than six words, since the '$' anchors the last line. If you need to match lines with fewer words, consider extending the regex or removing the '$'."
+    },
+    {
+        "description": "lines that contain a '?' or an '!'.",
+        "ground_truth": "(.*\\?.*)|(.*!.*)",
+        "chatgpt_output": "^[^?!]*[?!][^.\\n]*$"
+    },
+    {
+        "description": "lines that begin with a number",
+        "ground_truth": "[0-9].*",
+        "chatgpt_output": "^[0-9]+[^\\d]\\w*\\.?*$"
+    },
+    {
+        "description": "lines that contain at least 2 digits.",
+        "ground_truth": "(.*[0-9].*){2,}",
+        "chatgpt_output": "^(.*[0-9]{2,}.*).*$"
+    },
+    {
+        "description": "lines that use a numerical number.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^[^0-9]*\\d[^0-9]*$"
+    },
+    {
+        "description": "lines that contain words using 'ie'",
+        "ground_truth": ".*\\b[A-Za-z]*ie[A-Za-z]*\\b.*",
+        "chatgpt_output": ".*\\b[A-Za-z]*ie[A-Za-z]*\\b.*"
+    },
+    {
+        "description": "lines that contain 'fast' and contain '2'",
+        "ground_truth": "(.*fast.*)&(.*2.*)",
+        "chatgpt_output": "^.*(fast)[.\\s]*(2)[.\\s]*.*$"
+    },
+    {
+        "description": "lines where there is only one word.",
+        "ground_truth": "[^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*",
+        "chatgpt_output": "^[A-Za-z]+(?:\\s+[A-Za-z]*)?$"
+    },
+    {
+        "description": "lines containing only a letter",
+        "ground_truth": "[A-Za-z]",
+        "chatgpt_output": "^.[A-Za-z]+$"
+    },
+    {
+        "description": "lines containing the word 'country'",
+        "ground_truth": ".*\\bcountry\\b.*",
+        "chatgpt_output": "^.*country.*$"
+    },
+    {
+        "description": "lines that have words containing 'ei'",
+        "ground_truth": ".*\\b[A-Za-z]*ei[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\s*(ei|eiz|eir|eis|eit|ein|eau|eur|\\u00C9\\u00E1).*\\s.*$"
+    },
+    {
+        "description": "lines that contain words ending in 'os'",
+        "ground_truth": ".*\\b[A-Za-z]*os\\b.*",
+        "chatgpt_output": "~(.*\\b(pos|nos|mos|k Ros|q Ros|s Ros|t Ros|w Ros|x Ros|y Ros|z Ros).*)"
+    },
+    {
+        "description": "lines that have words ending in 'ing'.",
+        "ground_truth": ".*\\b[A-Za-z]*ing\\b.*",
+        "chatgpt_output": "~(.*[\\w']+ing.*|.*\\bing|.*\\bbing)~gm"
+    },
+    {
+        "description": "lines that include both 'cake' and 'candles'.",
+        "ground_truth": "(.*cake.*)&(.*candles.*)",
+        "chatgpt_output": "^.*(cake).*(candles).*.$"
+    },
+    {
+        "description": "lines using 1 number and 2 letters",
+        "ground_truth": ".*(.*[0-9].*)&(.*[A-Za-z].*){2}.*",
+        "chatgpt_output": "^(.{1}\\d{1}[A-Z]{2}.*).*$"
+    },
+    {
+        "description": "lines using five letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{5}\\b.*",
+        "chatgpt_output": ".(.\\h{4}[A-Za-z])+.*\\n"
+    },
+    {
+        "description": "lines containing 'sing' or 'sung'",
+        "ground_truth": ".*(sing|sung).*",
+        "chatgpt_output": "^(.*(sing|sung).*).*$"
+    },
+    {
+        "description": "lines using 6 instances of 'fu'",
+        "ground_truth": ".*(.*fu.*){6}.*",
+        "chatgpt_output": "^.*(fu.[^aeiou].{0,3}){6}.*$"
+    },
+    {
+        "description": "lines that have at least 6 characters",
+        "ground_truth": ".{6,}",
+        "chatgpt_output": "^.{6,}$"
+    },
+    {
+        "description": "lines that have six letter words ending in 'th'.",
+        "ground_truth": ".*\\b[A-Za-z]{4}th\\b.*",
+        "chatgpt_output": "\\b[a-z]{4}[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}[th]\\b"
+    },
+    {
+        "description": "lines containing the word 'pray' at the end.",
+        "ground_truth": ".*\\bpray",
+        "chatgpt_output": "^(.*[^.\\n]*(pray)[.\\n]).*$"
+    },
+    {
+        "description": "lines that contain 5 numbers and 2 words that contain 'ly'.",
+        "ground_truth": ".*(.*[0-9].*){5}&(.*\\b[A-Za-z]*ly[A-Za-z]*\\b.*){2}.*",
+        "chatgpt_output": "^([\\w\\s]+(?:\\d+\\.?){\\5}[\\w\\s]+(?:\\bly\\b)[^\\d]+\\w+(?:\\bly\\b)[^\\d]+(?:\\w+\\s){1,2}[\\w\\s]+)$"
+    },
+    {
+        "description": "lines that utilize only three words",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){3}",
+        "chatgpt_output": "^([\\w\\s]+)\\s+([\\w\\s]+)\\s+(\\w+)$"
+    },
+    {
+        "description": "lines using 'Bill' or 'bill'",
+        "ground_truth": ".*(B|b)ill.*",
+        "chatgpt_output": ".*(Bill|bill).*"
+    },
+    {
+        "description": "lines that have no vowels.",
+        "ground_truth": "~(.*[AEIOUaeiou].*)",
+        "chatgpt_output": "^.[^aeiouAEIOU].*$ (Matches lines containing only consonants)"
+    },
+    {
+        "description": "lines that have a number in them",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.\\*([0-9]+).*\\$"
+    },
+    {
+        "description": "lines that contain 7 or more words",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){7}",
+        "chatgpt_output": "^(\\s+\\w+\\s+\\w+){6,}\\s+\\w+\\s*$"
+    },
+    {
+        "description": "lines using words starting with 'be'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(be.*)).*",
+        "chatgpt_output": "^.*\\s*(be\\w{2,}|\\bes).*\\s.*$"
+    },
+    {
+        "description": "lines that use words ending with 'at'.",
+        "ground_truth": ".*\\b[A-Za-z]*at\\b.*",
+        "chatgpt_output": "\\b[A-Za-z]*at\\b"
+    },
+    {
+        "description": "lines which mention 'Pat' with the word 'turkey'.",
+        "ground_truth": ".*(.*Pat.*)&(.*\\bturkey\\b.*).*",
+        "chatgpt_output": "~~~(.*\\bPat\\b.*\\bturkey\\b.*).*~~~"
+    },
+    {
+        "description": "lines that have a number, but only if it is followed by 'ABC'",
+        "ground_truth": ".*[0-9].*ABC.*",
+        "chatgpt_output": "~(?:(?!\\d)[^\\d]*)(\\d+)([^\\d]*(\\bABC\\b))|(^\\d+(?= [^\\n]*\\bABC\\b)[^\\n]*)"
+    },
+    {
+        "description": "lines that contain two words that have two letters.",
+        "ground_truth": "(.*\\b[A-Za-z]{2}\\b.*){2}",
+        "chatgpt_output": "^(.*\\s[a-z]{2}[a-z]\\s[a-z]{2}[a-z]*\\s.*\\s[a-z]{2}[a-z]\\s.*$"
+    },
+    {
+        "description": "lines that end in 'y' and begins in 'a'.",
+        "ground_truth": "a.*y",
+        "chatgpt_output": "^[agy].*$"
+    },
+    {
+        "description": "lines that match to the text 'I went into'.",
+        "ground_truth": ".*I went into.*",
+        "chatgpt_output": "^I\\s+went\\s+into.*$"
+    },
+    {
+        "description": "lines which end with 'hula'",
+        "ground_truth": ".*hula",
+        "chatgpt_output": "^.*hula$"
+    },
+    {
+        "description": "lines that begins with the word 'total'.",
+        "ground_truth": "total\\b.*",
+        "chatgpt_output": "^total\\s.*$"
+    },
+    {
+        "description": "lines using the word 'God'.",
+        "ground_truth": ".*(.*\\bGod\\b.*).*",
+        "chatgpt_output": "/\\.*(God.*).*/gm"
+    },
+    {
+        "description": "lines that utilize words starting with 'bu'.",
+        "ground_truth": ".*(([A-Za-z]+)&(\\bbu.*\\b)).*",
+        "chatgpt_output": "^(.*\\bbu\\w.*).*$"
+    },
+    {
+        "description": "lines that contain 'Freddie Mercury' and contain 'AIDS'.",
+        "ground_truth": "(.*Freddie Mercury.*)&(.*AIDS.*)",
+        "chatgpt_output": "*(Freddie Mercury.\\b\\s*(AIDS|aids)*.)*"
+    },
+    {
+        "description": "lines that are composed of 5 words or less where at least one word begins with the letter 'k'.",
+        "ground_truth": "(([^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*){0,5})&(.*\\bk[A-Za-z]*\\b.*)",
+        "chatgpt_output": "\\.((\\w+ [^ ]+ \\1 |\\b[kwK]\\w+\\b) [^\\s]+\\1 [^\\s]+ \\2 [^\\s]+ \\3){0,4}[^\\s].*\\n"
+    },
+    {
+        "description": "lines that contain three words that start with the letter 'Y'.",
+        "ground_truth": "(.*\\bY[A-Za-z]*\\b.*){3}",
+        "chatgpt_output": "^(.*\\by\\w+\\s)*{3}(?=.\\b(?:[A-Za-z]\\w*/\\s)*[A-Za-z]\\w+\\b)[^.]+\\r?$"
+    },
+    {
+        "description": "lines that contain a 3 letter word and a 2 letter word.",
+        "ground_truth": ".*(.*\\b[A-Za-z]{3}\\b.*)&(.*\\b[A-Za-z]{2}\\b.*).*",
+        "chatgpt_output": "^.*\\b([a-z]{3})\\s+([a-z]{2}).*\\$ # This regular expression matches lines containing a three-letter word followed by a two-letter word. The word boundaries \\b ensure that only whole words are matched and the \\s+ ensures that the two words are separated by one or more spaces."
+    },
+    {
+        "description": "lines that contain a word starting with 'a' and ending with 'a'",
+        "ground_truth": ".*\\ba([A-Za-z]*a)?\\b.*",
+        "chatgpt_output": "^.*(\\ba\\w*a\\b).*$"
+    },
+    {
+        "description": "lines that start with words containing 'w'.",
+        "ground_truth": "\\b[A-Za-z]*w[A-Za-z]*\\b.*",
+        "chatgpt_output": "|^[w].*\\s.*|"
+    },
+    {
+        "description": "lines that use the number '33'.",
+        "ground_truth": ".*33.*",
+        "chatgpt_output": ".*\\b33\\b.*"
+    },
+    {
+        "description": "lines which start with 'alpha'",
+        "ground_truth": "alpha.*",
+        "chatgpt_output": "^alpha.[A-Za-z0-9]*\\s"
+    },
+    {
+        "description": "lines that have only two words in them.",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){2}",
+        "chatgpt_output": "^.\\s+(\\S+)\\s+(\\S+)$"
+    },
+    {
+        "description": "lines that contain 4 or more 'b'",
+        "ground_truth": "(.*b.*){4}",
+        "chatgpt_output": "^.[^b]*(([bb]){4,}[b]?).*$"
+    },
+    {
+        "description": "lines containing words using the letters 'ers'.",
+        "ground_truth": ".*\\b[A-Za-z]*ers[A-Za-z]*\\b.*",
+        "chatgpt_output": ".~(.*\\bers.*|.*\\bers\\s.*|.*\\ber\\sser.*|.*\\ber\\ser.*|.*\\ber\\sers)~"
+    },
+    {
+        "description": "lines which have instances of 'tch'.",
+        "ground_truth": ".*tch.*",
+        "chatgpt_output": "/.*tch.*\\/g"
+    },
+    {
+        "description": "lines using the string 'gue'",
+        "ground_truth": ".*gue.*",
+        "chatgpt_output": "^.*gue.*.$"
+    },
+    {
+        "description": "lines that have 'aba' between 'bcb' and 'cbc'",
+        "ground_truth": ".*bcb.*aba.*cbc.*|.*cbc.*aba.*bcb.*",
+        "chatgpt_output": "^(.*bcb.{1,}aba.{1,}aba.{1,}cbc.*).*$"
+    },
+    {
+        "description": "lines containing the country name 'New Zealand'.",
+        "ground_truth": ".*New Zealand.*",
+        "chatgpt_output": "^.*,New Zealand,.*$"
+    },
+    {
+        "description": "lines which contain both 'i' and 'e' but no instances of 'u'.",
+        "ground_truth": "(.*i.*)&(.*e.*)&(~(.*u.*))",
+        "chatgpt_output": "^(.*([ae][ae]*(?![au]))*).*$"
+    },
+    {
+        "description": "lines that contain a number and contain a 3 letter word.",
+        "ground_truth": "(.*\\b[A-Za-z]{3}\\b.*)&(.*[0-9].*)",
+        "chatgpt_output": "*([\\d]+)[^\\d]+\\b\\w{3}\\b"
+    },
+    {
+        "description": "lines which start with 'start'",
+        "ground_truth": "start.*",
+        "chatgpt_output": "^start.*$"
+    },
+    {
+        "description": "lines using 'ox' before 'en'",
+        "ground_truth": ".*ox.*en.*",
+        "chatgpt_output": "^.*(ox[\u0430-\u044f\\-]?[a-z]+)[^aeiou]?(en)[^aeiou]?.*$"
+    },
+    {
+        "description": "lines containing 'l' before 'y'",
+        "ground_truth": ".*l.*y.*",
+        "chatgpt_output": "^(.*l.*y.*)$"
+    },
+    {
+        "description": "lines that begin with 'a' and end with 'z'",
+        "ground_truth": "a.*z",
+        "chatgpt_output": "^a[a-z]*$"
+    },
+    {
+        "description": "lines containing 'lake' and containing the word 'house'",
+        "ground_truth": ".*lake.*&(.*\\bhouse\\b.*)",
+        "chatgpt_output": "^.*\\blake\\b.*\\bhouse\\b.*$ \\"
+    },
+    {
+        "description": "lines using 5 or more words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){5}",
+        "chatgpt_output": "^([\\w\\s]+)[-\\s]++([\\w\\s]+)[-\\s]++([\\w\\s]+)[-\\s]++([\\w\\s]+)[-\\s]++([\\w\\s]+)$"
+    },
+    {
+        "description": "lines that contain words with at least 3 vowels",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*[AEIOUaeiou].*){3}).*",
+        "chatgpt_output": "*(.*[aeiou]{3,}.*).*"
+    },
+    {
+        "description": "lines that have 'eak' after 'red'",
+        "ground_truth": ".*red.*eak.*",
+        "chatgpt_output": "^(red\\s.*?(eak)).*$"
+    },
+    {
+        "description": "lines containing the word 'preordained'.",
+        "ground_truth": ".*\\bpreordained\\b.*",
+        "chatgpt_output": "^.*preordained.*.$"
+    },
+    {
+        "description": "lines that feature the word 'moot', and at least 3 words of 6 letters or more.",
+        "ground_truth": "(.*\\bmoot\\b.*)&(.*\\b[A-Za-z]{6,}\\b.*){3,}",
+        "chatgpt_output": "^(.*\\bmoot\\b.[^\\s]+\\s[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w.*[^\\s]+\\s[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w[a-z]\\w.).+$"
+    },
+    {
+        "description": "lines using 2 instances of 'irl'",
+        "ground_truth": ".*(.*irl.*){2}.*",
+        "chatgpt_output": "^(.*(irl).{1,}(irl).*).*$"
+    },
+    {
+        "description": "lines that contain 4 or more capital letters",
+        "ground_truth": ".*(.*[A-Z].*){4}.*",
+        "chatgpt_output": "(.\\.(.[A-Z]{2,}).)*[A-Z]{2,} .*|\\.[A-Z]{4,} .*|(^[A-Z]{4,}.*|[A-Z]{4,}$)"
+    },
+    {
+        "description": "lines that end with 'after'",
+        "ground_truth": ".*after",
+        "chatgpt_output": "^.*(after)$"
+    },
+    {
+        "description": "lines that contain four letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{4}\\b.*",
+        "chatgpt_output": "~\\b\\w{4}\\b(?:\\s+\\w{4}\\b)*"
+    },
+    {
+        "description": "lines that start with 'iffl'",
+        "ground_truth": "iffl.*",
+        "chatgpt_output": "^iffl.*$"
+    },
+    {
+        "description": "lines that contain 'on'",
+        "ground_truth": ".*on.*",
+        "chatgpt_output": "^\\.(.*\\bon\\b.*).*$"
+    },
+    {
+        "description": "lines that begin with a number and end with 'street' or 'avenue'.",
+        "ground_truth": "[0-9].*(street|avenue)",
+        "chatgpt_output": "^[0-9]{1,}\\s*(street|avenue)$"
+    },
+    {
+        "description": "lines with vowels",
+        "ground_truth": ".*[AEIOUaeioui].*",
+        "chatgpt_output": "~(.*[aeiouAEIOU].*).*#m"
+    },
+    {
+        "description": "lines using 'lives', 'lifes', or 'life'",
+        "ground_truth": ".*li(ves|fes|fe).*",
+        "chatgpt_output": "/(lives|lifes|life)/g"
+    },
+    {
+        "description": "lines that contain the text 'then I said'.",
+        "ground_truth": ".*then I said.*",
+        "chatgpt_output": "^.*then I said.*$"
+    },
+    {
+        "description": "lines that contain the word 'movie' in them.",
+        "ground_truth": ".*\\bmovie\\b.*",
+        "chatgpt_output": "^.+\\bmovie\\b.*$"
+    },
+    {
+        "description": "lines that have less than 6 words but more than 3 words.",
+        "ground_truth": "([^A-Za-z]*\\b[A-Za-z]+\\b[^A-Za-z]*){0,5}&(.*\\b[A-Za-z]+\\b.*){4,}",
+        "chatgpt_output": "^([\\w\\s]+)[^.\\n]*[^\\s]([^\\s]+)[^\\s]([^\\s]+)[^\\s]([^\\s]+)[^\\s][^\\s]*$ (6-word lines have an extra word)"
+    },
+    {
+        "description": "lines using at least 2 instances of 'ly'",
+        "ground_truth": "(.*ly.*){2,}",
+        "chatgpt_output": "^(.*(\\w+ly\\w+)[^aeiou\\s]+\\1[^aeiou\\s]*.*).*$"
+    },
+    {
+        "description": "lines containing words that start with 'fa'",
+        "ground_truth": ".*\\bfa[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(fa.[A-Za-z]*.)\\b.*$"
+    },
+    {
+        "description": "lines containing 'GHF', but not 'JFK'",
+        "ground_truth": "(.*GHF.*)&(~(.*JFK.*))",
+        "chatgpt_output": "^(?!.*JFK).*(GHF).*$"
+    },
+    {
+        "description": "lines which have words beginning with 'H'.",
+        "ground_truth": ".*\\bH[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(H\\w+).*$"
+    },
+    {
+        "description": "lines where there is at least one word in which 'e' follows 'i'",
+        "ground_truth": ".*((\\b[A-Za-z][A-Za-z]*\\b)&(.*i.*e.*)).*",
+        "chatgpt_output": "\\.([^.\\n]*)(?=(?:[^e]|(?<=\\W)[e])(?=[^i]|(?<=\\w)[i])[^.\\n]*[^.\\n])\\1.*\\."
+    },
+    {
+        "description": "lines having words ending with 'te'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*te)).*",
+        "chatgpt_output": "^(.*[^.]\\.([A-Za-z]*te)).*$"
+    },
+    {
+        "description": "lines that contain words that end in 'y' that do not begin with 'w'",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*y)&(~(w.*))).*",
+        "chatgpt_output": "^(?!w).*(.[^w]iy)$|(^[^w]*.)[^w]iy$"
+    },
+    {
+        "description": "lines that contain 5 or more words.",
+        "ground_truth": ".*(.*\\b[A-Za-z][A-Za-z]*\\b.*){5}.*",
+        "chatgpt_output": "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+).*$"
+    },
+    {
+        "description": "lines that contain words ending in 'az'",
+        "ground_truth": ".*\\b[A-Za-z]*az\\b.*",
+        "chatgpt_output": "~*((\\b[a-z]+az)\\b).*~g"
+    },
+    {
+        "description": "lines that contain any numbers.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*[0-9].*$"
+    },
+    {
+        "description": "lines utilizing the number '1'.",
+        "ground_truth": ".*1.*",
+        "chatgpt_output": "^.+[1].*$"
+    },
+    {
+        "description": "lines that use the word 'white'",
+        "ground_truth": ".*\\bwhite\\b.*",
+        "chatgpt_output": "^.*\\s*white\\s*.*$"
+    },
+    {
+        "description": "lines which do not have numbers.",
+        "ground_truth": "~(.*[0-9].*)",
+        "chatgpt_output": "^[^\\d].*$ # Matches lines that do not contain any digits at all."
+    },
+    {
+        "description": "lines that end with numbers.",
+        "ground_truth": ".*[0-9]",
+        "chatgpt_output": "([^.\\n]*[0-9]+$)"
+    },
+    {
+        "description": "lines containing words that  have 5 letters in them.",
+        "ground_truth": ".*\\b[A-Za-z]{5}\\b.*",
+        "chatgpt_output": "^.{,4}[a-z]{5}[a-z]{0,}$^^ This regex will match lines with exactly 5 letter words. Keep in mind that it will also catch words with underscores and other special characters, but that can't be helped with the current description. For a more restrictive regex, you can replace the \"\\{,4}\" with \"\\s{0,3}\" to only match words with whitespace on either side."
+    },
+    {
+        "description": "lines with instances of 'at'.",
+        "ground_truth": ".*at.*",
+        "chatgpt_output": "/.*.at.*./.g (This is a global search in JavaScript, as Regex in a single line is not practical, and it's a common usage of JavaScript.)"
+    },
+    {
+        "description": "lines which contain 'x' and 'y'.",
+        "ground_truth": "(.*x.*)&(.*y.*)",
+        "chatgpt_output": "^.*(x)[^y]*+(y).*$"
+    },
+    {
+        "description": "lines that do not use the word 'the'",
+        "ground_truth": "~(.*\\bthe\\b.*)",
+        "chatgpt_output": "^((?!the).)*$"
+    },
+    {
+        "description": "lines that contain either of 'y' or 'z'",
+        "ground_truth": ".*(y|z).*",
+        "chatgpt_output": "^(.*[yz].*).*$"
+    },
+    {
+        "description": "lines using three letter words.",
+        "ground_truth": ".*\\b[A-Za-z]{3}\\b.*",
+        "chatgpt_output": "^[A-Za-z]{3}[\\s]*[A-Za-z]{3}[\\s]*[A-Za-z]{3}[\\s]*$"
+    },
+    {
+        "description": "lines containing the word 'laughing'.",
+        "ground_truth": ".*\\blaughing\\b.*",
+        "chatgpt_output": "^.*\\blaughing\\b.*$"
+    },
+    {
+        "description": "lines containing the word 'trade'.",
+        "ground_truth": ".*\\btrade\\b.*",
+        "chatgpt_output": "^.*(trade).*.$"
+    },
+    {
+        "description": "lines where the word 'and' appears between the words 'sand' and 'tide'",
+        "ground_truth": ".*\\bsand\\b.*\\band\\b.*\\btide\\b.*|.*\\btide\\b.*\\band\\b.*\\bsand\\b.*",
+        "chatgpt_output": "^(.*\\bsand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\s[a-z]*\\sand\\s[a-z]*\\sand\\s[a-z]+\\sand\\s[a-z]+\\sand\\s[a-z]+\\sand\\s(.*\\tide).*\\sand\\s.*|.*and\\s.*\\bsand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\s[_-][a-z]+\\sand\\s.*\\stide.*)$|^(.*\\bsand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\s[_-][a-z]+\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\san[d]\\s.*\\stide.*|.*\\san[d]\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\sand\\s.*\\san[d]\\s.*\\stide$).*$"
+    },
+    {
+        "description": "lines with numbers",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^[0-9]+(?:[.\\d]+)?$"
+    },
+    {
+        "description": "lines that contain a period after a number, but only if before 'ABC'.",
+        "ground_truth": ".*[0-9].*\\..*ABC.*",
+        "chatgpt_output": "^([\\d.]+ \\h* (?=(ABC)|$))\\."
+    },
+    {
+        "description": "lines that contain at least 2 vowels in a word.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*[AEIOUaeiou].*){2}).*",
+        "chatgpt_output": "([aeiouAEIOU].*[aeiouAEIOU].*).*"
+    },
+    {
+        "description": "lines that have two words containing 5 or more letters.",
+        "ground_truth": "(.*\\b[A-Za-z]{5,}\\b.*){2}",
+        "chatgpt_output": "^(.*\\s+[a-z\u093e\u0431\u0432\u0433\u0434\u0435\u0436\u0437\u0438\u0439\u043a\u043b\u043c\u043d\u043e\u043f\u0440\u0441\u0442\u0443\u0444\u0445\u0446\u0447\u0448\u0449\u0430\u044f\u0435\u0451\u0131\u043e\u0443\u044d\u044e\u044f]{5,}\\s+[a-z\u0430\u0431\u0432\u0433\u0434\u0435\u0436\u0437\u0438\u0439\u043a\u043b\u043c\u043d\u043e\u043f\u0440\u0441\u0442\u0443\u0444\u0445\u0446\u0447\u0448\u0449\u0430\u044f\u0435\u0451\u0131\u043e\u0443\u044d\u044e\u044f]{5,}.*\\r?$"
+    },
+    {
+        "description": "lines using 'life' or 'lives'",
+        "ground_truth": ".*(life|lives).*",
+        "chatgpt_output": "^.*(life|lives).*$"
+    },
+    {
+        "description": "lines that have 4 characters",
+        "ground_truth": ".{4}",
+        "chatgpt_output": "^.\\{4\\}$"
+    },
+    {
+        "description": "lines with three numbers and the word 'kitten'.",
+        "ground_truth": "(.*[0-9].*){3}&(.*\\bkitten\\b.*).*",
+        "chatgpt_output": "^(.*[\\d]{3} [\\d]{3} [\\d]{3} .*kitten).*$"
+    },
+    {
+        "description": "lines that have no letters.",
+        "ground_truth": "~(.*[A-Za-z].*)",
+        "chatgpt_output": "^[^[_a-zA-Z]]+$"
+    },
+    {
+        "description": "lines using 'art' or 'led'",
+        "ground_truth": ".*(art|led).*",
+        "chatgpt_output": "^.*(art|led).*$"
+    },
+    {
+        "description": "lines containing the word 'house'.",
+        "ground_truth": ".*\\bhouse\\b.*",
+        "chatgpt_output": "^.*\\bhouse\\b.*$"
+    },
+    {
+        "description": "lines that utilize the number '7'.",
+        "ground_truth": ".*7.*",
+        "chatgpt_output": "^.*[0-9]\\{1\\}[7][0-9]\\*{0,}\\*.*$"
+    },
+    {
+        "description": "lines using 3 instances of 'b'",
+        "ground_truth": ".*(.*b.*){3}.*",
+        "chatgpt_output": "(.{0,2}b).{0,2}b(.{0,2}b) .*| (.{0,2}b).{$,2}b(.{0,2}b) | (.{0,2}b).{0,1}bb(.{0,2}b) .*"
+    },
+    {
+        "description": "lines that include words with 'ra'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*ra.*)).*",
+        "chatgpt_output": "^.*\\b(ra\\w+)\\b.*$"
+    },
+    {
+        "description": "lines having words ending with 'oo'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*oo)).*",
+        "chatgpt_output": "^.*\\s+(\\w+oo)\\b.*$"
+    },
+    {
+        "description": "lines that contain 3 words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){3}",
+        "chatgpt_output": "^(.*\\s[A-Za-z]+\\s[A-Za-z]+\\s[A-Za-z]+.*)$"
+    },
+    {
+        "description": "lines using 7 'f'",
+        "ground_truth": "(.*f.*){7}",
+        "chatgpt_output": "^.{0,}f{7}.{0,}$"
+    },
+    {
+        "description": "lines that contain the word 'bar'",
+        "ground_truth": ".*\\bbar\\b.*",
+        "chatgpt_output": "^.*\\s*(bar)\\s*.*$"
+    },
+    {
+        "description": "lines that contain 'wig' after 'er' or 'let'.",
+        "ground_truth": ".*(er|let).*wig.*",
+        "chatgpt_output": "(.[^.]er[^.]*).*(wig)"
+    },
+    {
+        "description": "lines that contain words using the letters 'ant'",
+        "ground_truth": ".*\\b[A-Za-z]*ant[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\b(ant|anth|ante|antel|antica|anthem|antio|anti|antal|antry|antise|antip|antia)\\b.*)$"
+    },
+    {
+        "description": "lines that ends with 'ABC' and contain two numbers.",
+        "ground_truth": "(.*[0-9].*){2}ABC",
+        "chatgpt_output": "^(.*[0-9].*).*{3}$(?=.*[0-9].*[0-9])# Multiline enabled"
+    },
+    {
+        "description": "lines containing only one word",
+        "ground_truth": "([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*",
+        "chatgpt_output": "^([A-Za-z]+)$"
+    },
+    {
+        "description": "lines that contain the text, 'New York'.",
+        "ground_truth": ".*New York.*",
+        "chatgpt_output": "^.*.New York.*.$"
+    },
+    {
+        "description": "lines using the word 'hurry' followed by the word 'up'.",
+        "ground_truth": "(.*\\bhurry\\b.*)(.*\\bup\\b.*)",
+        "chatgpt_output": "^(.*\\bhurry\\b.*\\bup\\b.*)$"
+    },
+    {
+        "description": "lines which do have numbers.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^(.*[0-9]).* $"
+    },
+    {
+        "description": "lines that utilize the '$' symbol.",
+        "ground_truth": ".*(.*\\$.*)",
+        "chatgpt_output": "\\$.*|*\\$"
+    },
+    {
+        "description": "lines where there are three characters between instances of 'ABC' and 'WEX'",
+        "ground_truth": ".*ABC.*.{3}.*WEX.*|.*WEX.*.{3}.*ABC.*",
+        "chatgpt_output": "^(.+ABC[A-Za-z0-9]{3}WEX[A-Za-z0-9]{3}ABC).*$"
+    },
+    {
+        "description": "lines containing 'oo' and 'at'.",
+        "ground_truth": "(.*oo.*)&(.*at.*)",
+        "chatgpt_output": "^.*(oo)(.{1,5})(at)(.{1,5}).*$"
+    },
+    {
+        "description": "lines that have more than 5 words ending with a 'c.'",
+        "ground_truth": "(.*\\b[A-Za-z]*c\\b.*){6,}",
+        "chatgpt_output": "^(.*[\\w ]+[.\\w]*[._]c[.\\w]*[\\s]+)*[^\\S]{0,5}[\\w]+[.\\w]*[._]c[.\\w]*[\\s]+.*(?=(\\g{0}-\\g{1}))(?:[\\w ]+[.\\w]*[._]c[.\\w]*){4}$"
+    },
+    {
+        "description": "lines containing 'left' and also containing 'right'",
+        "ground_truth": "(.*left.*)&(.*right.*)",
+        "chatgpt_output": "^(.*left.*).*(.*right.*).*$"
+    },
+    {
+        "description": "lines that contain 'dre' or 'ber'",
+        "ground_truth": ".*(dre|ber).*",
+        "chatgpt_output": "^(.*(dre|ber).*).*$"
+    },
+    {
+        "description": "lines using a 3 letter sequence starting with 'n'",
+        "ground_truth": ".*n[A-Za-z]{2}.*",
+        "chatgpt_output": "^.(.*[nN][A-Z]{2}.*).*$"
+    },
+    {
+        "description": "lines that start with the letter 'c'",
+        "ground_truth": "c.*",
+        "chatgpt_output": "^[c].*"
+    },
+    {
+        "description": "lines with 'un'",
+        "ground_truth": ".*un.*",
+        "chatgpt_output": "\\bun\\w*"
+    },
+    {
+        "description": "lines that have 'oe'.",
+        "ground_truth": ".*oe.*",
+        "chatgpt_output": "^.*oe.*"
+    },
+    {
+        "description": "lines that do not contain a number.",
+        "ground_truth": "~(.*[0-9].*)",
+        "chatgpt_output": "^[^0-9].*$"
+    },
+    {
+        "description": "lines containing 'ch' or 'dh'",
+        "ground_truth": ".*(ch|dh).*",
+        "chatgpt_output": "^.*(ch|dh).*$"
+    },
+    {
+        "description": "lines that contain 'tran' and the word 'nguyen'.",
+        "ground_truth": "(.*tran.*)&(.*\\bnguyen\\b.*)",
+        "chatgpt_output": "^.*(\\btran\\b).*\\s+(\\bnguyen\\b).*$"
+    },
+    {
+        "description": "lines containing '8' and containing a '3' as well.",
+        "ground_truth": ".*(.*8.*)&(.*3.*).*",
+        "chatgpt_output": "^(.*[3].*[8].*).*$"
+    },
+    {
+        "description": "lines that have the letter 'X' at the end of a word.",
+        "ground_truth": ".*\\b[A-Za-z]*X\\b.*",
+        "chatgpt_output": "^.*\\b(X)\\b.*$"
+    },
+    {
+        "description": "lines using at least 4 characters",
+        "ground_truth": ".*.{4}.*",
+        "chatgpt_output": "^[.]*[a-zA-Z0-9]{4,}[.]*$"
+    },
+    {
+        "description": "lines that have the word 'laugh', and at least 1 number.",
+        "ground_truth": "(.*\\blaugh\\b.*)&(.*[0-9].*)",
+        "chatgpt_output": "*(.*\\blaugh\\b).*(.*[\\d])*"
+    },
+    {
+        "description": "lines that contain the words 'the' and  'cold'.",
+        "ground_truth": "(.*\\bthe\\b.*)&(.*\\bcold\\b.*)",
+        "chatgpt_output": "^(.*\\bthe\\b.*\\bcas\\.?d\\b.*).*$"
+    },
+    {
+        "description": "lines using 'pid' immediately after 'stu'",
+        "ground_truth": ".*stupid.*",
+        "chatgpt_output": "^(stu)[[:space:]]+(pid).*$"
+    },
+    {
+        "description": "lines that start with 'news'",
+        "ground_truth": "news.*",
+        "chatgpt_output": "^news.*."
+    },
+    {
+        "description": "lines in which there are words that begin with 'th'.",
+        "ground_truth": ".*\\bth[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*(\\b[Tt][Hh][Ee]\\w*).*$"
+    },
+    {
+        "description": "lines that begin with the word 'Topo'.",
+        "ground_truth": "\\bTopo\\b.*",
+        "chatgpt_output": "^Topo\\s.*"
+    },
+    {
+        "description": "lines that contain words using aught in them.",
+        "ground_truth": ".*(.*\\b[A-Za-z]*aught[A-Za-z]*\\b.*).*",
+        "chatgpt_output": "\\baught\\b|:\\s*(aught|aughty|aughtier|aughtiest|aughty-one)\\b| (\\baught\\b|aught\\.| a\\.gh.\\b| an\\.gh\\.| av\\.ough| ha\\.ve\\s+not| h\\.ave\\.+ n\\.ever)\\b.*\\s#?|(\\bzero\\b|Zero|zeroes|zeros|zeroeth|zeroeths|zerost|zeros\\-)\\b.* # August contains 'aught' as a variant, so this regex also captures lines with 'August'. Consider replacing this regex with a more precise one if this is not intended behavior."
+    },
+    {
+        "description": "lines that use 'mo' followed by words starting with 'fo'",
+        "ground_truth": ".*mo.*((\\b[A-Za-z]+\\b)&(fo.*)).*",
+        "chatgpt_output": "\\bmo\\s+(?:[A-Za-z]+\\b)[a-z]+\\s+fo\\b"
+    },
+    {
+        "description": "lines utilizing the number '2'.",
+        "ground_truth": ".*2.*",
+        "chatgpt_output": "^.*[0-9]\\.2[0-9]\\.*$"
+    },
+    {
+        "description": "lines that contain at least one vowel in each word.",
+        "ground_truth": "~(.*((\\b[A-Za-z]+\\b)&([^AEIOUaeiou]*)).*)",
+        "chatgpt_output": "^(.*[aeiou][aeiou].*[aeiou][aeiou].*).*$"
+    },
+    {
+        "description": "lines ending with 'fer'",
+        "ground_truth": ".*fer",
+        "chatgpt_output": "$(?:[^.]*\\.)?[^.]+\\bfers?$"
+    },
+    {
+        "description": "lines composed of at least 3 words of 4 or more letters",
+        "ground_truth": "(.*\\b[A-Za-z]{4,}\\b.*){3,}",
+        "chatgpt_output": "^(.\\w{4,}[-\\s]+\\w{4,}[-\\s]+\\w{4,}).*$"
+    },
+    {
+        "description": "lines that have at least five words that start with a vowel.",
+        "ground_truth": "(.*\\b[AEIOUaeiou][A-Za-z]*\\b.*){5}",
+        "chatgpt_output": "^([AEIOUaeiou].*[\\s]+[AEIOUaeiou].*[\\s]+[AEIOUaeiou].*[\\s]+[AEIOUaeiou].*[\\s]+[AEIOUaeiou]\\b).*$"
+    },
+    {
+        "description": "lines that use the '@' symbol",
+        "ground_truth": ".*\\@.*",
+        "chatgpt_output": "^.[@].*$"
+    },
+    {
+        "description": "lines that have three words of five letters each.",
+        "ground_truth": "(.*\\b[A-Za-z]{5}\\b.*){3}",
+        "chatgpt_output": "^(.\\w{5}\\s){3}[.\\w{5}]*$"
+    },
+    {
+        "description": "lines that begin with the word 'the'.",
+        "ground_truth": "the\\b.*",
+        "chatgpt_output": "^(the\\s.*)$"
+    },
+    {
+        "description": "lines of 6 characters that end with the letter 's'.",
+        "ground_truth": ".{5}s",
+        "chatgpt_output": "^.\\{5\\}[$][a-z]{1}$"
+    },
+    {
+        "description": "lines that contain the word 'tron' but not 'bot'.",
+        "ground_truth": "(.*tron.*)&(~(.*bot.*))",
+        "chatgpt_output": "^(?!.*bot).*\\ktron.*$"
+    },
+    {
+        "description": "lines that have 'efg' followed by the word 'car'",
+        "ground_truth": ".*efg.*\\bcar\\b.*",
+        "chatgpt_output": "^(.+)efg\\s+car(.+)$"
+    },
+    {
+        "description": "lines that contain words starting with the letter 'g'",
+        "ground_truth": ".*\\bg[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bg[a-z]*[a-z0-9]*\\b.*)$"
+    },
+    {
+        "description": "lines that contain 5 or less words that have 4 or more letters where one of those letters is an 'a'.",
+        "ground_truth": "([^A-Za-z]*((\\b[A-Za-z]+\\b)&([A-Za-z]{4,})&(.*a.*))[^A-Za-z]*){0,5}",
+        "chatgpt_output": "^(.*\\s(?=\\b[a-z]{4,}\\b[-\\s])\\1{4,}|[a-z]{4,}\\b)[^\\s]{1,5}\\s*(?:(?<=[a-z]{4,}\\b)[^\\s]{1,5}\\s*(?=\\b[a-z]{4,}[-\\s]|$)){4}$"
+    },
+    {
+        "description": "lines that contain words starting with 'da'.",
+        "ground_truth": ".*\\bda[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\bda[a-z]+.*$"
+    },
+    {
+        "description": "lines that have the numbers '12345' and '54321'.",
+        "ground_truth": "(.*12345.*)&(.*54321.*)",
+        "chatgpt_output": "^(.*[12345].*[54321].*).*$"
+    },
+    {
+        "description": "lines that have words that start with 'b'.",
+        "ground_truth": ".*\\bb[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\w+b.\\w.*$"
+    },
+    {
+        "description": "lines that contain at least one word without any vowels.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(~(.*[AEIOUaeiou].*))).*",
+        "chatgpt_output": "~(.*[^aeiouAEIOU].*\\1.*).*|(^\\.*[^aeiouAEIOU]+\\.*)|\\b[^aeiouAEIOU]+\\b"
+    },
+    {
+        "description": "2 letter lines",
+        "ground_truth": "[A-Za-z]{2}",
+        "chatgpt_output": "^.[A-Z]{2}$"
+    },
+    {
+        "description": "lines using words that end with a vowel.",
+        "ground_truth": ".*\\b[A-Za-z]*[aeiouAEIOU]\\b.*",
+        "chatgpt_output": "^(.*[aeiou].*[^\\s]$)$ \\-\\- This regex searches for lines that end with a word containing a vowel at the last position. The caret (^) symbol expresses the start of the line and the dollar sign ($) symbol expresses the end of the line. The [aeiou] class matches any vowel character. The negative character class ([^\\s]) after the vowel ensures the end of the word. If the end of the line is a single vowel, it matches that, too."
+    },
+    {
+        "description": "lines that have words ending with 'as'.",
+        "ground_truth": ".*((\\b.*as\\b)&([A-Za-z]+)).*",
+        "chatgpt_output": "\\b[A-Za-z]*(\\w+as)\\b"
+    },
+    {
+        "description": "lines using at least 5 characters",
+        "ground_truth": ".*.{5}.*",
+        "chatgpt_output": "^.\\{5,}.*$"
+    },
+    {
+        "description": "lines where numbers exist only after a sequence of 'ABC' and 'XYZ'",
+        "ground_truth": "([^0-9]*)|((([^0-9]*)&(.*ABC.*)&(.*XYZ.*)).*)",
+        "chatgpt_output": "(?:[A-Z]{3}[A-Z]{3}).*\\d+"
+    },
+    {
+        "description": "lines with 'bit' and not 'ch'.",
+        "ground_truth": "(.*bit.*)&(~(.*ch.*))",
+        "chatgpt_output": "^.*\\bit(?![ch]*).*$"
+    },
+    {
+        "description": "lines which have 'ing' and 'out' but not 'sh' or 'cl'.",
+        "ground_truth": "((.*ing.*)&(.*out.*)&(~(.*(sh|cl).*)))",
+        "chatgpt_output": "~(.*\\bing\\W+out(?![shcl]).*).*"
+    },
+    {
+        "description": "lines that start with 'A' or An",
+        "ground_truth": "A.*|An.*",
+        "chatgpt_output": "^[A-An].*"
+    },
+    {
+        "description": "lines using more than 5 characters",
+        "ground_truth": ".*.{6,}.*",
+        "chatgpt_output": "^.[.]{6,}$"
+    },
+    {
+        "description": "lines which contain multiple quoted words.",
+        "ground_truth": "(.*\\'[A-Za-z]+\\'.*){2,}",
+        "chatgpt_output": "~\\/((\\\"[^\\\"]+|[^\"][^\\s\\\"]+|[^\\\"])*(\\\"[^\\\"]+|[^\"][^\\s\\\"]+|[^\\\"])*|[^\\\"][^\\s,]*[^\\s,] \"[^\\\"]+[^\\s,]*[^\\s,] \"\\))+/g~~Note: This regular expression covers lines containing multiple quoted words where each word is composed of one or more consecutives quotation marks and non-quote characters, with whitespaces and commas being the only allowed separators between quoted words. The 'g' flag is used to perform a global search in a single line."
+    },
+    {
+        "description": "lines that contain the word 'Kelly' but do not contain the word 'Chris'.",
+        "ground_truth": "(.*\\bKelly\\b.*)&(~(.*\\bChris\\b.*))",
+        "chatgpt_output": "^(.*(?!Chris).*{1,}Kelly).*$"
+    },
+    {
+        "description": "lines that only contain vowels.",
+        "ground_truth": "[AEIOUaeiou]*",
+        "chatgpt_output": "^[aeiouAEIOU]*$"
+    },
+    {
+        "description": "lines that have words ending in 'ing' or 'est'.",
+        "ground_truth": ".*\\b[A-Za-z]*(ing|est)\\b.*",
+        "chatgpt_output": "^(.*[\\w']+(ing|est)\\b.*)$"
+    },
+    {
+        "description": "lines with 'Quasi' as a stand alone word.",
+        "ground_truth": ".*\\bQuasi\\b.*",
+        "chatgpt_output": "^(Quasi)(?:\\s.*|\\Z)$"
+    },
+    {
+        "description": "lines containing the word 'tag'.",
+        "ground_truth": ".*\\btag\\b.*",
+        "chatgpt_output": "^.[^.]*\\btag\\b[^.].*$"
+    },
+    {
+        "description": "lines containing both letters and numbers, but no capitals.",
+        "ground_truth": "(.*[A-Za-z].*)&(.*[0-9].*)&(~(.*[A-Z].*))",
+        "chatgpt_output": "^[a-z0-9.]*(?:[^A-Z]*)$"
+    },
+    {
+        "description": "lines using at least two numbers, 'aby', and 'oz'.",
+        "ground_truth": "(.*[0-9].*){2}&(.*aby.*)&(.*oz.*)",
+        "chatgpt_output": "\\.((\\d+)[^aeiou\\s]+\\d+)[a-z]*[abyersuz][a-z]*(\\s+(\\d+)[^aeiou\\s]+\\d+)|(.*aby.*oz.*)~"
+    },
+    {
+        "description": "lines that utilize the number '1'",
+        "ground_truth": ".*1.*",
+        "chatgpt_output": "~(.*[1].*).*"
+    },
+    {
+        "description": "lines containing the letter 'z' but not the letter 'q'.",
+        "ground_truth": "(.*z.*)&(~(.*q.*))",
+        "chatgpt_output": "^.*z([^q]).*$"
+    },
+    {
+        "description": "lines containing 3 letter words starting with 'z'",
+        "ground_truth": ".*\\bz[A-Za-z]{2}\\b.*",
+        "chatgpt_output": "^[[:blank:]]*(z[a-z]{2})[[:blank:]]*.*$"
+    },
+    {
+        "description": "lines using a word starting with a vowel and ending with 'y'",
+        "ground_truth": ".*\\b[AEIOUaeiou][A-Za-z]*y\\b.*",
+        "chatgpt_output": "^[aeiou][aeiou]+[^.]*.y$"
+    },
+    {
+        "description": "lines that use words ending in 'g'",
+        "ground_truth": ".*((.*g)&(\\b[A-Za-z][A-Za-z]*\\b)).*",
+        "chatgpt_output": "^.*(\\bw+ING?[ag]|\\bw+ED?[ag]|[A-Za-z]+ag|[A-Za-z]+eg)\\b.*$"
+    },
+    {
+        "description": "lines with words matching the word 'fur'.",
+        "ground_truth": ".*\\bfur\\b.*",
+        "chatgpt_output": "^.*\\s*(fur)\\s*.*$"
+    },
+    {
+        "description": "lines that start with 'an'",
+        "ground_truth": "an.*",
+        "chatgpt_output": "^an[a-zA-Z]*"
+    },
+    {
+        "description": "lines utilizing words with 'be'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*be.*)).*",
+        "chatgpt_output": "^.*\\s+(am|is|are|were|be|been|being)\\s+.+"
+    },
+    {
+        "description": "lines in which all words start with the letter 'a'.",
+        "ground_truth": "~(.*((\\b[A-Za-z]+\\b)&([^a].*)).*)",
+        "chatgpt_output": "^([a-z]+(\\s+[a-z]+)*){3,}$"
+    },
+    {
+        "description": "lines that begin with a vowel and end with a vowel",
+        "ground_truth": "[aeiouAEIOU](.*[aeiouAEIOU])?",
+        "chatgpt_output": "^[aeiou][aeiou]$"
+    },
+    {
+        "description": "lines that contain words starting with 'na'.",
+        "ground_truth": ".*\\bna[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bnadept|nagative|naive|nap|nam|nan|napkin|nas[aeiou]|nant|na[st]|nature).*$"
+    },
+    {
+        "description": "lines that mention 'fireflies' but not 'butterflies'.",
+        "ground_truth": "(.*fireflies.*)&(~(.*butterflies.*))",
+        "chatgpt_output": "~/(.*(\\b(?!butterflies)\\s)*fireflies*.*).*[^]*([^]*butterflies[^]*|$)(?!.*butterflies)[^]*~"
+    },
+    {
+        "description": "lines having the letter 'x'.",
+        "ground_truth": ".*x.*",
+        "chatgpt_output": "/[x]/g # This will match any line containing the letter 'x'. The 'g' flag ensures that all occurrences within a line are matched."
+    },
+    {
+        "description": "lines which contain 'q' and 'u'",
+        "ground_truth": ".*q.*u.*|.*u.*q.*",
+        "chatgpt_output": "^.*{1}[q].*{1}[u].*$"
+    },
+    {
+        "description": "lines using 'ly' or 'ny'",
+        "ground_truth": ".*(ly|ny).*",
+        "chatgpt_output": "^.*(ly|ny).*$"
+    },
+    {
+        "description": "lines that start with 'Transport One' and end in a number.",
+        "ground_truth": "Transport One.*[0-9]",
+        "chatgpt_output": "^Transport One\\s+[0-9]+$"
+    },
+    {
+        "description": "lines that end with '...'",
+        "ground_truth": ".*\\.\\.\\.",
+        "chatgpt_output": "$[\\.]{\"3}$"
+    },
+    {
+        "description": "lines containing 3 or more ';'",
+        "ground_truth": "(.*;.*){3,}",
+        "chatgpt_output": "~(.*[;]{3,}.*)"
+    },
+    {
+        "description": "lines that contain 'I' in each word.",
+        "ground_truth": "~(.*((\\b[A-Za-z]+\\b)&([^I]*)).*)",
+        "chatgpt_output": "^(.*[Ii].*[\\s](?=.*[Ii].*[\\s])).*$"
+    },
+    {
+        "description": "lines that contain the phrase 'bedrock' or 'yabadabadoo'.",
+        "ground_truth": ".*(bedrock|yabadabadoo).*",
+        "chatgpt_output": "^(.*(bedrock|yabadabadoo).*).$"
+    },
+    {
+        "description": "lines that contain words starting with 'ge'.",
+        "ground_truth": ".*\\bge[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(ge\\w+).*$"
+    },
+    {
+        "description": "lines containing words that end with s.",
+        "ground_truth": ".*\\b[A-Za-z]*s\\b.*",
+        "chatgpt_output": "^.*\\bis(?![^s]\\$)[bs]{2}[a-z]*\\b.*$|^.*[s]$"
+    },
+    {
+        "description": "lines using words which have a vowel.",
+        "ground_truth": ".*\\b[A-Za-z]*[aeiouAEIOU][A-Za-z]*\\b.*",
+        "chatgpt_output": "^.[aeiouAEIOU].*[\\s.]+[aeiouAEIOU].*$.*"
+    },
+    {
+        "description": "lines using 'an' before 'imal'",
+        "ground_truth": ".*an.*imal.*",
+        "chatgpt_output": "^.*(an\\s+imal).*$"
+    },
+    {
+        "description": "lines that contain 'if' before 'then' or 'else'.",
+        "ground_truth": ".*if.*(then|else).*",
+        "chatgpt_output": "^.*(if).*(then|else).*$"
+    },
+    {
+        "description": "lines using words that begin with the letter 'G'.",
+        "ground_truth": ".*\\bG[A-Za-z]*\\b.*",
+        "chatgpt_output": "^(.*\\bg[a-zA-Z]+).*$"
+    },
+    {
+        "description": "lines containing words ending with 'mie'.",
+        "ground_truth": ".*\\b[A-Za-z]*mie\\b.*",
+        "chatgpt_output": "^.*\\b(?![nm]\\d)[^-][^\\.]*(mie)$ ^----^------^-- In this regex, '^' matches the start of the line, '.*' matches any character (except newline), '\\b' is a word boundary, '(?![nm]\\d)' is a negative lookahead assertion that checks for non-existence of 'n' or 'm' followed by a digit character, '[^-][^\\.]' matches any single character that is not '-' or '.', '(mie)$' matches the word 'mie' at the end of the line."
+    },
+    {
+        "description": "lines that start with 'gates'",
+        "ground_truth": "gates.*",
+        "chatgpt_output": "^gates.*\\b"
+    },
+    {
+        "description": "lines composed of 3 or more characters",
+        "ground_truth": ".*.{3,}.*",
+        "chatgpt_output": "^.[2,].*$"
+    },
+    {
+        "description": "lines that start with 'Al' but do not contain any numbers.",
+        "ground_truth": "(Al.*)&(~(.*[0-9].*))",
+        "chatgpt_output": "^(Al[a-z]+( [a-z]+)*$).*[^0-9]"
+    },
+    {
+        "description": "lines using words ending in 'ness'",
+        "ground_truth": ".*\\b[A-Za-z]*ness\\b.*",
+        "chatgpt_output": "\\.(.*[hwn][aeio]?[dn]ness).*|[^.]*(?:[:-][ ]+)*[hwn][aeio]?[dn]ness[^.]*."
+    },
+    {
+        "description": "lines with words that end with 'ca' before words that end with 'att'",
+        "ground_truth": ".*\\b[A-Za-z]*ca\\b.*\\b[A-Za-z]*att\\b.*",
+        "chatgpt_output": "^(.*\\b(?![a-z]*att)[a-z]*[ca][a-z]* [a-z]+(?= [a-z]*(?:att|\\b)).*)$"
+    },
+    {
+        "description": "lines that contain words with 'ci'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*ci.*)).*",
+        "chatgpt_output": "^.*\\bis(ti|ci)[\\s.\\-]([A-Za-z]+).*$"
+    },
+    {
+        "description": "lines containing words ending in 're'",
+        "ground_truth": ".*\\b[A-Za-z]*re\\b.*",
+        "chatgpt_output": "^.*\\s*((\\b[A-Za-z]+\\b)\\w*re)$"
+    },
+    {
+        "description": "lines that use only four words",
+        "ground_truth": "(([^A-Za-z])*\\b[A-Za-z]+\\b([^A-Za-z])*){4}",
+        "chatgpt_output": "^(\\S+\\s+\\S+\\s+\\S+\\s+\\S+)[^\\n]*$"
+    },
+    {
+        "description": "lines ending with the letter 'f'",
+        "ground_truth": ".*f",
+        "chatgpt_output": "^.*(\\.|$)[ff]$|^(?<!\\.)\\s*[^.\\n]+\\bf\\b$"
+    },
+    {
+        "description": "lines that end in 't'",
+        "ground_truth": ".*t",
+        "chatgpt_output": "^.+(t)$"
+    },
+    {
+        "description": "lines that start with the letter 't'.",
+        "ground_truth": "t.*",
+        "chatgpt_output": "^[t].*"
+    },
+    {
+        "description": "lines containing a 5 letter word beginning with 't'",
+        "ground_truth": ".*\\bt[A-Za-z]{4}\\b.*",
+        "chatgpt_output": "^.*(\\bt[a-z]{4}t\\b).*$"
+    },
+    {
+        "description": "lines ending with 'uns'",
+        "ground_truth": ".*uns",
+        "chatgpt_output": "^.*.uns$"
+    },
+    {
+        "description": "lines ending with 'end'",
+        "ground_truth": ".*end",
+        "chatgpt_output": "^(.*(?:\\r\\n|[\\n\\r]?)*(end)$)"
+    },
+    {
+        "description": "lines that contain 'day' or 'to'",
+        "ground_truth": ".*(day|to).*",
+        "chatgpt_output": "^(.*(day|to).*).*$"
+    },
+    {
+        "description": "lines that contain at least one word and the number '12'",
+        "ground_truth": ".*(.*\\b[A-Za-z]+\\b.*)&(.*12.*).*",
+        "chatgpt_output": "^(.*\\S+\\s+[0-9]{2}[0-9]{2}).*$"
+    },
+    {
+        "description": "lines ending with 'wrench' that use the word 'monkey'.",
+        "ground_truth": ".*\\bmonkey\\b.*wrench",
+        "chatgpt_output": "*(.*monkey).*wrench$"
+    },
+    {
+        "description": "lines that contain at least one digit.",
+        "ground_truth": ".*[0-9].*",
+        "chatgpt_output": "^.*[0-9].*$"
+    },
+    {
+        "description": "lines starting and ending with 'a'",
+        "ground_truth": "a(.*a)?",
+        "chatgpt_output": "^a.*a$"
+    },
+    {
+        "description": "lines that have 'car'",
+        "ground_truth": ".*car.*",
+        "chatgpt_output": "/.+(car).+/g (This will match lines containing 'car' anywhere in the line)"
+    },
+    {
+        "description": "lines of words whose last letters are 'ing'.",
+        "ground_truth": ".*\\b[A-Za-z]*ing\\b.*",
+        "chatgpt_output": "^(.*[^.]\\.?(.*[a-z]+ing)[^.]*)$"
+    },
+    {
+        "description": "lines beginning with the letter 's' and ending with the letter 'y'",
+        "ground_truth": "s.*y",
+        "chatgpt_output": "^[s].*[y]$"
+    },
+    {
+        "description": "lines that use words ending with 'es'.",
+        "ground_truth": ".*\\b[A-Za-z]*es\\b.*",
+        "chatgpt_output": "^(.*[\\w']+es)[ \\t]+[A-Za-z']*$"
+    },
+    {
+        "description": "lines that have 3 characters after the first vowel",
+        "ground_truth": ".*[AEIOUaeiou].*(.{3}).*",
+        "chatgpt_output": "^[aeiou][\\w]{3}.*|[aeiou]$[^.\\n]*[\\w]{3}[.\\n]$|^[aeiou]([^aeiou]*.){1}[\\w]{3}[.\\n]$"
+    },
+    {
+        "description": "lines ending in 'z' preceded by a word that ends in 'nt'",
+        "ground_truth": ".*\\b[A-Za-z]*nt\\b.*z",
+        "chatgpt_output": "\\((\\b[A-Za-z]*nt\\b)\\s*(.)\\)z*$"
+    },
+    {
+        "description": "lines using the word 'day' followed by the letters 'abc'",
+        "ground_truth": ".*\\bday\\b.*abc.*",
+        "chatgpt_output": "^(.*\\bday\\b.*\\b[a-z]{3}=[a-z]{3}\\b).*$"
+    },
+    {
+        "description": "lines that contain words starting with 'gu'.",
+        "ground_truth": ".*\\bgu[A-Za-z]*\\b.*",
+        "chatgpt_output": "^.*\\b(gu\\w+).*$"
+    },
+    {
+        "description": "lines that have the word 'pray'.",
+        "ground_truth": ".*\\bpray\\b.*",
+        "chatgpt_output": "^.*\\bpray\\b.*$"
+    },
+    {
+        "description": "lines that contain words between 'I' and 'you'",
+        "ground_truth": ".*I.*\\b[A-Za-z]+\\b.*you.*|.*you.*\\b[A-Za-z]+\\b.*I.*",
+        "chatgpt_output": "~(I\\s+\\w.*you\\s+\\w)"
+    },
+    {
+        "description": "lines that contain 3 words with at least 1 number in between the 1st and 3rd word.",
+        "ground_truth": "[^A-Za-z]*\\b[A-Za-z]+\\b((.*\\b[A-Za-z]+\\b.*)&(.*[0-9].*))\\b[A-Za-z]+\\b[^A-Za-z]*",
+        "chatgpt_output": "^((\\w+\\d+\\w+)\\s+(\\w+)[0-9]\\s+(\\w+)\\b)[ ](?:\\1|\\2|\\3).*$"
+    },
+    {
+        "description": "lines containing the text 'and so it came to pass'",
+        "ground_truth": ".*and so it came to pass.*",
+        "chatgpt_output": "\\.(.*and so it came to pass).*"
+    },
+    {
+        "description": "lines with 'helper' where the word 'little' does not appear before 'helper' in that line.",
+        "ground_truth": "(.*helper.*)&(~(.*\\blittle\\b.*helper.*))",
+        "chatgpt_output": "^(?!.*little\\s+helper).*helper\\s.*$"
+    },
+    {
+        "description": "lines that have a word ending with the letters 'ked'.",
+        "ground_truth": ".*\\b[A-Za-z]*ked\\b.*",
+        "chatgpt_output": "^([A-Za-z]*[ked])\\b.*$"
+    },
+    {
+        "description": "lines that each begin with a vowel",
+        "ground_truth": "[AEIOUaeiou].*",
+        "chatgpt_output": "^[aeiouAEIOU].*"
+    },
+    {
+        "description": "lines ending in 'fuzz'",
+        "ground_truth": ".*fuzz",
+        "chatgpt_output": "^.+\\bfuzz$"
+    },
+    {
+        "description": "lines using 6 'e'",
+        "ground_truth": "(.*e.*){6}",
+        "chatgpt_output": "^(.*[e]{6}[e]{0,}[aeiou]{0,}.*).*$"
+    },
+    {
+        "description": "lines that contain words starting with a vowel and ending with a vowel.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&([AEIOUaeiou].*)&(.*[AEIOUaeiou])).*",
+        "chatgpt_output": "^[aeiou][aeiou][^.]*$"
+    },
+    {
+        "description": "lines that contain words using 'oo' in them.",
+        "ground_truth": ".*\\b[A-Za-z]*oo[A-Za-z]*\\b.*",
+        "chatgpt_output": ".*\\b(woo|moo|boot|foo|pool|boo|roo|pool|duo|moon|spoon|coo|tooth|etc)\\b.*# Use \"etc\" as a placeholder for other possible words that contain the string 'oo'. Adjust the list according to your specific use case."
+    },
+    {
+        "description": "lines which contain 'out'",
+        "ground_truth": ".*out.*",
+        "chatgpt_output": "^.+out.+$"
+    },
+    {
+        "description": "lines using words ending with 'tu'.",
+        "ground_truth": ".*\\b[A-Za-z]*tu\\b.*",
+        "chatgpt_output": "^.+(util\\.?|[A-Za-z]*tu)[ .-]*[A-Za-z]+.*$"
+    },
+    {
+        "description": "lines having 'sh' after 'wi' and 'st' before 'ar'.",
+        "ground_truth": ".*((.*wi.*sh.*)&(.*st.*ar.*)).*",
+        "chatgpt_output": "^(.{1,5}wi.[^]{1,5}st.[^]{1,5}sh)[^\\n]*$"
+    },
+    {
+        "description": "lines that start with the word 'The'",
+        "ground_truth": "The\\b.*",
+        "chatgpt_output": "^The\\s*[A-Za-z\\s]*$"
+    },
+    {
+        "description": "lines that contain more than five words.",
+        "ground_truth": "(.*\\b[A-Za-z]+\\b.*){6,}",
+        "chatgpt_output": "^.+\\s+\\S+\\s+\\S+\\s+\\S+(?:\\s+\\S+)*$"
+    },
+    {
+        "description": "lines that do not contain the letter 'c'.",
+        "ground_truth": "~(.*c.*)",
+        "chatgpt_output": "^(.*[^c]*).*$"
+    },
+    {
+        "description": "lines starting with 'the'",
+        "ground_truth": "the.*",
+        "chatgpt_output": "^the\\s.*"
+    },
+    {
+        "description": "lines that contain words ending with a vowel.",
+        "ground_truth": ".*\\b[A-Za-z]*[AEIOUaeiou]\\b.*",
+        "chatgpt_output": "^(.*[aeiou].*[ \\t]+[a-z]+[aeiou]$)*$"
+    },
+    {
+        "description": "lines that contain at least one word which is 8 characters or longer",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.{8,})).*",
+        "chatgpt_output": "^.*\\s+(\\w{8,}[\\s\\w]*).*$"
+    },
+    {
+        "description": "lines that contain words ending with 'el'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*el)).*",
+        "chatgpt_output": "^.+\\s*((\\b[A-Za-z]*el)\\b).*$"
+    },
+    {
+        "description": "lines containing words that end with 'P'",
+        "ground_truth": ".*((\\b.*P\\b)&([A-Za-z]+)).*.*",
+        "chatgpt_output": "^[^ ]+ (\\w+P)\\b(?: [\\w.]+)*$|^[\\t]*(\\w+P)\\b(?: [\\w.]+)*$"
+    },
+    {
+        "description": "lines using a word which has uppercase letters and has lowercase letters",
+        "ground_truth": ".*\\b(([A-Za-z]*[A-Z][A-Za-z]*)&([A-Za-z]*[a-z][A-Za-z]*))\\b.*",
+        "chatgpt_output": ".*\\b([A-Z][a-z]+)\\b.*"
+    },
+    {
+        "description": "lines that contain words with 're'.",
+        "ground_truth": ".*\\b[A-Za-z]*re[A-Za-z]*\\b.*",
+        "chatgpt_output": "*(.*\\b(?:repeat|refer|revert|etc|rejoice|relish|etc)\\b).*"
+    },
+    {
+        "description": "lines that start with the letter 'a' and end with the letter 'c'",
+        "ground_truth": "a.*c",
+        "chatgpt_output": "^[a][a-z\\*]*[ac]$"
+    },
+    {
+        "description": "lines that have three characters before the sequence 'SBC'",
+        "ground_truth": ".*.{3}SBC.*",
+        "chatgpt_output": "^.{3}[SBC]"
+    },
+    {
+        "description": "lines using the letter pair 'no'",
+        "ground_truth": ".*no.*",
+        "chatgpt_output": "^.*no.*$"
+    },
+    {
+        "description": "lines containing 3 or more vowels.",
+        "ground_truth": "(.*[AEIOUaeiou].*){3,}",
+        "chatgpt_output": "^(.*[aeiou]{3,}[aeiou].*).*$"
+    },
+    {
+        "description": "lines which contain a word using 2 or more letters",
+        "ground_truth": ".*\\b[A-Za-z]{2,}\\b.*",
+        "chatgpt_output": "^.*(\\w{2,}).*$"
+    },
+    {
+        "description": "lines that contain 'er' at the end of every word.",
+        "ground_truth": "~(.*((\\b[A-Za-z]+\\b)&(~(.*er))).*)",
+        "chatgpt_output": "^(.*[^ ]+er[^ ]+[^ ]*)( [^ ]+[^ ]*er[^ ]+[^ ]*)*$"
+    },
+    {
+        "description": "lines using 4 instances of 'ug'",
+        "ground_truth": ".*(.*ug.*){4}.*",
+        "chatgpt_output": "^(.*ug.*ug.*ug.*ug.*).*$"
+    },
+    {
+        "description": "lines that do not have 'the' in them",
+        "ground_truth": "~(.*the.*)",
+        "chatgpt_output": "^.(.*(?<![t]he).*$)"
+    },
+    {
+        "description": "lines containing at least one uppercase letter, and at least one lowercase letter",
+        "ground_truth": "(.*[A-Z].*)&(.*[a-z].*)",
+        "chatgpt_output": ".*[a-z].*[A-Z].*"
+    },
+    {
+        "description": "lines that contain the phrase 'Wednesday' but not 'Sunday'.",
+        "ground_truth": "(.*Wednesday.*)&(~(.*Sunday.*))",
+        "chatgpt_output": "^(?!.*Sunday).*Wednesday.*$"
+    },
+    {
+        "description": "lines containing the word 'revolution'.",
+        "ground_truth": ".*\\brevolution\\b.*",
+        "chatgpt_output": "^.*\\brevolution\\b.*$"
+    },
+    {
+        "description": "lines ending with 'xyz'",
+        "ground_truth": ".*xyz",
+        "chatgpt_output": "^(.*[^]\\n)xyz$"
+    },
+    {
+        "description": "lines that contain a nine letter word.",
+        "ground_truth": ".*\\b[A-Za-z]{9}\\b.*",
+        "chatgpt_output": "(.\\{8\\}.[A-Za-z]{9}).*|[^.]{0,8}\\.{9}[A-Za-z]{9}.*|(^\\.[A-Za-z]{9}[^.]*.*)|(^[A-Za-z]{9}\\.[^.]*)|(.[A-Za-z]{8}[A-Za-z][A-Za-z]{8}$)"
+    },
+    {
+        "description": "lines with fox that do not contain the word chicken.",
+        "ground_truth": "(.*fox.*)&(~(.*\\bchicken\\b.*))",
+        "chatgpt_output": "^(?!.*chicken).*fox.*$"
+    },
+    {
+        "description": "lines utilizing words ending with 'fe'.",
+        "ground_truth": ".*((\\b[A-Za-z]+\\b)&(.*fe)).*",
+        "chatgpt_output": "^(.*\\b(?i:[a-z]+fe)\\b.).*$"
+    },
+    {
+        "description": "lines that do not have any word consisting of 4 letters.",
+        "ground_truth": "~(.*\\b[A-Za-z]{4}\\b.*)",
+        "chatgpt_output": "\\A(?![a-z]{4}[- ]*(?:[a-z][a-z]*){0,2}[- ]*(?:[a-z][a-z]*){3}[- ])[^\\n]+\\R/mg"
+    },
+    {
+        "description": "lines which start with 'oocl'",
+        "ground_truth": "oocl.*",
+        "chatgpt_output": "^oocl.*."
+    },
+    {
+        "description": "lines that do not contain numerical characters.",
+        "ground_truth": "~(.*[0-9].*)",
+        "chatgpt_output": "^[^0-9].*$ \\"
+    },
+    {
+        "description": "lines using 'gophers' and containing the words 'grass' and 'seeds'.",
+        "ground_truth": "(.*gophers.*)&(.*\\bgrass\\b.*)&(.*\\bseeds\\b.*)",
+        "chatgpt_output": "^.*gophers.*\\s*(grass|Seeds)\\s*.*$"
+    },
+    {
+        "description": "lines containing 'annou' and 'irth' that do not have a 'c' anywhere.",
+        "ground_truth": "(.*annou.*)&(.*irth.*)&(~(.*c.*))",
+        "chatgpt_output": "^(?=.*annou)(?=.*ith).*[^c]"
+    },
+    {
+        "description": "lines using 'x' before 'z'",
+        "ground_truth": ".*x.*z.*",
+        "chatgpt_output": "^(.*x[^z]*z).*$"
+    },
+    {
+        "description": "lines beginning with the letter 'f'",
+        "ground_truth": "f.*",
+        "chatgpt_output": "^[fa-zA-Z]"
+    },
+    {
+        "description": "4 letter lines",
+        "ground_truth": "[A-Za-z]{4}",
+        "chatgpt_output": "^.\\{4\\}$"
+    },
+    {
+        "description": "lines using numbers that show two or more '0'.",
+        "ground_truth": ".*(.*0.*){2,}.*",
+        "chatgpt_output": "^(.*[0]{2,}.*).*$"
+    }
+]
